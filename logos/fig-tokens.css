@@ -1,0 +1,1627 @@
+/* Generated from Figma Variables. First mode = :root default.
+   FLOAT tokens are unitless — multiply by 1px in calc() where a length is needed. */
+
+:root {
+  --24px: 24;
+  --black: rgb(12,12,12); /* @kind color */
+  --border-radius-1: var(--radius-2-2);
+  --border-radius-2: var(--radius-4-4);
+  --border-radius-pill: var(--radius-pill);
+  --breadcrumb-icon-color: var(--neutral-400); /* @kind color */
+  --bscheck-radius: var(--radius-xs-2);
+  --btn-border-radius: var(--border-radius-2);
+  --btn-xsm-border-radius: var(--btn-border-radius);
+  --button-color-facebook-outline-border-disabled: var(--color-primary-200); /* @kind color */
+  --button-color-facebook-outline-border-hover: var(--color-main-900); /* @kind color */
+  --button-color-facebook-outline-border: var(--color-neutral-200-2); /* @kind color */
+  --button-color-facebook-outline-icon-active: rgb(11,95,203); /* @kind color */
+  --button-color-facebook-outline-icon-disabled: var(--color-neutral-200-2); /* @kind color */
+  --button-color-facebook-outline-icon-hover: rgb(11,95,203); /* @kind color */
+  --button-color-facebook-outline-icon: rgb(24,119,242); /* @kind color */
+  --button-color-facebook-outline-text-active: rgb(24,119,242); /* @kind color */
+  --button-color-facebook-outline-text-disabled: var(--color-neutral-200-2); /* @kind color */
+  --button-color-facebook-outline-text-hover: rgb(11,95,203); /* @kind color */
+  --button-color-facebook-outline-text: rgb(24,119,242); /* @kind color */
+  --button-color-facebook-solid-border-2: rgb(24,119,242); /* @kind color */
+  --button-color-facebook-solid-border-active: rgb(11,95,203); /* @kind color */
+  --button-color-facebook-solid-border-disabled: var(--color-primary-200); /* @kind color */
+  --button-color-facebook-solid-border-hover-2: rgb(11,95,203); /* @kind color */
+  --button-color-facebook-solid-border-hover: rgb(11,95,203); /* @kind color */
+  --button-color-facebook-solid-border: rgb(24,119,242); /* @kind color */
+  --button-color-facebook-solid-icon-active: var(--color-white-2); /* @kind color */
+  --button-color-facebook-solid-icon-disabled: var(--color-neutral-200-2); /* @kind color */
+  --button-color-facebook-solid-icon-hover: var(--color-white-2); /* @kind color */
+  --button-color-facebook-solid-icon: var(--color-white-2); /* @kind color */
+  --button-color-facebook-solid-surface-disabled: var(--color-neutral-100); /* @kind color */
+  --button-color-facebook-solid-surface: rgb(24,119,242); /* @kind color */
+  --button-color-facebook-solid-text-active: var(--color-primary-100); /* @kind color */
+  --button-color-facebook-solid-text-disabled: var(--color-neutral-200-2); /* @kind color */
+  --button-color-facebook-solid-text-hover-2: var(--color-primary-100-2); /* @kind color */
+  --button-color-facebook-solid-text-hover: var(--color-primary-100); /* @kind color */
+  --button-color-facebook-solid-text: var(--color-white-2); /* @kind color */
+  --button-color-google-outline-border-active: var(--color-neutral-200-2); /* @kind color */
+  --button-color-google-outline-border-disabled: var(--color-primary-200); /* @kind color */
+  --button-color-google-outline-border-hover: var(--color-main-500); /* @kind color */
+  --button-color-google-outline-border: var(--color-neutral-200-2); /* @kind color */
+  --button-color-google-outline-icon-disabled: var(--color-neutral-200-2); /* @kind color */
+  --button-color-google-outline-text-active: rgb(70,70,70); /* @kind color */
+  --button-color-google-outline-text-hover: rgb(54,54,54); /* @kind color */
+  --button-color-google-outline-text: rgb(70,70,70); /* @kind color */
+  --button-color-google-solid-border-active: rgb(70,70,70); /* @kind color */
+  --button-color-google-solid-border-disabled: var(--color-primary-200); /* @kind color */
+  --button-color-google-solid-border-hover: rgb(54,54,54); /* @kind color */
+  --button-color-google-solid-border: rgb(70,70,70); /* @kind color */
+  --button-color-google-solid-icon-active: var(--color-white-2); /* @kind color */
+  --button-color-google-solid-icon-disabled: var(--color-neutral-200-2); /* @kind color */
+  --button-color-google-solid-icon-hover: var(--color-white-2); /* @kind color */
+  --button-color-google-solid-icon: var(--color-white-2); /* @kind color */
+  --button-color-google-solid-surface-active: rgb(70,70,70); /* @kind color */
+  --button-color-google-solid-surface-disabled: var(--color-neutral-100); /* @kind color */
+  --button-color-google-solid-surface-hover: rgb(54,54,54); /* @kind color */
+  --button-color-google-solid-surface: rgb(70,70,70); /* @kind color */
+  --button-color-google-solid-text-active: var(--color-primary-100); /* @kind color */
+  --button-color-google-solid-text-disabled: var(--color-neutral-200-2); /* @kind color */
+  --button-color-google-solid-text-hover: var(--color-primary-100); /* @kind color */
+  --button-color-google-solid-text: var(--color-white-2); /* @kind color */
+  --button-color-main-border-active: var(--color-main-400); /* @kind color */
+  --button-color-main-border-disabled: var(--color-main-100); /* @kind color */
+  --button-color-seznam-outline-border-active: var(--color-neutral-200-2); /* @kind color */
+  --button-color-seznam-outline-border-disabled: var(--color-primary-200); /* @kind color */
+  --button-color-seznam-outline-border-hover: var(--color-main-500); /* @kind color */
+  --button-color-seznam-outline-border: var(--color-neutral-200-2); /* @kind color */
+  --button-color-seznam-outline-icon-disabled: var(--color-neutral-200-2); /* @kind color */
+  --button-color-seznam-outline-text-active: rgb(35,35,35); /* @kind color */
+  --button-color-seznam-outline-text-disabled: var(--color-neutral-200-2); /* @kind color */
+  --button-color-seznam-outline-text-hover: rgb(24,24,24); /* @kind color */
+  --button-color-seznam-outline-text: rgb(35,35,35); /* @kind color */
+  --button-color-seznam-solid-border-2: rgb(222,0,0); /* @kind color */
+  --button-color-seznam-solid-border-active: rgb(222,0,0); /* @kind color */
+  --button-color-seznam-solid-border-hover-2: rgb(189,0,0); /* @kind color */
+  --button-color-seznam-solid-border-hover: rgb(189,0,0); /* @kind color */
+  --button-color-seznam-solid-border: rgb(222,0,0); /* @kind color */
+  --button-color-seznam-solid-icon-2: var(--color-white-3); /* @kind color */
+  --button-color-seznam-solid-icon-active: var(--color-white-2); /* @kind color */
+  --button-color-seznam-solid-icon-disabled: var(--color-neutral-200-2); /* @kind color */
+  --button-color-seznam-solid-icon-hover-2: var(--color-white-3); /* @kind color */
+  --button-color-seznam-solid-icon-hover: var(--color-white-2); /* @kind color */
+  --button-color-seznam-solid-icon: var(--color-white-2); /* @kind color */
+  --button-color-seznam-solid-surface-disabled: var(--color-neutral-100); /* @kind color */
+  --button-color-seznam-solid-surface-hover: rgb(189,0,0); /* @kind color */
+  --button-color-seznam-solid-surface: rgb(222,0,0); /* @kind color */
+  --button-color-seznam-solid-text-2: var(--color-white-3); /* @kind color */
+  --button-color-seznam-solid-text-active: var(--color-primary-100); /* @kind color */
+  --button-color-seznam-solid-text-disabled: var(--color-neutral-200-2); /* @kind color */
+  --button-color-seznam-solid-text-hover-2: var(--color-primary-100-2); /* @kind color */
+  --button-color-seznam-solid-text-hover: var(--color-primary-100); /* @kind color */
+  --button-color-seznam-solid-text: var(--color-white-2); /* @kind color */
+  --button-destructive-background-color: var(--neutral-200); /* @kind color */
+  --button-destructive-background-hover-color: var(--white); /* @kind color */
+  --button-destructive-border-color: var(--neutral-300); /* @kind color */
+  --button-destructive-border-hover-color: var(--white); /* @kind color */
+  --button-destructive-icon-color: var(--black); /* @kind color */
+  --button-destructive-icon-hover-color: var(--black); /* @kind color */
+  --button-destructive-text-color: var(--black); /* @kind color */
+  --button-destructive-text-hover-color: var(--black); /* @kind color */
+  --button-facebook-outline-background-color: rgb(255,255,255); /* @kind color */
+  --button-facebook-outline-background-hover-color: var(--neutral-100-0); /* @kind color */
+  --button-facebook-outline-border-color-hover: var(--neutral-500); /* @kind color */
+  --button-facebook-outline-border-color: var(--neutral-800); /* @kind color */
+  --button-facebook-outline-text-color: rgb(24,119,242); /* @kind color */
+  --button-facebook-outline-text-hover-color: rgb(11,95,203); /* @kind color */
+  --button-facebook-solid-background-color: rgb(24,119,242); /* @kind color */
+  --button-facebook-solid-background-hover-color: rgb(11,95,203); /* @kind color */
+  --button-facebook-solid-border-color-hover: rgb(11,95,203); /* @kind color */
+  --button-facebook-solid-border-color: rgb(24,119,242); /* @kind color */
+  --button-facebook-solid-text-color: rgb(255,255,255); /* @kind color */
+  --button-facebook-solid-text-hover-color: rgb(255,255,255); /* @kind color */
+  --button-google-outline-background-color: rgb(255,255,255); /* @kind color */
+  --button-google-outline-background-hover-color: rgb(255,255,255); /* @kind color */
+  --button-google-outline-border-color-hover: var(--neutral-500); /* @kind color */
+  --button-google-outline-border-color: var(--neutral-800); /* @kind color */
+  --button-google-outline-text-color: var(--white); /* @kind color */
+  --button-google-outline-text-hover-color: var(--white); /* @kind color */
+  --button-google-solid-background-color: rgb(70,70,70); /* @kind color */
+  --button-google-solid-background-hover-color: rgb(54,54,54); /* @kind color */
+  --button-google-solid-border-color-hover: rgb(54,54,54); /* @kind color */
+  --button-google-solid-border-color: rgb(70,70,70); /* @kind color */
+  --button-google-solid-text-color: var(--white); /* @kind color */
+  --button-google-solid-text-hover-color: var(--white); /* @kind color */
+  --button-main-background-color: var(--main-500); /* @kind color */
+  --button-main-background-hover-color: var(--main-600); /* @kind color */
+  --button-main-border-color: var(--main-500); /* @kind color */
+  --button-main-border-hover-color: var(--primary-300); /* @kind color */
+  --button-main-icon-color: var(--white); /* @kind color */
+  --button-main-icon-hover-color: var(--white); /* @kind color */
+  --button-main-qantificator-bg-active-color: var(--neutral-900); /* @kind color */
+  --button-main-text-color: var(--white); /* @kind color */
+  --button-main-text-hover-color: var(--neutral-700); /* @kind color */
+  --button-neutral-background-color: var(--neutral-900); /* @kind color */
+  --button-neutral-background-hover-color: var(--primary-500); /* @kind color */
+  --button-neutral-border-color: var(--neutral-900); /* @kind color */
+  --button-neutral-border-hover-color: var(--primary-500); /* @kind color */
+  --button-neutral-icon-color: var(--white); /* @kind color */
+  --button-neutral-icon-hover-color: var(--white); /* @kind color */
+  --button-neutral-text-color: var(--white); /* @kind color */
+  --button-neutral-text-hover-color: var(--white); /* @kind color */
+  --button-outline-background-color: var(--neutral-100-0); /* @kind color */
+  --button-outline-background-hover-color: var(--neutral-800); /* @kind color */
+  --button-outline-border-color: var(--neutral-800); /* @kind color */
+  --button-outline-border-hover-color: var(--neutral-500); /* @kind color */
+  --button-outline-icon-color: var(--neutral-300); /* @kind color */
+  --button-outline-icon-hover-color: var(--white); /* @kind color */
+  --button-outline-text-color: var(--white); /* @kind color */
+  --button-outline-text-hover-color: var(--white); /* @kind color */
+  --button-padding-icon-l: 20;
+  --button-padding-icon-only: 12;
+  --button-padding-icon-r: 16;
+  --button-padding-lr: 24;
+  --button-padding-tb-small: 6;
+  --button-padding-tb-standart: 10;
+  --button-primary-background-color: var(--neutral-200); /* @kind color */
+  --button-primary-background-hover-color: var(--primary-500); /* @kind color */
+  --button-primary-border-color: var(--neutral-300); /* @kind color */
+  --button-primary-border-hover-color: var(--primary-500); /* @kind color */
+  --button-primary-icon-color: var(--black); /* @kind color */
+  --button-primary-icon-hover-color: var(--white); /* @kind color */
+  --button-primary-text-color: var(--black); /* @kind color */
+  --button-primary-text-hover-color: var(--white); /* @kind color */
+  --button-radius: var(--radius-0);
+  --button-secondary-background-color: var(--neutral-700); /* @kind color */
+  --button-secondary-background-hover-color: var(--white); /* @kind color */
+  --button-secondary-border-color: var(--neutral-700); /* @kind color */
+  --button-secondary-border-hover-color: var(--neutral-300); /* @kind color */
+  --button-secondary-icon-color: var(--neutral-200); /* @kind color */
+  --button-secondary-icon-hover-color: var(--black); /* @kind color */
+  --button-secondary-text-color: var(--neutral-200); /* @kind color */
+  --button-secondary-text-hover-color: var(--black); /* @kind color */
+  --button-seznam-outline-background-color: var(--white); /* @kind color */
+  --button-seznam-outline-background-hover-color: var(--white); /* @kind color */
+  --button-seznam-outline-border-color-hover: var(--neutral-500); /* @kind color */
+  --button-seznam-outline-border-color: var(--neutral-800); /* @kind color */
+  --button-seznam-outline-text-color: rgb(255,255,255); /* @kind color */
+  --button-seznam-outline-text-hover-color: rgb(255,255,255); /* @kind color */
+  --button-seznam-solid-background-color: rgb(222,0,0); /* @kind color */
+  --button-seznam-solid-background-hover-color: rgb(189,0,0); /* @kind color */
+  --button-seznam-solid-border-color-hover: rgb(189,0,0); /* @kind color */
+  --button-seznam-solid-border-color: rgb(222,0,0); /* @kind color */
+  --button-seznam-solid-text-color: rgb(255,255,255); /* @kind color */
+  --button-seznam-solid-text-hover-color: rgb(255,255,255); /* @kind color */
+  --button-textonly-background-color: var(--neutral-900); /* @kind color */
+  --button-textonly-background-hover-color: var(--primary-300); /* @kind color */
+  --button-textonly-border-color: var(--neutral-700); /* @kind color */
+  --button-textonly-border-hover-color: var(--primary-300); /* @kind color */
+  --button-textonly-icon-color: var(--neutral-700); /* @kind color */
+  --button-textonly-icon-hover-color: var(--white); /* @kind color */
+  --button-textonly-text-color: var(--neutral-400); /* @kind color */
+  --button-textonly-text-hover-color: var(--white); /* @kind color */
+  --card-background-color-02: var(--neutral-900); /* @kind color */
+  --card-background-color: var(--neutral-900); /* @kind color */
+  --card-background-hover-color-02: rgb(255,255,255); /* @kind color */
+  --card-background-hover-color: rgb(255,255,255); /* @kind color */
+  --card-border-color: var(--neutral-700); /* @kind color */
+  --card-border-hover-color: var(--neutral-700); /* @kind color */
+  --card-icon-color: var(--primary-300); /* @kind color */
+  --card-icon-hover-color: var(--primary-300); /* @kind color */
+  --card-kratky-nazev: var(--primary-300); /* @kind color */
+  --card-na-objednavku: var(--primary-300); /* @kind color */
+  --card-nazev-produktu: var(--neutral-50); /* @kind color */
+  --card-neni-skladem: var(--primary-300); /* @kind color */
+  --card-price-primary: var(--white); /* @kind color */
+  --card-price-secondary: var(--primary-300); /* @kind color */
+  --card-price-sleva: var(--primary-500); /* @kind color */
+  --card-skladem: var(--success-500); /* @kind color */
+  --card-variants-border-color: rgba(255,255,255,0); /* @kind color */
+  --chips-background-color: var(--neutral-600); /* @kind color */
+  --chips-background-hover-color: var(--neutral-600); /* @kind color */
+  --chips-background-outline-hover-color: var(--neutral-600); /* @kind color */
+  --chips-bg-hover-color: var(--neutral-600); /* @kind color */
+  --chips-border-color: var(--neutral-600); /* @kind color */
+  --chips-border-hover-color: var(--neutral-600); /* @kind color */
+  --chips-icon-color: var(--white); /* @kind color */
+  --chips-text-color: var(--white); /* @kind color */
+  --color-accent: var(--primary-700); /* @kind color */
+  --color-base-white-2: rgb(255,255,255); /* @kind color */
+  --color-base-white: rgb(255,255,255); /* @kind color */
+  --color-black: rgb(32,32,32); /* @kind color */
+  --color-disabled: 30;
+  --color-error-700: rgb(153,36,10); /* @kind color */
+  --color-logo-footer: var(--black); /* @kind color */
+  --color-main-100: rgb(244,251,248); /* @kind color */
+  --color-main-400: rgb(165,218,196); /* @kind color */
+  --color-main-500: rgb(111,196,161); /* @kind color */
+  --color-main-900: rgb(7,18,14); /* @kind color */
+  --color-neutral-100: rgb(242,242,242); /* @kind color */
+  --color-neutral-200-2: rgb(217,217,217); /* @kind color */
+  --color-neutral-200-3: rgb(185,207,213); /* @kind color */
+  --color-neutral-200: rgb(217,217,217); /* @kind color */
+  --color-neutral-300: rgb(179,179,179); /* @kind color */
+  --color-neutral-500-2: rgb(102,102,102); /* @kind color */
+  --color-neutral-500: rgb(114,114,114); /* @kind color */
+  --color-neutral-600: rgb(80,80,80); /* @kind color */
+  --color-neutral-700-2: rgb(48,48,48); /* @kind color */
+  --color-neutral-700: rgb(48,48,48); /* @kind color */
+  --color-neutral-800: rgb(41,41,41); /* @kind color */
+  --color-on-primary: var(--color-onprimary-500); /* @kind color */
+  --color-onprimary-500: rgb(255,245,246); /* @kind color */
+  --color-primary-100-2: rgb(235,238,240); /* @kind color */
+  --color-primary-100: rgb(253,245,241); /* @kind color */
+  --color-primary-200: rgb(249,222,210); /* @kind color */
+  --color-primary-2: var(--color-primary-700); /* @kind color */
+  --color-primary-3: var(--color-primary-500-3); /* @kind color */
+  --color-primary-4: var(--color-primary-500-3); /* @kind color */
+  --color-primary-500-2: rgb(227,92,30); /* @kind color */
+  --color-primary-500-3: rgb(56,70,75); /* @kind color */
+  --color-primary-500-4: rgb(57,72,75); /* @kind color */
+  --color-primary-500: rgb(227,92,30); /* @kind color */
+  --color-primary-700: rgb(127,51,16); /* @kind color */
+  --color-primary: var(--primary-700); /* @kind color */
+  --color-text: var(--color-neutral-500); /* @kind color */
+  --color-warning-500: rgb(242,195,72); /* @kind color */
+  --color-warning-600: rgb(234,173,16); /* @kind color */
+  --color-white-2: rgb(255,255,255); /* @kind color */
+  --color-white-3: rgb(255,255,255); /* @kind color */
+  --color-white-4: rgb(255,255,255); /* @kind color */
+  --color-white: rgb(255,255,255); /* @kind color */
+  --contents-text-addtobasket-counter-quantity-2: 1;
+  --contents-text-addtobasket-counter-quantity: 1;
+  --contents-text-addtobasket-counter-unit: "ks";
+  --contents-text-buttons-p-ihl-sit-facebook-2: "Přihlásit přes Facebook";
+  --contents-text-buttons-p-ihl-sit-facebook: "Přihlásit přes Facebook";
+  --contents-text-buttons-p-ihl-sit-google-2: "Přihlásit přes Google";
+  --contents-text-buttons-p-ihl-sit-google: "Přihlásit přes Google";
+  --contents-text-buttons-p-ihl-sit-seznam-2: "Přihlásit přes Seznam";
+  --contents-text-buttons-p-ihl-sit-seznam: "Přihlásit přes Seznam";
+  --copyright: "©2026 lugero.cz";
+  --deliverypaymentselectorview-color-border: var(--color-neutral-200-3); /* @kind color */
+  --deliverypaymentselectorview-color-surface: var(--color-base-white-2); /* @kind color */
+  --deliverypaymentselectorview-radius-2: var(--radius-s-2);
+  --deliverypaymentselectorview-radius: var(--radius-s);
+  --detail-detail-fotka-01: 1;
+  --detail-detail-fotka-02: 2;
+  --detail-detail-fotka-03: 3;
+  --detail-detail-fotka-04: 4;
+  --detail-detail-fotka-05: 5;
+  --detail-detail-fotka-06: 6;
+  --detail-detail-fotka-07: 7;
+  --detail-detail-fotka-08: 8;
+  --detail-dostupnost-p-epravn-spole-nost: "2-3 pracovní dny";
+  --detail-dostupnost-prodejna-1: "V Chotejně 15, Praha 10";
+  --detail-dostupnost-prodejna-2: "V Chotejně 15, Praha 10";
+  --detail-dostupnost-prodejna-3: "V Chotejně 15, Praha 10";
+  --detail-miniatura-background-color: var(--neutral-600); /* @kind color */
+  --detail-miniatura-background-hover-color: var(--neutral-600); /* @kind color */
+  --detail-miniatura-border-color: var(--neutral-200); /* @kind color */
+  --detail-miniatura-border-hover-color: var(--primary-500); /* @kind color */
+  --detail-miniatura-icon-color: var(--black); /* @kind color */
+  --detail-n-zev-produktu-dlouh: var(--ko-k-n-zev-item-1);
+  --detail-n-zev-produktu-kr-tk: "Přívěs VAPP TRIDEM 3.5 5121";
+  --detail-popis-dlouh: "Akumulátorový paletový vozík CBD-15-F4p má díky své konstrukci a výbavě fantastický poměr ceny a výkonu. Jedná se o nejlevnější plně elektrický paletový vozík na trhu! Přesto je velmi kvalitní konstrukce a výbavy, čemuž dominuje moderní Lithium-Iontová technologie se snadno vyměnitelným akumulátorem o kapacitě 20 Ah. Můžete jej používat jak pro příležitostné použití tak i na dlouhé pracovní směny. Nosnost je standardních 1 500 kg. Je skvěle ovladatelný, má zdvojené citlivé ovládání otočným potenciometrem a extra velké madlo pro pohodlné a bezpečnější ovládání. Jízda s ním je tedy nejen agilní, ale také příjemně kultivovaná.";
+  --detail-popis-kr-tk: "Akumulátorový paletový vozík CBD-15-F4p má díky své konstrukci a výbavě fantastický poměr ceny a výkonu. Jedná se o nejlevnější plně elektrický paletový vozík na trhu! Přesto je velmi kvalitní konstrukce a výbavy, čemuž dominuje moderní Lithium-Iontová technologie se snadno vyměnitelným akumulátorem o kapacitě 20 Ah. Můžete jej používat jak pro příležitostné použití tak i na dlouhé pracovní směny. Nosnost je standardních 1 500 kg. Je skvěle ovladatelný, má zdvojené citlivé ovládání otočným potenciometrem a extra velké madlo pro pohodlné a bezpečnější ovládání. Jízda s ním je tedy nejen agilní, ale také příjemně kultivovaná.";
+  --detail-price-primary: var(--white); /* @kind color */
+  --detail-price-secondary: var(--text-text-secondary-color); /* @kind color */
+  --detail-tab-detail-1: "Popis";
+  --detail-tab-detail-2: "Parametry";
+  --detail-tab-detail-3: "Obrázky";
+  --detail-tab-detail-4: "Dotazy";
+  --detail-tab-detail-5: "Příslušenství";
+  --detail-v-ce-btn-otev-t: "Zobrazit celý popis";
+  --detail-v-ce-btn-zav-t: "Skrýt celý popis";
+  --detail-variant-background-active-color: var(--neutral-800); /* @kind color */
+  --detail-variant-background-color: var(--neutral-800); /* @kind color */
+  --detail-variant-background-hover-color: var(--neutral-800); /* @kind color */
+  --detail-variant-background-solid-active-color: var(--neutral-600); /* @kind color */
+  --detail-variant-background-solid-color: var(--neutral-800); /* @kind color */
+  --detail-variant-background-solid-hover-color: var(--neutral-600); /* @kind color */
+  --detail-variant-border-color: var(--neutral-600); /* @kind color */
+  --detail-variant-border-hover-color: var(--neutral-700); /* @kind color */
+  --detail-variant-border-selected-color: var(--primary-500); /* @kind color */
+  --doprava-platba-background-color: rgb(255,255,255); /* @kind color */
+  --doprava-platba-background-hover-color: rgb(255,255,255); /* @kind color */
+  --doprava-platba-background-selected-color: rgb(255,255,255); /* @kind color */
+  --doprava-platba-border-color: rgb(255,255,255); /* @kind color */
+  --doprava-platba-border-hover-color: rgb(255,255,255); /* @kind color */
+  --doprava-platba-border-selected-color: rgb(255,255,255); /* @kind color */
+  --doprava-platba-icon-background-color: rgb(255,255,255); /* @kind color */
+  --doprava-platba-icon-border-color: rgb(255,255,255); /* @kind color */
+  --error-100: rgb(255,235,235); /* @kind color */
+  --error-200: rgb(255,189,189); /* @kind color */
+  --error-300: rgb(255,148,148); /* @kind color */
+  --error-400: rgb(255,61,61); /* @kind color */
+  --error-500: rgb(210,0,0); /* @kind color */
+  --error-600: rgb(158,0,0); /* @kind color */
+  --error-700: rgb(107,0,0); /* @kind color */
+  --error-800: rgb(56,0,0); /* @kind color */
+  --error-900: rgb(36,0,0); /* @kind color */
+  --filtrace-part-header-color: rgb(255,255,255); /* @kind color */
+  --filtrace-part-header-icon-color: rgb(255,255,255); /* @kind color */
+  --filtrace-range-background-color: rgb(255,255,255); /* @kind color */
+  --filtrace-range-selected-color: var(--primary-500); /* @kind color */
+  --filtrace-slider-handle-backgroud-color: var(--neutral-300); /* @kind color */
+  --filtrace-slider-handle-icon-color: var(--neutral-800); /* @kind color */
+  --fitrace-barva-barva-10: "Fialová";
+  --fitrace-barva-barva-1: "Černá";
+  --fitrace-barva-barva-2: "Signální zelená";
+  --fitrace-barva-barva-3: "Šedá";
+  --fitrace-barva-barva-4: "Žlutá";
+  --fitrace-barva-barva-5: "Tmavě modrá";
+  --fitrace-barva-barva-6: "Modrá";
+  --fitrace-barva-barva-7: "Zelená";
+  --fitrace-barva-barva-8: "Stříbrná";
+  --fitrace-barva-barva-9: "Oranžová";
+  --fitrace-parametry-parametr-10: "Velikost";
+  --fitrace-parametry-parametr-1: "Ceny a štítky";
+  --fitrace-parametry-parametr-2: "Nosnost";
+  --fitrace-parametry-parametr-4: "Délka vidlic";
+  --fitrace-parametry-parametr-5: "Řiditelná kola";
+  --fitrace-parametry-parametr-6: "Maximální výška zdvihu";
+  --fitrace-parametry-parametr-7: "Konstrukční výška";
+  --fitrace-parametry-parametr-8: "Přesnost - dílek";
+  --fitrace-parametry-parametr-9: "Rozšiřitelnost";
+  --fitrace-parametry-v-robce-3: "XXX";
+  --fitrace-v-robce-v-robce-10: "Výrobce 10";
+  --fitrace-v-robce-v-robce-1: "Kayo";
+  --fitrace-v-robce-v-robce-2: "ATV";
+  --fitrace-v-robce-v-robce-3: "Výrobce 3";
+  --fitrace-v-robce-v-robce-4: "Výrobce 4";
+  --fitrace-v-robce-v-robce-5: "Výrobce 5";
+  --fitrace-v-robce-v-robce-6: "Výrobce 6";
+  --fitrace-v-robce-v-robce-7: "Výrobce 7";
+  --fitrace-v-robce-v-robce-8: "Výrobce 8";
+  --fitrace-v-robce-v-robce-9: "Výrobce 9";
+  --font-body-size-large: 18;
+  --font-body-size-small: 14;
+  --font-body-size-standard-2: 16;
+  --font-body-size-standard-3: 16;
+  --font-body-size-standard: 16;
+  --font-button-size-large: 16;
+  --font-button-size-small: 12;
+  --font-button-size-standard: 14;
+  --font-family-body-2: "Inter";
+  --font-family-body: "Inter";
+  --font-family: "Inter";
+  --font-line-height-extralarge: 28;
+  --font-line-height-h1-lineh: 40;
+  --font-line-height-h4-lineh-2: 24;
+  --font-line-height-h4-lineh: 24;
+  --font-line-height-large-2: 24;
+  --font-line-height-large-3: 24;
+  --font-line-height-large-4: 24;
+  --font-line-height-large: 24;
+  --font-line-height-small-2: 20;
+  --font-line-height-small-3: 20;
+  --font-line-height-small: 20;
+  --font-line-height-standard-2: 24;
+  --font-line-height-standard-3: 24;
+  --font-line-height-standard-4: 24;
+  --font-line-height-standard: 24;
+  --font-weight-bold-2: "Bold";
+  --font-weight-bold-3: "Bold";
+  --font-weight-bold-4: "Bold";
+  --font-weight-bold: "Bold";
+  --font-weight-medium-2: "Medium";
+  --font-weight-medium-3: "Medium";
+  --font-weight-medium-4: "Medium";
+  --font-weight-medium: "Medium";
+  --font-weight-regular: "Regular";
+  --footer-background-color: var(--neutral-900); /* @kind color */
+  --footer-icon-link-color: var(--white); /* @kind color */
+  --footer-icon-link-hover-color: var(--primary-700); /* @kind color */
+  --footer-left-icon-color: var(--white); /* @kind color */
+  --footer-link-color: var(--neutral-200); /* @kind color */
+  --footer-link-hover-color: var(--primary-700); /* @kind color */
+  --footer-right-icon-color: var(--neutral-600); /* @kind color */
+  --footer-separator: var(--neutral-700); /* @kind color */
+  --footer-sloupec-01-01: "Doprava a platba";
+  --footer-sloupec-01-02: "Nákup na splátky";
+  --footer-sloupec-01-03: "Reklamace a vrácení";
+  --footer-sloupec-01-04: "Časté otázky";
+  --footer-sloupec-01-05: "Sledování zásilky";
+  --footer-sloupec-01-06: "Servisní služby";
+  --footer-sloupec-01-07: "Sedmá položka";
+  --footer-sloupec-01-08: "Osmá položka";
+  --footer-sloupec-01-09: "Devátá položka";
+  --footer-sloupec-01-10: "Desátá položka";
+  --footer-sloupec-01-nadpis-01: "Nákup a doprava";
+  --footer-sloupec-02-01: "Servis techniky";
+  --footer-sloupec-02-02: "Nahlásit servis online";
+  --footer-sloupec-02-03: "Ceník servisu";
+  --footer-sloupec-02-04: "Půjčovna techniky";
+  --footer-sloupec-02-05: "Vyzkoušení zdarma";
+  --footer-sloupec-02-06: "Školení řidičů VZV";
+  --footer-sloupec-02-07: "Sedmá položka";
+  --footer-sloupec-02-08: "Osmá položka";
+  --footer-sloupec-02-09: "Devátá položka";
+  --footer-sloupec-02-10: "Desátá položka";
+  --footer-sloupec-02-nadpis-02: "Servis a služby";
+  --footer-sloupec-03-01: "Přihlášení";
+  --footer-sloupec-03-02: "Moje objednávky";
+  --footer-sloupec-03-03: "Porovnání produktů";
+  --footer-sloupec-03-04: "Poptávka";
+  --footer-sloupec-03-05: "Pátá položka";
+  --footer-sloupec-03-06: "Šestá položka";
+  --footer-sloupec-03-07: "Sedmá položka";
+  --footer-sloupec-03-08: "Osmá položka";
+  --footer-sloupec-03-09: "Devátá položka";
+  --footer-sloupec-03-10: "Desátá položka";
+  --footer-sloupec-03-nadpis-03: "Můj účet";
+  --footer-sloupec-04-01: "Proč LUGERO";
+  --footer-sloupec-04-02: "Benefity k nákupu";
+  --footer-sloupec-04-03: "Reference";
+  --footer-sloupec-04-04: "Kariéra";
+  --footer-sloupec-04-05: "Pro dealery";
+  --footer-sloupec-04-06: "Kontakty";
+  --footer-sloupec-04-07: "Sedmá položka";
+  --footer-sloupec-04-08: "Osmá položka";
+  --footer-sloupec-04-09: "Devátá položka";
+  --footer-sloupec-04-10: "Desátá položka";
+  --footer-sloupec-04-nadpis-04: "O nás";
+  --footer-sloupec-05-01: "První položka";
+  --footer-sloupec-05-02: "Druhá položka";
+  --footer-sloupec-05-03: "Třetí položka";
+  --footer-sloupec-05-04: "Čtvrtá položka";
+  --footer-sloupec-05-05: "Pátá položka";
+  --footer-sloupec-05-06: "Šestá položka";
+  --footer-sloupec-05-07: "Sedmá položka";
+  --footer-sloupec-05-08: "Osmá položka";
+  --footer-sloupec-05-09: "Devátá položka";
+  --footer-sloupec-05-10: "Desátá položka";
+  --footer-sloupec-05-nadpis-05: "Nadpis 05";
+  --footer-sloupec-06-01: "První položka";
+  --footer-sloupec-06-02: "Druhá položka";
+  --footer-sloupec-06-03: "Třetí položka";
+  --footer-sloupec-06-04: "Čtvrtá položka";
+  --footer-sloupec-06-05: "Pátá položka";
+  --footer-sloupec-06-06: "Šestá položka";
+  --footer-sloupec-06-07: "Sedmá položka";
+  --footer-sloupec-06-08: "Osmá položka";
+  --footer-sloupec-06-09: "Devátá položka";
+  --footer-sloupec-06-10: "Desátá položka";
+  --footer-sloupec-06-nadpis-06: "Nadpis 06";
+  --footer-title-color: var(--white); /* @kind color */
+  --formcomponents-color-fields-text-icon: var(--color-neutral-700-2); /* @kind color */
+  --formcomponents-color-inputbuttons-border-disabled: var(--color-neutral-200-2); /* @kind color */
+  --formcomponents-color-inputbuttons-border: var(--color-neutral-200-2); /* @kind color */
+  --formcomponents-color-inputbuttons-surface-active: var(--color-neutral-300); /* @kind color */
+  --formcomponents-color-inputbuttons-surface-disabled: var(--color-neutral-100); /* @kind color */
+  --formcomponents-color-inputbuttons-surface-hover: var(--color-neutral-200-2); /* @kind color */
+  --formcomponents-color-inputbuttons-surface-light: var(--color-white-2); /* @kind color */
+  --formcomponents-color-inputbuttons-surface: var(--color-neutral-100); /* @kind color */
+  --formcomponents-color-inputbuttons-text-icon-active: var(--color-neutral-700-2); /* @kind color */
+  --formcomponents-color-inputbuttons-text-icon-disabled: var(--color-neutral-300); /* @kind color */
+  --formcomponents-color-inputbuttons-text-icon-hover: var(--color-neutral-700-2); /* @kind color */
+  --formcomponents-color-inputbuttons-text-icon: var(--color-neutral-700-2); /* @kind color */
+  --forms-input-background-active-color: var(--neutral-600); /* @kind color */
+  --forms-input-background-color: var(--neutral-700); /* @kind color */
+  --forms-input-background-error-color: var(--error-100); /* @kind color */
+  --forms-input-background-info-color: var(--info-100); /* @kind color */
+  --forms-input-background-succes-color: var(--success-100); /* @kind color */
+  --forms-input-border-active-color: var(--neutral-500); /* @kind color */
+  --forms-input-border-color: var(--neutral-700); /* @kind color */
+  --forms-input-border-error-color: var(--error-500); /* @kind color */
+  --forms-input-border-info-color: var(--info-500); /* @kind color */
+  --forms-input-border-success-color: var(--success-500); /* @kind color */
+  --forms-input-icon: var(--white); /* @kind color */
+  --forms-input-text-active-color: var(--white); /* @kind color */
+  --forms-input-text-color: var(--white); /* @kind color */
+  --forms-input-text-error-color: var(--error-500); /* @kind color */
+  --forms-input-text-info-color: var(--info-500); /* @kind color */
+  --forms-input-text-success-color: var(--main-500); /* @kind color */
+  --forms-qantificator-bg-hover: var(--neutral-600); /* @kind color */
+  --forms-qantificator-bg: var(--neutral-700); /* @kind color */
+  --forms-qantificator-border-color: var(--neutral-600); /* @kind color */
+  --forms-qantificator-border-hover-color: var(--neutral-600); /* @kind color */
+  --forms-qantificator-icon-hover: var(--white); /* @kind color */
+  --forms-qantificator-icon: var(--white); /* @kind color */
+  --forms-qantificator-text-color: var(--white); /* @kind color */
+  --gap-gapproducts: 4;
+  --gap-l: 32;
+  --gap-m: 24;
+  --gap-s: 16;
+  --gap-xl: 64;
+  --gap-xs: 8;
+  --gap-xxs: 4;
+  --general-email: "info@lugero.cz";
+  --general-jednotka: "ks";
+  --general-otev-rac-doba: "Po–Pá: 8:00–16:30";
+  --general-po-et-kus: "1";
+  --general-telefon: "228 804 000";
+  --general-topinfo-link: "Číst více";
+  --general-topinfo: "Chtěli bychom upozornit naše zákazníky na změnu!";
+  --general-usp1-perex: "doručíme do 48 hodin";
+  --general-usp1: "Zboží skladem";
+  --general-usp2-perex: "Asdf sdf sdf sdf sdf sdf";
+  --general-usp2: "Možnost sledování zásilky";
+  --general-usp3-perex: "asd asd asd asd afwef sdvs";
+  --general-usp3: "Doprava sběrnou službou s hydraulickým čelem";
+  --general-usp4-perex: "Asad asd afwefsdf sdf";
+  --general-usp4: "Ceny za doručení již od 249 Kč";
+  --general-usp5-perex: "Při objednávce nad 2000 Kč vám zboží doručíme našimi dopravci zcela zdarma.";
+  --general-usp5: "Doprava zdarma od 2000 Kč";
+  --general-usp6-perex: "Při objednávce nad 2000 Kč vám zboží doručíme našimi dopravci zcela zdarma.";
+  --general-usp6: "Doprava zdarma od 2000 Kč";
+  --gradients-end: var(--neutral-900); /* @kind color */
+  --gradients-start: var(--neutral-800); /* @kind color */
+  --gradients-vanish-end: var(--neutral-1000-0); /* @kind color */
+  --gradients-vanish-start: var(--neutral-1000); /* @kind color */
+  --header-bg-color: var(--neutral-900); /* @kind color */
+  --header-hamburger-bg-hover: var(--primary-500); /* @kind color */
+  --header-hamburger-bg: var(--primary-500); /* @kind color */
+  --header-hamburger-border: var(--neutral-1000); /* @kind color */
+  --header-hamburger-icon-hover: var(--white); /* @kind color */
+  --header-hamburger-icon: var(--white); /* @kind color */
+  --header-icon-color: var(--neutral-100); /* @kind color */
+  --header-icon-hover-color: var(--primary-500); /* @kind color */
+  --header-link-color: var(--neutral-200); /* @kind color */
+  --header-link-hover-color: var(--neutral-100); /* @kind color */
+  --header-localization-dropdown-background-color: rgb(255,255,255); /* @kind color */
+  --header-localization-icon-color: rgb(255,255,255); /* @kind color */
+  --header-localization-icon-hover-color: rgb(255,255,255); /* @kind color */
+  --header-localization-link-color: rgb(255,255,255); /* @kind color */
+  --header-localization-link-hover-color: rgb(255,255,255); /* @kind color */
+  --header-localization-separator-background-color-2: rgb(255,255,255); /* @kind color */
+  --header-logo: "Negativ";
+  --header-notification-number-bg: var(--primary-500); /* @kind color */
+  --header-notification-number-border: var(--neutral-900); /* @kind color */
+  --header-notification-number-text-color: var(--white); /* @kind color */
+  --header-price-bg: var(--neutral-800); /* @kind color */
+  --header-price-border: var(--neutral-700); /* @kind color */
+  --header-price-color: var(--neutral-100); /* @kind color */
+  --header-text-color: var(--neutral-300); /* @kind color */
+  --header-text-hover-color: var(--neutral-200); /* @kind color */
+  --header: "Inter";
+  --icon-outline: 1.5;
+  --icon-stroke: 1.5;
+  --info-100: rgb(235,245,255); /* @kind color */
+  --info-200: rgb(194,226,255); /* @kind color */
+  --info-300: rgb(145,197,243); /* @kind color */
+  --info-400: rgb(85,166,236); /* @kind color */
+  --info-500: rgb(36,127,206); /* @kind color */
+  --info-600: rgb(19,102,174); /* @kind color */
+  --info-700: rgb(0,76,143); /* @kind color */
+  --info-800: rgb(9,48,83); /* @kind color */
+  --info-900: rgb(4,19,32); /* @kind color */
+  --input: var(--radius-xs-2);
+  --ko-k-basketitem-background-color: var(--neutral-800); /* @kind color */
+  --ko-k-basketitem-border-color: var(--neutral-700); /* @kind color */
+  --ko-k-cena-celkova-cena-bez-dph: "245 560 Kč";
+  --ko-k-cena-celkova-cena: "297 560 Kč";
+  --ko-k-cena-dph: "s DPH";
+  --ko-k-cena-item-1-bez-dph: "145 578 Kč";
+  --ko-k-cena-item-1: "187 891 Kč";
+  --ko-k-cena-item-2-bez-dph: "120 213 Kč";
+  --ko-k-cena-item-2: "145 546 Kč";
+  --ko-k-cena-item-3-bez-dph: "200 200 Kč";
+  --ko-k-cena-item-3: "245 500 Kč";
+  --ko-k-cena-item-4-bez-dph: "40 156 Kč";
+  --ko-k-cena-item-4: "57 894 Kč";
+  --ko-k-cena-item-5-bez-dph: "31 261 Kč";
+  --ko-k-cena-item-5: "45 513 Kč";
+  --ko-k-cena-item-6-bez-dph: "15 490 Kč";
+  --ko-k-cena-item-6: "18 450 Kč";
+  --ko-k-h1-ko-k: "Váš nákupní košík";
+  --ko-k-kroky-background-active-color: rgb(255,255,255); /* @kind color */
+  --ko-k-kroky-background-done-color: rgb(255,255,255); /* @kind color */
+  --ko-k-kroky-background-inactive-color: rgb(255,255,255); /* @kind color */
+  --ko-k-kroky-border-active-color: rgb(255,255,255); /* @kind color */
+  --ko-k-kroky-border-done-color: rgb(255,255,255); /* @kind color */
+  --ko-k-kroky-border-inactive-color: rgb(255,255,255); /* @kind color */
+  --ko-k-kroky-icon-color: rgb(255,255,255); /* @kind color */
+  --ko-k-kroky-spojovnik-active-color: rgb(255,255,255); /* @kind color */
+  --ko-k-kroky-spojovnik-color: rgb(255,255,255); /* @kind color */
+  --ko-k-kroky-text-active-color: rgb(255,255,255); /* @kind color */
+  --ko-k-kroky-text-done-color: rgb(255,255,255); /* @kind color */
+  --ko-k-kroky-text-inactive-color: rgb(255,255,255); /* @kind color */
+  --ko-k-label-krok1: "Obsah košíku";
+  --ko-k-label-krok2: "Kontaktní údaje";
+  --ko-k-label-krok3: "Doprava&platba";
+  --ko-k-label-krok4: "Kontrola údajů";
+  --ko-k-n-zev-item-1: "Paletový vozík DB2v • ZÁKLADNÍ ZESÍLENÝ";
+  --ko-k-n-zev-item-2: "Paletový vozík CBD-15-F4p • ELEKTRICKÝ";
+  --ko-k-n-zev-item-3: "Paletový vozík CBD-15-F4p • S BALANČ. KOLY";
+  --ko-k-n-zev-item-4: "Elektrický paletový vozík CBD-15-F4p + Náhradní baterie";
+  --ko-k-n-zev-item-5: "Paletový vozík CBD20s • ELEKTRICKÝ";
+  --ko-k-n-zev-item-6: "Paletový vozík Baoli EP15-03 • ELEKTRICKÝ";
+  --ko-k-orderactionpanelhorizontal-background-color: var(--neutral-700); /* @kind color */
+  --ko-k-orderactionpanelhorizontal-separator: var(--neutral-700); /* @kind color */
+  --ko-k-orderactionpanelhorizontal-text-primary: var(--neutral-700); /* @kind color */
+  --ko-k-orderactionpanelhorizontal-text-secondary: var(--neutral-700); /* @kind color */
+  --ko-k-slevov-kup-n: "Mám slevový/dárkový kupón a chci ho uplatnit:";
+  --layout-l-body-p: 24;
+  --layout-l-maxwidth: 1149;
+  --layout-l-minwidth: 1000;
+  --layout-m-body-p: 16;
+  --layout-m-maxwidth: 999;
+  --layout-m-minwidth: 820;
+  --layout-s-body-p: 16;
+  --layout-s-maxwidth: 819;
+  --layout-s-minwidth: 550;
+  --layout-xl-body-p: 24;
+  --layout-xl-maxwidth: 1439;
+  --layout-xl-minwidth: 1150;
+  --layout-xs-body-p: 16;
+  --layout-xs-maxwidth: 549;
+  --layout-xs-minwidth: 420;
+  --layout-xxl-body-p: 24;
+  --layout-xxl-maxwidth: 1560;
+  --layout-xxl-minwidth: 1560;
+  --layout-xxs-body-p: 12;
+  --layout-xxs-maxwidth: 419;
+  --layout-xxs-minwidth: 288;
+  --leftmenu-background-color: var(--neutral-800); /* @kind color */
+  --leftmenu-border-color: var(--neutral-700); /* @kind color */
+  --leftmenu-outline-separator: var(--neutral-600); /* @kind color */
+  --leftmenu-solid-bg-color: var(--neutral-600); /* @kind color */
+  --leftmenu-solid-border-color: var(--neutral-600); /* @kind color */
+  --leftmenu-solid-separator: var(--neutral-600); /* @kind color */
+  --leftmenu-underline-separator: var(--neutral-600); /* @kind color */
+  --links-text-color: var(--neutral-300); /* @kind color */
+  --links-text-hover-color: var(--primary-500); /* @kind color */
+  --links-text-on-dark-color: var(--neutral-300); /* @kind color */
+  --links-text-on-dark-hover-color: var(--white); /* @kind color */
+  --main-100: rgb(239,249,226); /* @kind color */
+  --main-200: rgb(222,240,194); /* @kind color */
+  --main-300: rgb(199,227,152); /* @kind color */
+  --main-400: rgb(163,201,85); /* @kind color */
+  --main-500: rgb(139,182,0); /* @kind color */
+  --main-50: rgb(233,248,239); /* @kind color */
+  --main-600: rgb(115,152,0); /* @kind color */
+  --main-700: rgb(91,121,0); /* @kind color */
+  --main-800: rgb(67,90,0); /* @kind color */
+  --main-900: rgb(42,57,0); /* @kind color */
+  --maincategories-bg-active-color: var(--white); /* @kind color */
+  --maincategories-bg-color: var(--neutral-800); /* @kind color */
+  --maincategories-bg-hover-color: var(--white); /* @kind color */
+  --maincategories-border-color: var(--white); /* @kind color */
+  --maincategories-border-hover-color: var(--white); /* @kind color */
+  --maincategories-icon-active-color: var(--primary-500); /* @kind color */
+  --maincategories-icon-color: var(--neutral-500); /* @kind color */
+  --maincategories-icon-hover-color: var(--primary-500); /* @kind color */
+  --maincategories-text-active-color: var(--primary-500); /* @kind color */
+  --maincategories-text-color: var(--neutral-300); /* @kind color */
+  --maincategories-text-hover-color: var(--primary-500); /* @kind color */
+  --menu-background-color: var(--neutral-800); /* @kind color */
+  --menu-border-color: var(--neutral-700); /* @kind color */
+  --menu-level1-01-user: "O nás";
+  --menu-level1-01: "Produkty";
+  --menu-level1-02-user: "Kontakt";
+  --menu-level1-02: "Půjčovna";
+  --menu-level1-03-user: " ";
+  --menu-level1-03: "Akce";
+  --menu-level1-04-user: " ";
+  --menu-level1-04: "Servis";
+  --menu-level1-05-user: " ";
+  --menu-level1-05: "Vyzkoušejte zdarma";
+  --menu-level1-06-user: " ";
+  --menu-level1-06: " ";
+  --menu-level1-07-user: " ";
+  --menu-level1-07: " ";
+  --menu-level1-08-user: " ";
+  --menu-level1-08: " ";
+  --menu-level1-09-user: "  ";
+  --menu-level1-09: " ";
+  --menu-level1-10-user: " ";
+  --menu-level1-10: " ";
+  --menu-level2-01: "Paletové vozíky";
+  --menu-level2-02: "Vysokozdvižné vozíky";
+  --menu-level2-03: "Manipulační technika Baoli";
+  --menu-level2-04: "Rudly";
+  --menu-level2-05: "Zvedací stoly a plošiny";
+  --menu-level2-06: "Kladkostroje";
+  --menu-level2-07: "Kancelářské vozíky a dvoukoláky";
+  --menu-level2-08: "Dílenské jeřáby a hevery";
+  --menu-level2-09: "Průmyslové vážící systémy";
+  --menu-level2-10: "Pracovní pomůcky a doplňky";
+  --menu-level2-11: "Náhradní díly";
+  --menu-level2-12: "Použitá manipulační technika";
+  --menu-level2-13: "Výhodné balíčky produktů";
+  --menu-level2-14: "Akce +1 ZDARMA";
+  --menu-level2-15: "Akce +1 ZDARMA";
+  --menu-level3-01: "Podpoložka 1";
+  --menu-level3-02: "Druhá položka";
+  --menu-level3-03: "Třetí položka";
+  --menu-level3-04: "Čtvrtá položka";
+  --menu-level3-05: "Další položka";
+  --menu-level3-06: "Poslední položka";
+  --menu-level3-07: "Podkategorie 7";
+  --menu-level3-08: "Podkategorie 8";
+  --menu-level3-09: "Podkategorie 9";
+  --menu-level3-10: "Podkategorie 10";
+  --menu-outline-menu-item-background-color: rgba(70,70,70,0); /* @kind color */
+  --menu-outline-menu-item-background-hover-color: var(--neutral-700); /* @kind color */
+  --menu-outline-menu-item-border-color: rgba(101,101,101,0); /* @kind color */
+  --menu-outline-menu-item-border-hover-color: var(--neutral-600); /* @kind color */
+  --menu-outline-menu-item-icon-active-color: var(--primary-100); /* @kind color */
+  --menu-outline-menu-item-icon-color: var(--neutral-600); /* @kind color */
+  --menu-outline-menu-item-icon-hover-color: var(--primary-100); /* @kind color */
+  --menu-outline-menu-item-text-active-color: var(--primary-100); /* @kind color */
+  --menu-outline-menu-item-text-color: var(--primary-300); /* @kind color */
+  --menu-outline-menu-item-text-hover-color: var(--primary-100); /* @kind color */
+  --menu-outline-separator: var(--neutral-600); /* @kind color */
+  --menu-sekund-rn-menu-01: "Kontakt";
+  --menu-sekund-rn-menu-02: "Zásady ochrany osobních údajů";
+  --menu-sekund-rn-menu-03: "Všeobecné obchodní podmínky";
+  --menu-sekund-rn-menu-04: "Garanční prohlídky";
+  --menu-sekund-rn-menu-05: "Záruční podmínky";
+  --menu-sekund-rn-menu-06: "Blog";
+  --menu-sekund-rn-menu-07: "Výdejní místo";
+  --menu-sekund-rn-menu-08: "Můj účet";
+  --menu-sekund-rn-menu-09: "Podkategorie 9";
+  --menu-sekund-rn-menu-10: "Podkategorie 10";
+  --menu-solid-menu-item-background-color: var(--neutral-800); /* @kind color */
+  --menu-solid-menu-item-background-hover-color: var(--neutral-700); /* @kind color */
+  --menu-solid-menu-item-border-color: var(--neutral-800); /* @kind color */
+  --menu-solid-menu-item-border-hover-color: var(--neutral-700); /* @kind color */
+  --menu-solid-menu-item-icon-active-color: var(--white); /* @kind color */
+  --menu-solid-menu-item-icon-color: var(--white); /* @kind color */
+  --menu-solid-menu-item-icon-hover-color: var(--white); /* @kind color */
+  --menu-solid-menu-item-text-active-color: var(--white); /* @kind color */
+  --menu-solid-menu-item-text-color: var(--white); /* @kind color */
+  --menu-solid-menu-item-text-hover-color: var(--white); /* @kind color */
+  --menu-solid-separator: var(--neutral-600); /* @kind color */
+  --menu-underline-menu-item-background-color: rgba(70,70,70,0); /* @kind color */
+  --menu-underline-menu-item-background-hover-color: var(--primary-500); /* @kind color */
+  --menu-underline-menu-item-border-color: rgba(101,101,101,0); /* @kind color */
+  --menu-underline-menu-item-border-hover-color: var(--primary-500); /* @kind color */
+  --menu-underline-menu-item-icon-active-color: var(--primary-500); /* @kind color */
+  --menu-underline-menu-item-icon-color: var(--white); /* @kind color */
+  --menu-underline-menu-item-icon-hover-color: var(--primary-500); /* @kind color */
+  --menu-underline-menu-item-text-active-color: var(--primary-100); /* @kind color */
+  --menu-underline-menu-item-text-color: var(--neutral-100); /* @kind color */
+  --menu-underline-menu-item-text-hover-color: var(--primary-500); /* @kind color */
+  --menu-underline-separator: var(--neutral-600); /* @kind color */
+  --neutral-100-0: rgba(237,237,237,0); /* @kind color */
+  --neutral-1000-0: rgba(28,28,28,0); /* @kind color */
+  --neutral-1000: rgb(28,28,28); /* @kind color */
+  --neutral-100: rgb(237,237,237); /* @kind color */
+  --neutral-200: rgb(206,206,206); /* @kind color */
+  --neutral-300: rgb(168,168,168); /* @kind color */
+  --neutral-400: rgb(140,140,140); /* @kind color */
+  --neutral-500: rgb(112,112,112); /* @kind color */
+  --neutral-50: rgb(245,245,245); /* @kind color */
+  --neutral-600: rgb(101,101,101); /* @kind color */
+  --neutral-700: rgb(70,70,70); /* @kind color */
+  --neutral-800: rgb(49,49,49); /* @kind color */
+  --neutral-900: rgb(41,41,41); /* @kind color */
+  --orderactionpanelhorizontal-radius: var(--radius-none);
+  --otherproductsitem-background-color: var(--neutral-800); /* @kind color */
+  --otherproductsitem-background-hover-color: var(--neutral-800); /* @kind color */
+  --otherproductsitem-border-color: var(--neutral-700); /* @kind color */
+  --otherproductsitem-border-hover-color: var(--neutral-700); /* @kind color */
+  --paging-background-selected-color: var(--neutral-200); /* @kind color */
+  --paging-background-unselected-color: var(--neutral-800); /* @kind color */
+  --paging-border-selected-color: var(--neutral-900); /* @kind color */
+  --paging-border-unselected-color: var(--neutral-900); /* @kind color */
+  --paging-text-selected-color: var(--black); /* @kind color */
+  --paging-text-unselected-color: var(--neutral-200); /* @kind color */
+  --parameters-icon-color: var(--primary-600); /* @kind color */
+  --parameters-sub-text-color: var(--neutral-600); /* @kind color */
+  --parameters-value-color: var(--primary-300); /* @kind color */
+  --popups-background-color: var(--neutral-900); /* @kind color */
+  --pricefilter-color-icon: var(--color-white); /* @kind color */
+  --pricefilter-handle-radius: 15;
+  --pricefilter-slider-radius: var(--radius-xs);
+  --primary-100: rgb(255,241,238); /* @kind color */
+  --primary-200: rgb(255,224,218); /* @kind color */
+  --primary-300: rgb(255,199,190); /* @kind color */
+  --primary-400: rgb(255,165,151); /* @kind color */
+  --primary-500: rgb(255,113,96); /* @kind color */
+  --primary-50: rgb(239,244,251); /* @kind color */
+  --primary-600: rgb(255,0,0); /* @kind color */
+  --primary-700: rgb(205,0,0); /* @kind color */
+  --primary-800: rgb(155,0,0); /* @kind color */
+  --primary-900: rgb(102,0,0); /* @kind color */
+  --radius-0-2: 0;
+  --radius-0: 0;
+  --radius-2-2: 2;
+  --radius-2: 2;
+  --radius-3: var(--radius-m);
+  --radius-4-2: 4;
+  --radius-4-3: 4;
+  --radius-4-4: 4;
+  --radius-4: 4;
+  --radius-6-2: 6;
+  --radius-6: 6;
+  --radius-8: 8;
+  --radius-m: var(--radius-8);
+  --radius-none: var(--radius-0-2);
+  --radius-pill: 1500;
+  --radius-s-2: var(--radius-6-2);
+  --radius-s: var(--radius-6);
+  --radius-xs-2: var(--radius-4-2);
+  --radius-xs-3: var(--radius-4-3);
+  --radius-xs: var(--radius-4);
+  --radius-xxs: var(--radius-2);
+  --radius: var(--radius-m);
+  --radiuses-components-slider-radius: var(--radiuses-general-radiusout);
+  --radiuses-general-radius-btnin: 4;
+  --radiuses-general-radius-btnout: 8;
+  --radiuses-general-radius-input: 8;
+  --radiuses-general-radius-menu-item: 4;
+  --radiuses-general-radius-pill: 1500;
+  --radiuses-general-radiusin: 4;
+  --radiuses-general-radiusout: 8;
+  --secondary-100: rgb(242,245,247); /* @kind color */
+  --secondary-200: rgb(228,232,236); /* @kind color */
+  --secondary-300: rgb(209,216,222); /* @kind color */
+  --secondary-400: rgb(184,194,203); /* @kind color */
+  --secondary-500: rgb(153,166,177); /* @kind color */
+  --secondary-50: rgb(253,241,241); /* @kind color */
+  --secondary-600: rgb(126,138,149); /* @kind color */
+  --secondary-700: rgb(91,102,112); /* @kind color */
+  --secondary-800: rgb(73,82,90); /* @kind color */
+  --secondary-900: rgb(45,52,58); /* @kind color */
+  --slider-controller-in-active-border-color: var(--neutral-400); /* @kind color */
+  --slider-controller-in-active-color: var(--neutral-400); /* @kind color */
+  --slider-controller-in-bg-color: var(--neutral-400); /* @kind color */
+  --slider-controller-in-inactive-border-color: var(--neutral-400); /* @kind color */
+  --slider-controller-in-inactive-color: var(--neutral-400); /* @kind color */
+  --slider-controller-out-active-border-color: var(--neutral-400); /* @kind color */
+  --slider-controller-out-active-color: var(--neutral-400); /* @kind color */
+  --slider-controller-out-inactive-border-color: var(--neutral-400); /* @kind color */
+  --slider-controller-out-inactive-color: var(--neutral-400); /* @kind color */
+  --slider-slider-fotka-01: 1;
+  --slider-slider-fotka-02: 2;
+  --slider-slider-fotka-03: 3;
+  --slider-slider-nadpis-01: "Sleva až 30 %";
+  --slider-slider-nadpis-02: "Příruční zavazadla dle aerolinek";
+  --slider-slider-nadpis-03: "30 % sleva za registraci";
+  --slider-slider-popis-01: "Na vysněné cestovní kufry";
+  --slider-slider-popis-02: "Na vysněné cestovní kufry";
+  --slider-slider-popis-03: "Na vysněné cestovní kufry";
+  --spacing-0-2: 0;
+  --spacing-0: 0;
+  --spacing-10: 10;
+  --spacing-12: 12;
+  --spacing-16-2: 16;
+  --spacing-16-3: 16;
+  --spacing-16: 16;
+  --spacing-24-2: 24;
+  --spacing-24: 24;
+  --spacing-2: 2;
+  --spacing-4: 4;
+  --spacing-6-2: 6;
+  --spacing-6: 6;
+  --spacing-8: 8;
+  --spacing-l-2: var(--spacing-16-2);
+  --spacing-l-3: var(--spacing-16-3);
+  --spacing-l: var(--spacing-16);
+  --spacing-m12: var(--spacing-12);
+  --spacing-m: var(--spacing-8);
+  --spacing-none-2: var(--spacing-0-2);
+  --spacing-none: var(--spacing-0);
+  --spacing-s-2: var(--spacing-6-2);
+  --spacing-s: var(--spacing-6);
+  --spacing-xl-2: var(--spacing-24-2);
+  --spacing-xl: var(--spacing-24);
+  --spacing-xs: var(--spacing-4);
+  --spacing-xxs: var(--spacing-2);
+  --submenu-background-color: var(--neutral-900); /* @kind color */
+  --submenu-border-color: var(--neutral-700); /* @kind color */
+  --submenu-separator: var(--neutral-600); /* @kind color */
+  --submenu-submenu-closeditem-icon-color: var(--neutral-600); /* @kind color */
+  --submenu-submenu-openitem-icon-color: var(--neutral-400); /* @kind color */
+  --submenu02-background-color: rgba(49,49,49,0.8); /* @kind color */
+  --submenu02-border-color: var(--neutral-700); /* @kind color */
+  --submenu02-separator: var(--neutral-600); /* @kind color */
+  --submenu02-submenu-closeditem-icon-color: var(--neutral-500); /* @kind color */
+  --submenu02-submenu-openitem-icon-color: var(--neutral-400); /* @kind color */
+  --success-100: rgb(233,247,238); /* @kind color */
+  --success-200: rgb(143,214,170); /* @kind color */
+  --success-300: rgb(76,209,127); /* @kind color */
+  --success-400: rgb(22,186,85); /* @kind color */
+  --success-500: rgb(2,153,60); /* @kind color */
+  --success-600: rgb(1,101,39); /* @kind color */
+  --success-700: rgb(1,86,34); /* @kind color */
+  --success-800: rgb(1,70,28); /* @kind color */
+  --success-900: rgb(1,40,16); /* @kind color */
+  --table-row-1: var(--neutral-900); /* @kind color */
+  --table-row-2: var(--neutral-800); /* @kind color */
+  --tabs-background-active-color: var(--neutral-900); /* @kind color */
+  --tabs-background-color: var(--neutral-800); /* @kind color */
+  --tabs-background-hover-color: var(--neutral-900); /* @kind color */
+  --tabs-border-active-color: var(--neutral-900); /* @kind color */
+  --tabs-border-color: var(--neutral-900); /* @kind color */
+  --tabs-border-hover-color: var(--neutral-900); /* @kind color */
+  --tabs-icon-active-color: var(--white); /* @kind color */
+  --tabs-icon-color: var(--neutral-200); /* @kind color */
+  --tabs-icon-hover-color: var(--white); /* @kind color */
+  --tabs-text-active-color: var(--white); /* @kind color */
+  --tabs-text-color: var(--neutral-200); /* @kind color */
+  --tabs-text-hover-color: var(--white); /* @kind color */
+  --text-category-header: var(--primary-300); /* @kind color */
+  --text-category-text: var(--neutral-300); /* @kind color */
+  --text-general-button-font-size-m: 14;
+  --text-general-button-font-size-s: 13;
+  --text-general-font-size-display: 74;
+  --text-general-font-size-h1: 32;
+  --text-general-font-size-h2: 28;
+  --text-general-font-size-h3: 20;
+  --text-general-font-size-h4: 18;
+  --text-general-font-size-p-base-2: 16;
+  --text-general-font-size-p-base: 15;
+  --text-general-font-size-s: 13;
+  --text-general-font-size-xs: 12;
+  --text-general-line-height-h1: 32;
+  --text-general-line-height-h2: 24;
+  --text-general-line-height-h3: 22;
+  --text-header-color: var(--neutral-50); /* @kind color */
+  --text-header-inverse-color: var(--primary-300); /* @kind color */
+  --text-parts-card-border-padding: 4;
+  --text-parts-card-height: 20;
+  --text-parts-card-n-zev-produktu-line-height: 20;
+  --text-parts-card-n-zev-produktu-small-line-height: 18;
+  --text-parts-card-n-zev-produktu-small: 16;
+  --text-parts-card-n-zev-produktu: 15;
+  --text-parts-card-price-primary: 20;
+  --text-parts-card-price-secondary: 14;
+  --text-parts-card-radius-actionicons: var(--radiuses-general-radius-pill);
+  --text-parts-card-radius-in: 150;
+  --text-parts-card-radius-out: 150;
+  --text-parts-card-width: 20;
+  --text-parts-detail-price-primary: 28;
+  --text-parts-detail-price-secondary: 16;
+  --text-parts-ko-k-gap-numbers: 0;
+  --text-parts-ko-k-labels: 20;
+  --text-parts-ko-k-numbers-radius: var(--radiuses-general-radius-pill);
+  --text-parts-ko-k-numbers: 20;
+  --text-parts-menu-level1: 18;
+  --text-parts-menu-level2: 16;
+  --text-parts-menu-level3: 16;
+  --text-text-on-dark: var(--neutral-200); /* @kind color */
+  --text-text-on-light: var(--text-text-primary-color); /* @kind color */
+  --text-text-primary-color-2: var(--neutral-100); /* @kind color */
+  --text-text-primary-color: var(--neutral-300); /* @kind color */
+  --text-text-secondary-color: var(--neutral-400); /* @kind color */
+  --text-text-tertiary-color: var(--neutral-400); /* @kind color */
+  --topinfo-background-color: var(--neutral-900); /* @kind color */
+  --topinfo-border-color: var(--neutral-700); /* @kind color */
+  --topinfo-icon-color: var(--neutral-100); /* @kind color */
+  --topinfo-icon-hover-color: var(--neutral-100); /* @kind color */
+  --topinfo-link-color: var(--neutral-600); /* @kind color */
+  --topinfo-link-hover-color: var(--neutral-100); /* @kind color */
+  --topinfo-separator: var(--neutral-100); /* @kind color */
+  --usp-background-color: var(--neutral-800); /* @kind color */
+  --usp-border-color: var(--neutral-800); /* @kind color */
+  --usp-header-color: var(--text-header-color); /* @kind color */
+  --usp-header-hover-color: var(--primary-500); /* @kind color */
+  --usp-icon-color: var(--white); /* @kind color */
+  --usp-perex-color: var(--text-text-secondary-color); /* @kind color */
+  --v-pis-kategorie-dlouh-popis-kategorie: "Univerzální nakladní přívěs s robustním žárově pozinkovaným rámem a předním otevíracím a snadno odnímatelným čelem v základní výbavě. Modelová řada UNI představuje všestranný a vysoce odolný přívěs s robustním, předimenzovaným, žárově zinkovaným rámem a zesílenou V-ojí. Sklopné provedení přívěsu je vhodné pro snažší najíždění např. sekačkou, traktůrkem, nebo čtyřkolkou bez použítí nájezdů. Podlaha je vyrobena z voděodolné jedenáctivrstvé překližky o síle 15 mm a disponuje protiskluzovou úpravo...";
+  --v-pis-kategorie-kr-tk-popis-kategorie: "Univerzální nakladní přívěs s robustním žárově pozinkovaným rámem a předním otevíracím a snadno odnímatelným čelem v základní výbavě. Modelová řada UNI představuje všestranný a vysoce odolný přívěs s robustním, předimenzovaným, žárově zinkovaným rámem a zesílenou V-ojí. Sklopné provedení přívěsu je vhodné pro snažší najíždění např. sekačkou, traktůrkem, nebo čtyřkolkou bez použítí nájezdů. Podlaha je vyrobena z voděodolné jedenáctivrstvé překližky o síle 15 mm a disponuje protiskluzovou úpravo...";
+  --v-pis-kategorie-v-ce-btn-otev-t: "Zjistit více";
+  --v-pis-kategorie-v-ce-btn-zav-t: "Zavřít";
+  --website-background-color: var(--neutral-1000); /* @kind color */
+  --website-background-secondary-color: var(--neutral-1000); /* @kind color */
+  --website-border-color: var(--neutral-1000); /* @kind color */
+  --website-border-secondary-color: var(--neutral-1000); /* @kind color */
+  --website-general-bg-dark-100: var(--neutral-700); /* @kind color */
+  --website-general-bg-light-100: var(--neutral-900); /* @kind color */
+  --website-icon-hover: var(--primary-500); /* @kind color */
+  --website-icon-on-dark: var(--neutral-200); /* @kind color */
+  --website-icon-on-light: var(--neutral-500); /* @kind color */
+  --website-separator: var(--neutral-700); /* @kind color */
+  --white: rgb(255,255,255); /* @kind color */
+}
+
+:root[data-mode="tablet"] {
+  --button-padding-icon-l: 20;
+  --button-padding-icon-only: 12;
+  --button-padding-icon-r: 16;
+  --button-padding-lr: 24;
+  --button-padding-tb-small: 10;
+  --button-padding-tb-standart: 10;
+  --deliverypaymentselectorview-color-border: var(--color-neutral-200-3); /* @kind color */
+  --deliverypaymentselectorview-color-surface: var(--color-base-white-2); /* @kind color */
+  --deliverypaymentselectorview-radius: var(--radius-s);
+  --font-body-size-large: 16;
+  --font-body-size-small: 14;
+  --font-body-size-standard-2: 16;
+  --font-body-size-standard-3: 16;
+  --font-body-size-standard: 16;
+  --font-button-size-large: 16;
+  --font-button-size-small: 12;
+  --font-button-size-standard: 14;
+  --font-family-body-2: "Inter";
+  --font-family-body: "Inter";
+  --font-line-height-extralarge: 26;
+  --font-line-height-h1-lineh: 32;
+  --font-line-height-h4-lineh-2: 20;
+  --font-line-height-h4-lineh: 20;
+  --font-line-height-large-2: 24;
+  --font-line-height-large-3: 24;
+  --font-line-height-large-4: 24;
+  --font-line-height-large: 24;
+  --font-line-height-small-2: 20;
+  --font-line-height-small-3: 20;
+  --font-line-height-small: 20;
+  --font-line-height-standard-2: 18;
+  --font-line-height-standard-3: 18;
+  --font-line-height-standard-4: 18;
+  --font-line-height-standard: 18;
+  --font-weight-bold-2: "Bold";
+  --font-weight-bold-3: "Bold";
+  --font-weight-bold-4: "Bold";
+  --font-weight-bold: "Bold";
+  --font-weight-medium-2: "Medium";
+  --font-weight-medium-3: "Medium";
+  --font-weight-medium-4: "Medium";
+  --font-weight-medium: "Medium";
+  --font-weight-regular: "Regular";
+  --gap-gapproducts: 4;
+  --gap-l: 32;
+  --gap-m: 24;
+  --gap-s: 16;
+  --gap-xl: 64;
+  --gap-xs: 8;
+  --gap-xxs: 4;
+  --icon-outline: 1.5;
+  --icon-stroke: 2;
+  --layout-l-body-p: 24;
+  --layout-l-maxwidth: 1149;
+  --layout-l-minwidth: 1000;
+  --layout-m-body-p: 16;
+  --layout-m-maxwidth: 999;
+  --layout-m-minwidth: 820;
+  --layout-s-body-p: 16;
+  --layout-s-maxwidth: 819;
+  --layout-s-minwidth: 550;
+  --layout-xl-body-p: 24;
+  --layout-xl-maxwidth: 1439;
+  --layout-xl-minwidth: 1150;
+  --layout-xs-body-p: 16;
+  --layout-xs-maxwidth: 549;
+  --layout-xs-minwidth: 420;
+  --layout-xxl-body-p: 24;
+  --layout-xxl-maxwidth: 1560;
+  --layout-xxl-minwidth: 1560;
+  --layout-xxs-body-p: 12;
+  --layout-xxs-maxwidth: 419;
+  --layout-xxs-minwidth: 288;
+  --radius-3: var(--radius-s);
+  --radius-m: var(--radius-8);
+  --radius-s: var(--radius-6);
+  --radius-xs-3: var(--radius-4-3);
+  --radius: var(--radius-s);
+  --radiuses-components-slider-radius: var(--radiuses-general-radiusout);
+  --radiuses-general-radius-btnin: 4;
+  --radiuses-general-radius-btnout: 8;
+  --radiuses-general-radius-input: 8;
+  --radiuses-general-radius-menu-item: 4;
+  --radiuses-general-radius-pill: 1500;
+  --radiuses-general-radiusin: 4;
+  --radiuses-general-radiusout: 8;
+  --text-general-button-font-size-m: 14;
+  --text-general-button-font-size-s: 13;
+  --text-general-font-size-display: 36;
+  --text-general-font-size-h1: 20;
+  --text-general-font-size-h2: 24;
+  --text-general-font-size-h3: 18;
+  --text-general-font-size-h4: 18;
+  --text-general-font-size-p-base-2: 16;
+  --text-general-font-size-p-base: 15;
+  --text-general-font-size-s: 13;
+  --text-general-font-size-xs: 12;
+  --text-general-line-height-h1: 24;
+  --text-general-line-height-h2: 24;
+  --text-general-line-height-h3: 20;
+  --text-parts-card-border-padding: 4;
+  --text-parts-card-height: 20;
+  --text-parts-card-n-zev-produktu-line-height: 20;
+  --text-parts-card-n-zev-produktu-small-line-height: 16;
+  --text-parts-card-n-zev-produktu-small: 14;
+  --text-parts-card-n-zev-produktu: 18;
+  --text-parts-card-price-primary: 16;
+  --text-parts-card-price-secondary: 14;
+  --text-parts-card-radius-actionicons: var(--radiuses-general-radius-pill);
+  --text-parts-card-radius-in: 150;
+  --text-parts-card-radius-out: 150;
+  --text-parts-card-width: 20;
+  --text-parts-detail-price-primary: 28;
+  --text-parts-detail-price-secondary: 16;
+  --text-parts-ko-k-gap-numbers: 0;
+  --text-parts-ko-k-labels: 16;
+  --text-parts-ko-k-numbers-radius: var(--radiuses-general-radius-pill);
+  --text-parts-ko-k-numbers: 15;
+  --text-parts-menu-level1: 18;
+  --text-parts-menu-level2: 16;
+  --text-parts-menu-level3: 16;
+}
+
+:root[data-mode="mobile"] {
+  --deliverypaymentselectorview-color-border: var(--color-neutral-200-3); /* @kind color */
+  --deliverypaymentselectorview-color-surface: var(--color-base-white-2); /* @kind color */
+  --deliverypaymentselectorview-radius: var(--radius-s);
+  --font-body-size-large: 16;
+  --font-body-size-small: 14;
+  --font-body-size-standard-2: 14;
+  --font-body-size-standard-3: 14;
+  --font-body-size-standard: 14;
+  --font-button-size-large: 14;
+  --font-button-size-small: 10;
+  --font-button-size-standard: 12;
+  --font-family-body-2: "Inter";
+  --font-family-body: "Inter";
+  --font-line-height-extralarge: 28;
+  --font-line-height-h1-lineh: 26;
+  --font-line-height-h4-lineh-2: 18;
+  --font-line-height-h4-lineh: 18;
+  --font-line-height-large-2: 24;
+  --font-line-height-large-3: 24;
+  --font-line-height-large-4: 24;
+  --font-line-height-large: 24;
+  --font-line-height-small-2: 20;
+  --font-line-height-small-3: 20;
+  --font-line-height-small: 20;
+  --font-line-height-standard-2: 18;
+  --font-line-height-standard-3: 18;
+  --font-line-height-standard-4: 18;
+  --font-line-height-standard: 18;
+  --font-weight-bold-2: "Bold";
+  --font-weight-bold-3: "Bold";
+  --font-weight-bold-4: "Bold";
+  --font-weight-bold: "Bold";
+  --font-weight-medium-2: "Medium";
+  --font-weight-medium-3: "Medium";
+  --font-weight-medium-4: "Medium";
+  --font-weight-medium: "Medium";
+  --font-weight-regular: "Regular";
+  --icon-stroke: 2;
+  --radius-3: var(--radius-xs-3);
+  --radius-m: var(--radius-8);
+  --radius-s: var(--radius-6);
+  --radius-xs-3: var(--radius-4-3);
+  --radius: var(--radius-xs-3);
+}
+
+:root[data-mode="mobil"] {
+  --button-padding-icon-l: 20;
+  --button-padding-icon-only: 12;
+  --button-padding-icon-r: 16;
+  --button-padding-lr: 24;
+  --button-padding-tb-small: 10;
+  --button-padding-tb-standart: 10;
+  --gap-gapproducts: 4;
+  --gap-l: 32;
+  --gap-m: 24;
+  --gap-s: 16;
+  --gap-xl: 64;
+  --gap-xs: 8;
+  --gap-xxs: 4;
+  --icon-outline: 1.5;
+  --layout-l-body-p: 24;
+  --layout-l-maxwidth: 1149;
+  --layout-l-minwidth: 1000;
+  --layout-m-body-p: 16;
+  --layout-m-maxwidth: 999;
+  --layout-m-minwidth: 820;
+  --layout-s-body-p: 16;
+  --layout-s-maxwidth: 819;
+  --layout-s-minwidth: 550;
+  --layout-xl-body-p: 24;
+  --layout-xl-maxwidth: 1439;
+  --layout-xl-minwidth: 1150;
+  --layout-xs-body-p: 16;
+  --layout-xs-maxwidth: 549;
+  --layout-xs-minwidth: 420;
+  --layout-xxl-body-p: 24;
+  --layout-xxl-maxwidth: 1560;
+  --layout-xxl-minwidth: 1560;
+  --layout-xxs-body-p: 12;
+  --layout-xxs-maxwidth: 419;
+  --layout-xxs-minwidth: 288;
+  --radiuses-components-slider-radius: var(--radiuses-general-radiusout);
+  --radiuses-general-radius-btnin: 4;
+  --radiuses-general-radius-btnout: 8;
+  --radiuses-general-radius-input: 8;
+  --radiuses-general-radius-menu-item: 4;
+  --radiuses-general-radius-pill: 1500;
+  --radiuses-general-radiusin: 4;
+  --radiuses-general-radiusout: 8;
+  --text-general-button-font-size-m: 14;
+  --text-general-button-font-size-s: 13;
+  --text-general-font-size-display: 30;
+  --text-general-font-size-h1: 20;
+  --text-general-font-size-h2: 20;
+  --text-general-font-size-h3: 18;
+  --text-general-font-size-h4: 18;
+  --text-general-font-size-p-base-2: 16;
+  --text-general-font-size-p-base: 14;
+  --text-general-font-size-s: 13;
+  --text-general-font-size-xs: 12;
+  --text-general-line-height-h1: 24;
+  --text-general-line-height-h2: 24;
+  --text-general-line-height-h3: 20;
+  --text-parts-card-border-padding: 4;
+  --text-parts-card-height: 20;
+  --text-parts-card-n-zev-produktu-line-height: 20;
+  --text-parts-card-n-zev-produktu-small-line-height: 16;
+  --text-parts-card-n-zev-produktu-small: 14;
+  --text-parts-card-n-zev-produktu: 18;
+  --text-parts-card-price-primary: 16;
+  --text-parts-card-price-secondary: 14;
+  --text-parts-card-radius-actionicons: var(--radiuses-general-radius-pill);
+  --text-parts-card-radius-in: 150;
+  --text-parts-card-radius-out: 150;
+  --text-parts-card-width: 20;
+  --text-parts-detail-price-primary: 28;
+  --text-parts-detail-price-secondary: 16;
+  --text-parts-ko-k-gap-numbers: 0;
+  --text-parts-ko-k-labels: 16;
+  --text-parts-ko-k-numbers-radius: var(--radiuses-general-radius-pill);
+  --text-parts-ko-k-numbers: 15;
+  --text-parts-menu-level1: 18;
+  --text-parts-menu-level2: 16;
+  --text-parts-menu-level3: 16;
+}
+
+:root[data-theme="light"], .light {
+  --breadcrumb-icon-color: var(--neutral-500); /* @kind color */
+  --button-destructive-background-color: var(--error-500); /* @kind color */
+  --button-destructive-background-hover-color: var(--error-600); /* @kind color */
+  --button-destructive-border-color: var(--error-500); /* @kind color */
+  --button-destructive-border-hover-color: var(--error-600); /* @kind color */
+  --button-destructive-icon-color: var(--white); /* @kind color */
+  --button-destructive-icon-hover-color: var(--white); /* @kind color */
+  --button-destructive-text-color: var(--white); /* @kind color */
+  --button-destructive-text-hover-color: var(--white); /* @kind color */
+  --button-facebook-outline-background-color: var(--white); /* @kind color */
+  --button-facebook-outline-background-hover-color: var(--neutral-100); /* @kind color */
+  --button-facebook-outline-border-color-hover: var(--neutral-300); /* @kind color */
+  --button-facebook-outline-border-color: var(--neutral-200); /* @kind color */
+  --button-facebook-outline-text-color: rgb(24,119,242); /* @kind color */
+  --button-facebook-outline-text-hover-color: rgb(11,95,203); /* @kind color */
+  --button-facebook-solid-background-color: rgb(24,119,242); /* @kind color */
+  --button-facebook-solid-background-hover-color: rgb(11,95,203); /* @kind color */
+  --button-facebook-solid-border-color-hover: rgb(11,95,203); /* @kind color */
+  --button-facebook-solid-border-color: rgb(24,119,242); /* @kind color */
+  --button-facebook-solid-text-color: var(--white); /* @kind color */
+  --button-facebook-solid-text-hover-color: var(--white); /* @kind color */
+  --button-google-outline-background-color: var(--white); /* @kind color */
+  --button-google-outline-background-hover-color: var(--neutral-100); /* @kind color */
+  --button-google-outline-border-color-hover: var(--neutral-300); /* @kind color */
+  --button-google-outline-border-color: var(--neutral-200); /* @kind color */
+  --button-google-outline-text-color: var(--neutral-800); /* @kind color */
+  --button-google-outline-text-hover-color: var(--black); /* @kind color */
+  --button-google-solid-background-color: rgb(70,70,70); /* @kind color */
+  --button-google-solid-background-hover-color: rgb(54,54,54); /* @kind color */
+  --button-google-solid-border-color-hover: rgb(54,54,54); /* @kind color */
+  --button-google-solid-border-color: rgb(70,70,70); /* @kind color */
+  --button-google-solid-text-color: var(--white); /* @kind color */
+  --button-google-solid-text-hover-color: var(--white); /* @kind color */
+  --button-main-background-color: var(--main-500); /* @kind color */
+  --button-main-background-hover-color: var(--main-400); /* @kind color */
+  --button-main-border-color: var(--main-500); /* @kind color */
+  --button-main-border-hover-color: var(--main-600); /* @kind color */
+  --button-main-icon-color: var(--main-900); /* @kind color */
+  --button-main-icon-hover-color: var(--main-900); /* @kind color */
+  --button-main-qantificator-bg-active-color: var(--neutral-800); /* @kind color */
+  --button-main-text-color: var(--main-900); /* @kind color */
+  --button-main-text-hover-color: var(--main-900); /* @kind color */
+  --button-neutral-background-color: var(--neutral-600); /* @kind color */
+  --button-neutral-background-hover-color: var(--neutral-800); /* @kind color */
+  --button-neutral-border-color: var(--neutral-600); /* @kind color */
+  --button-neutral-border-hover-color: var(--neutral-800); /* @kind color */
+  --button-neutral-icon-color: var(--white); /* @kind color */
+  --button-neutral-icon-hover-color: var(--white); /* @kind color */
+  --button-neutral-text-color: var(--white); /* @kind color */
+  --button-neutral-text-hover-color: var(--white); /* @kind color */
+  --button-outline-background-color: var(--white); /* @kind color */
+  --button-outline-background-hover-color: var(--primary-500); /* @kind color */
+  --button-outline-border-color: var(--neutral-200); /* @kind color */
+  --button-outline-border-hover-color: var(--primary-700); /* @kind color */
+  --button-outline-icon-color: var(--secondary-700); /* @kind color */
+  --button-outline-icon-hover-color: var(--primary-700); /* @kind color */
+  --button-outline-text-color: var(--secondary-700); /* @kind color */
+  --button-outline-text-hover-color: var(--primary-700); /* @kind color */
+  --button-primary-background-color: var(--primary-700); /* @kind color */
+  --button-primary-background-hover-color: var(--primary-800); /* @kind color */
+  --button-primary-border-color: var(--primary-700); /* @kind color */
+  --button-primary-border-hover-color: var(--primary-700); /* @kind color */
+  --button-primary-icon-color: var(--white); /* @kind color */
+  --button-primary-icon-hover-color: var(--white); /* @kind color */
+  --button-primary-text-color: var(--white); /* @kind color */
+  --button-primary-text-hover-color: var(--white); /* @kind color */
+  --button-secondary-background-color: var(--secondary-200); /* @kind color */
+  --button-secondary-background-hover-color: var(--primary-700); /* @kind color */
+  --button-secondary-border-color: var(--secondary-300); /* @kind color */
+  --button-secondary-border-hover-color: var(--primary-700); /* @kind color */
+  --button-secondary-icon-color: var(--secondary-700); /* @kind color */
+  --button-secondary-icon-hover-color: var(--white); /* @kind color */
+  --button-secondary-text-color: var(--secondary-700); /* @kind color */
+  --button-secondary-text-hover-color: var(--white); /* @kind color */
+  --button-seznam-outline-background-color: var(--white); /* @kind color */
+  --button-seznam-outline-background-hover-color: var(--neutral-100); /* @kind color */
+  --button-seznam-outline-border-color-hover: var(--neutral-300); /* @kind color */
+  --button-seznam-outline-border-color: var(--neutral-200); /* @kind color */
+  --button-seznam-outline-text-color: var(--black); /* @kind color */
+  --button-seznam-outline-text-hover-color: var(--black); /* @kind color */
+  --button-seznam-solid-background-color: rgb(222,0,0); /* @kind color */
+  --button-seznam-solid-background-hover-color: rgb(189,0,0); /* @kind color */
+  --button-seznam-solid-border-color-hover: rgb(189,0,0); /* @kind color */
+  --button-seznam-solid-border-color: rgb(222,0,0); /* @kind color */
+  --button-seznam-solid-text-color: var(--white); /* @kind color */
+  --button-seznam-solid-text-hover-color: var(--white); /* @kind color */
+  --button-textonly-background-color: rgba(12,12,12,0.45); /* @kind color */
+  --button-textonly-background-hover-color: var(--neutral-700); /* @kind color */
+  --button-textonly-border-color: var(--white); /* @kind color */
+  --button-textonly-border-hover-color: var(--white); /* @kind color */
+  --button-textonly-icon-color: var(--primary-700); /* @kind color */
+  --button-textonly-icon-hover-color: var(--primary-700); /* @kind color */
+  --button-textonly-text-color: var(--primary-700); /* @kind color */
+  --button-textonly-text-hover-color: var(--primary-700); /* @kind color */
+  --card-background-color-02: var(--neutral-50); /* @kind color */
+  --card-background-color: var(--white); /* @kind color */
+  --card-background-hover-color-02: var(--neutral-200); /* @kind color */
+  --card-background-hover-color: var(--white); /* @kind color */
+  --card-border-color: rgb(242,245,247); /* @kind color */
+  --card-border-hover-color: var(--secondary-300); /* @kind color */
+  --card-icon-color: var(--neutral-800); /* @kind color */
+  --card-icon-hover-color: var(--neutral-800); /* @kind color */
+  --card-kratky-nazev: var(--text-text-primary-color); /* @kind color */
+  --card-na-objednavku: var(--info-500); /* @kind color */
+  --card-nazev-produktu: var(--black); /* @kind color */
+  --card-neni-skladem: var(--primary-700); /* @kind color */
+  --card-price-primary: var(--black); /* @kind color */
+  --card-price-secondary: var(--secondary-700); /* @kind color */
+  --card-price-sleva: var(--primary-500); /* @kind color */
+  --card-skladem: var(--main-700); /* @kind color */
+  --card-variants-border-color: rgba(255,255,255,0); /* @kind color */
+  --chips-background-color: var(--secondary-300); /* @kind color */
+  --chips-background-hover-color: var(--primary-700); /* @kind color */
+  --chips-background-outline-hover-color: var(--neutral-100); /* @kind color */
+  --chips-bg-hover-color: var(--neutral-300); /* @kind color */
+  --chips-border-color: var(--neutral-300); /* @kind color */
+  --chips-border-hover-color: var(--neutral-300); /* @kind color */
+  --chips-icon-color: var(--secondary-600); /* @kind color */
+  --chips-text-color: var(--secondary-800); /* @kind color */
+  --color-accent: var(--primary-700); /* @kind color */
+  --color-disabled: 50;
+  --color-logo-footer: var(--white); /* @kind color */
+  --color-primary: var(--primary-700); /* @kind color */
+  --detail-miniatura-background-color: var(--neutral-50); /* @kind color */
+  --detail-miniatura-background-hover-color: var(--white); /* @kind color */
+  --detail-miniatura-border-color: var(--neutral-200); /* @kind color */
+  --detail-miniatura-border-hover-color: var(--primary-700); /* @kind color */
+  --detail-miniatura-icon-color: var(--black); /* @kind color */
+  --detail-price-primary: var(--neutral-900); /* @kind color */
+  --detail-price-secondary: var(--neutral-600); /* @kind color */
+  --detail-variant-background-active-color: var(--white); /* @kind color */
+  --detail-variant-background-color: var(--neutral-50); /* @kind color */
+  --detail-variant-background-hover-color: var(--neutral-50); /* @kind color */
+  --detail-variant-background-solid-active-color: var(--neutral-900); /* @kind color */
+  --detail-variant-background-solid-color: var(--neutral-100); /* @kind color */
+  --detail-variant-background-solid-hover-color: var(--neutral-200); /* @kind color */
+  --detail-variant-border-color: var(--neutral-200); /* @kind color */
+  --detail-variant-border-hover-color: var(--neutral-200); /* @kind color */
+  --detail-variant-border-selected-color: var(--secondary-500); /* @kind color */
+  --doprava-platba-background-color: var(--website-background-color); /* @kind color */
+  --doprava-platba-background-hover-color: var(--white); /* @kind color */
+  --doprava-platba-background-selected-color: var(--white); /* @kind color */
+  --doprava-platba-border-color: var(--website-background-color); /* @kind color */
+  --doprava-platba-border-hover-color: var(--neutral-200); /* @kind color */
+  --doprava-platba-border-selected-color: var(--neutral-300); /* @kind color */
+  --doprava-platba-icon-background-color: var(--white); /* @kind color */
+  --doprava-platba-icon-border-color: var(--white); /* @kind color */
+  --filtrace-part-header-color: var(--text-header-color); /* @kind color */
+  --filtrace-part-header-icon-color: var(--text-header-color); /* @kind color */
+  --filtrace-range-background-color: var(--neutral-200); /* @kind color */
+  --filtrace-range-selected-color: var(--primary-600); /* @kind color */
+  --filtrace-slider-handle-backgroud-color: var(--neutral-800); /* @kind color */
+  --filtrace-slider-handle-icon-color: var(--neutral-300); /* @kind color */
+  --footer-background-color: var(--secondary-100); /* @kind color */
+  --footer-icon-link-color: var(--secondary-500); /* @kind color */
+  --footer-icon-link-hover-color: var(--primary-700); /* @kind color */
+  --footer-left-icon-color: var(--secondary-500); /* @kind color */
+  --footer-link-color: var(--secondary-900); /* @kind color */
+  --footer-link-hover-color: var(--primary-700); /* @kind color */
+  --footer-right-icon-color: var(--primary-700); /* @kind color */
+  --footer-separator: var(--secondary-300); /* @kind color */
+  --footer-title-color: var(--secondary-800); /* @kind color */
+  --forms-input-background-active-color: var(--white); /* @kind color */
+  --forms-input-background-color: var(--white); /* @kind color */
+  --forms-input-background-error-color: var(--error-100); /* @kind color */
+  --forms-input-background-info-color: var(--info-100); /* @kind color */
+  --forms-input-background-succes-color: var(--success-100); /* @kind color */
+  --forms-input-border-active-color: var(--secondary-400); /* @kind color */
+  --forms-input-border-color: var(--secondary-300); /* @kind color */
+  --forms-input-border-error-color: var(--error-500); /* @kind color */
+  --forms-input-border-info-color: var(--info-500); /* @kind color */
+  --forms-input-border-success-color: var(--success-500); /* @kind color */
+  --forms-input-icon: var(--secondary-700); /* @kind color */
+  --forms-input-text-active-color: var(--text-text-primary-color); /* @kind color */
+  --forms-input-text-color: var(--text-text-primary-color); /* @kind color */
+  --forms-input-text-error-color: var(--error-500); /* @kind color */
+  --forms-input-text-info-color: var(--info-500); /* @kind color */
+  --forms-input-text-success-color: var(--success-500); /* @kind color */
+  --forms-qantificator-bg-hover: var(--neutral-100); /* @kind color */
+  --forms-qantificator-bg: var(--white); /* @kind color */
+  --forms-qantificator-border-color: var(--neutral-200); /* @kind color */
+  --forms-qantificator-border-hover-color: var(--neutral-200); /* @kind color */
+  --forms-qantificator-icon-hover: var(--neutral-900); /* @kind color */
+  --forms-qantificator-icon: var(--neutral-600); /* @kind color */
+  --forms-qantificator-text-color: var(--neutral-600); /* @kind color */
+  --gradients-end: var(--neutral-100); /* @kind color */
+  --gradients-start: var(--white); /* @kind color */
+  --gradients-vanish-end: var(--neutral-100-0); /* @kind color */
+  --gradients-vanish-start: var(--neutral-50); /* @kind color */
+  --header-bg-color: var(--white); /* @kind color */
+  --header-hamburger-bg-hover: var(--black); /* @kind color */
+  --header-hamburger-bg: var(--primary-700); /* @kind color */
+  --header-hamburger-border: var(--neutral-200); /* @kind color */
+  --header-hamburger-icon-hover: var(--white); /* @kind color */
+  --header-hamburger-icon: var(--white); /* @kind color */
+  --header-icon-color: var(--secondary-700); /* @kind color */
+  --header-icon-hover-color: var(--neutral-800); /* @kind color */
+  --header-link-color: var(--primary-700); /* @kind color */
+  --header-link-hover-color: var(--primary-700); /* @kind color */
+  --header-localization-dropdown-background-color: var(--white); /* @kind color */
+  --header-localization-icon-color: var(--neutral-800); /* @kind color */
+  --header-localization-icon-hover-color: var(--black); /* @kind color */
+  --header-localization-link-color: var(--neutral-500); /* @kind color */
+  --header-localization-link-hover-color: var(--black); /* @kind color */
+  --header-localization-separator-background-color-2: var(--neutral-100); /* @kind color */
+  --header-logo: "Pozitiv";
+  --header-notification-number-bg: var(--primary-700); /* @kind color */
+  --header-notification-number-border: var(--white); /* @kind color */
+  --header-notification-number-text-color: var(--white); /* @kind color */
+  --header-price-bg: var(--secondary-100); /* @kind color */
+  --header-price-border: var(--secondary-200); /* @kind color */
+  --header-price-color: var(--neutral-900); /* @kind color */
+  --header-text-color: var(--neutral-500); /* @kind color */
+  --header-text-hover-color: var(--neutral-800); /* @kind color */
+  --ko-k-basketitem-background-color: var(--white); /* @kind color */
+  --ko-k-basketitem-border-color: var(--neutral-100); /* @kind color */
+  --ko-k-kroky-background-active-color: var(--black); /* @kind color */
+  --ko-k-kroky-background-done-color: var(--success-500); /* @kind color */
+  --ko-k-kroky-background-inactive-color: var(--neutral-100); /* @kind color */
+  --ko-k-kroky-border-active-color: var(--black); /* @kind color */
+  --ko-k-kroky-border-done-color: var(--success-500); /* @kind color */
+  --ko-k-kroky-border-inactive-color: var(--neutral-100); /* @kind color */
+  --ko-k-kroky-icon-color: var(--white); /* @kind color */
+  --ko-k-kroky-spojovnik-active-color: var(--black); /* @kind color */
+  --ko-k-kroky-spojovnik-color: var(--neutral-100); /* @kind color */
+  --ko-k-kroky-text-active-color: var(--white); /* @kind color */
+  --ko-k-kroky-text-done-color: var(--white); /* @kind color */
+  --ko-k-kroky-text-inactive-color: var(--neutral-800); /* @kind color */
+  --ko-k-orderactionpanelhorizontal-background-color: var(--neutral-800); /* @kind color */
+  --ko-k-orderactionpanelhorizontal-separator: var(--neutral-700); /* @kind color */
+  --ko-k-orderactionpanelhorizontal-text-primary: var(--neutral-100); /* @kind color */
+  --ko-k-orderactionpanelhorizontal-text-secondary: var(--neutral-300); /* @kind color */
+  --leftmenu-background-color: var(--white); /* @kind color */
+  --leftmenu-border-color: var(--neutral-200); /* @kind color */
+  --leftmenu-outline-separator: var(--neutral-100); /* @kind color */
+  --leftmenu-solid-bg-color: var(--white); /* @kind color */
+  --leftmenu-solid-border-color: var(--neutral-200); /* @kind color */
+  --leftmenu-solid-separator: var(--neutral-200); /* @kind color */
+  --leftmenu-underline-separator: var(--neutral-100); /* @kind color */
+  --links-text-color: var(--primary-700); /* @kind color */
+  --links-text-hover-color: var(--primary-700); /* @kind color */
+  --links-text-on-dark-color: var(--neutral-100); /* @kind color */
+  --links-text-on-dark-hover-color: var(--white); /* @kind color */
+  --maincategories-bg-active-color: var(--white); /* @kind color */
+  --maincategories-bg-color: var(--white); /* @kind color */
+  --maincategories-bg-hover-color: var(--white); /* @kind color */
+  --maincategories-border-color: var(--secondary-300); /* @kind color */
+  --maincategories-border-hover-color: var(--neutral-200); /* @kind color */
+  --maincategories-icon-active-color: var(--primary-500); /* @kind color */
+  --maincategories-icon-color: var(--primary-700); /* @kind color */
+  --maincategories-icon-hover-color: var(--primary-700); /* @kind color */
+  --maincategories-text-active-color: var(--primary-700); /* @kind color */
+  --maincategories-text-color: var(--black); /* @kind color */
+  --maincategories-text-hover-color: var(--black); /* @kind color */
+  --menu-background-color: var(--white); /* @kind color */
+  --menu-border-color: var(--neutral-200); /* @kind color */
+  --menu-outline-menu-item-background-color: rgb(255,255,255); /* @kind color */
+  --menu-outline-menu-item-background-hover-color: var(--primary-500); /* @kind color */
+  --menu-outline-menu-item-border-color: var(--neutral-200); /* @kind color */
+  --menu-outline-menu-item-border-hover-color: var(--neutral-300); /* @kind color */
+  --menu-outline-menu-item-icon-active-color: rgb(255,255,255); /* @kind color */
+  --menu-outline-menu-item-icon-color: var(--text-header-color); /* @kind color */
+  --menu-outline-menu-item-icon-hover-color: rgb(255,255,255); /* @kind color */
+  --menu-outline-menu-item-text-active-color: rgb(255,255,255); /* @kind color */
+  --menu-outline-menu-item-text-color: var(--text-header-color); /* @kind color */
+  --menu-outline-menu-item-text-hover-color: var(--white); /* @kind color */
+  --menu-outline-separator: var(--neutral-100); /* @kind color */
+  --menu-solid-menu-item-background-color: var(--primary-600); /* @kind color */
+  --menu-solid-menu-item-background-hover-color: var(--secondary-600); /* @kind color */
+  --menu-solid-menu-item-border-color: var(--primary-700); /* @kind color */
+  --menu-solid-menu-item-border-hover-color: var(--secondary-600); /* @kind color */
+  --menu-solid-menu-item-icon-active-color: var(--white); /* @kind color */
+  --menu-solid-menu-item-icon-color: var(--primary-300); /* @kind color */
+  --menu-solid-menu-item-icon-hover-color: var(--secondary-300); /* @kind color */
+  --menu-solid-menu-item-text-active-color: var(--white); /* @kind color */
+  --menu-solid-menu-item-text-color: var(--white); /* @kind color */
+  --menu-solid-menu-item-text-hover-color: var(--white); /* @kind color */
+  --menu-solid-separator: var(--neutral-100); /* @kind color */
+  --menu-underline-menu-item-background-color: var(--white); /* @kind color */
+  --menu-underline-menu-item-background-hover-color: var(--primary-500); /* @kind color */
+  --menu-underline-menu-item-border-color: var(--neutral-200); /* @kind color */
+  --menu-underline-menu-item-border-hover-color: var(--primary-700); /* @kind color */
+  --menu-underline-menu-item-icon-active-color: rgb(255,255,255); /* @kind color */
+  --menu-underline-menu-item-icon-color: var(--primary-700); /* @kind color */
+  --menu-underline-menu-item-icon-hover-color: var(--primary-700); /* @kind color */
+  --menu-underline-menu-item-text-active-color: rgb(255,255,255); /* @kind color */
+  --menu-underline-menu-item-text-color: var(--text-header-color); /* @kind color */
+  --menu-underline-menu-item-text-hover-color: var(--black); /* @kind color */
+  --menu-underline-separator: var(--neutral-100); /* @kind color */
+  --otherproductsitem-background-color: var(--white); /* @kind color */
+  --otherproductsitem-background-hover-color: var(--white); /* @kind color */
+  --otherproductsitem-border-color: var(--neutral-100); /* @kind color */
+  --otherproductsitem-border-hover-color: var(--neutral-200); /* @kind color */
+  --paging-background-selected-color: var(--secondary-700); /* @kind color */
+  --paging-background-unselected-color: var(--secondary-200); /* @kind color */
+  --paging-border-selected-color: var(--secondary-700); /* @kind color */
+  --paging-border-unselected-color: var(--secondary-300); /* @kind color */
+  --paging-text-selected-color: var(--white); /* @kind color */
+  --paging-text-unselected-color: var(--secondary-700); /* @kind color */
+  --parameters-icon-color: var(--primary-600); /* @kind color */
+  --parameters-sub-text-color: var(--neutral-400); /* @kind color */
+  --parameters-value-color: var(--neutral-800); /* @kind color */
+  --popups-background-color: var(--white); /* @kind color */
+  --slider-controller-in-active-border-color: var(--primary-700); /* @kind color */
+  --slider-controller-in-active-color: var(--primary-700); /* @kind color */
+  --slider-controller-in-bg-color: var(--white); /* @kind color */
+  --slider-controller-in-inactive-border-color: var(--secondary-200); /* @kind color */
+  --slider-controller-in-inactive-color: var(--secondary-200); /* @kind color */
+  --slider-controller-out-active-border-color: var(--primary-700); /* @kind color */
+  --slider-controller-out-active-color: var(--primary-700); /* @kind color */
+  --slider-controller-out-inactive-border-color: var(--secondary-200); /* @kind color */
+  --slider-controller-out-inactive-color: var(--white); /* @kind color */
+  --submenu-background-color: var(--white); /* @kind color */
+  --submenu-border-color: var(--neutral-200); /* @kind color */
+  --submenu-separator: var(--neutral-200); /* @kind color */
+  --submenu-submenu-closeditem-icon-color: var(--primary-700); /* @kind color */
+  --submenu-submenu-openitem-icon-color: var(--primary-700); /* @kind color */
+  --submenu02-background-color: var(--neutral-100); /* @kind color */
+  --submenu02-border-color: var(--neutral-200); /* @kind color */
+  --submenu02-separator: var(--neutral-200); /* @kind color */
+  --submenu02-submenu-closeditem-icon-color: var(--primary-700); /* @kind color */
+  --submenu02-submenu-openitem-icon-color: var(--primary-700); /* @kind color */
+  --table-row-1: var(--neutral-100); /* @kind color */
+  --table-row-2: var(--neutral-200); /* @kind color */
+  --tabs-background-active-color: var(--neutral-800); /* @kind color */
+  --tabs-background-color: var(--secondary-200); /* @kind color */
+  --tabs-background-hover-color: var(--neutral-800); /* @kind color */
+  --tabs-border-active-color: var(--neutral-800); /* @kind color */
+  --tabs-border-color: var(--secondary-300); /* @kind color */
+  --tabs-border-hover-color: var(--neutral-800); /* @kind color */
+  --tabs-icon-active-color: var(--white); /* @kind color */
+  --tabs-icon-color: var(--black); /* @kind color */
+  --tabs-icon-hover-color: var(--white); /* @kind color */
+  --tabs-text-active-color: var(--white); /* @kind color */
+  --tabs-text-color: var(--black); /* @kind color */
+  --tabs-text-hover-color: var(--white); /* @kind color */
+  --text-category-header: var(--secondary-800); /* @kind color */
+  --text-category-text: var(--secondary-700); /* @kind color */
+  --text-header-color: var(--secondary-800); /* @kind color */
+  --text-header-inverse-color: var(--primary-300); /* @kind color */
+  --text-text-on-dark: var(--neutral-100); /* @kind color */
+  --text-text-on-light: var(--text-text-primary-color); /* @kind color */
+  --text-text-primary-color-2: var(--secondary-700); /* @kind color */
+  --text-text-primary-color: var(--secondary-700); /* @kind color */
+  --text-text-secondary-color: var(--secondary-600); /* @kind color */
+  --text-text-tertiary-color: var(--secondary-600); /* @kind color */
+  --topinfo-background-color: var(--secondary-200); /* @kind color */
+  --topinfo-border-color: var(--neutral-100); /* @kind color */
+  --topinfo-icon-color: var(--neutral-800); /* @kind color */
+  --topinfo-icon-hover-color: var(--neutral-800); /* @kind color */
+  --topinfo-link-color: var(--neutral-600); /* @kind color */
+  --topinfo-link-hover-color: var(--neutral-800); /* @kind color */
+  --topinfo-separator: var(--neutral-200); /* @kind color */
+  --usp-background-color: var(--white); /* @kind color */
+  --usp-border-color: var(--neutral-100); /* @kind color */
+  --usp-header-color: var(--secondary-700); /* @kind color */
+  --usp-header-hover-color: var(--primary-700); /* @kind color */
+  --usp-icon-color: var(--primary-700); /* @kind color */
+  --usp-perex-color: var(--text-text-secondary-color); /* @kind color */
+  --website-background-color: var(--secondary-100); /* @kind color */
+  --website-background-secondary-color: var(--neutral-50); /* @kind color */
+  --website-border-color: var(--white); /* @kind color */
+  --website-border-secondary-color: var(--neutral-200); /* @kind color */
+  --website-general-bg-dark-100: var(--neutral-900); /* @kind color */
+  --website-general-bg-light-100: var(--white); /* @kind color */
+  --website-icon-hover: var(--primary-500); /* @kind color */
+  --website-icon-on-dark: var(--secondary-200); /* @kind color */
+  --website-icon-on-light: var(--secondary-700); /* @kind color */
+  --website-separator: var(--secondary-200); /* @kind color */
+}

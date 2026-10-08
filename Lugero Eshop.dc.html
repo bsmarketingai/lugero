@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script src="icons.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:rgb(242,245,247);color:rgb(73,82,90);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:rgb(205,0,0);text-decoration:none}a:hover{color:rgb(160,0,0);text-decoration:underline}
+input,select,button,textarea{font-family:inherit}
+</style>
+<link rel="stylesheet" href="logos/fig-tokens.css"><link rel="stylesheet" href="logos/fig-assets.css"></helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column">
+
+<div style="background:rgb(205,0,0);color:#fff;font-size:13px;font-weight:500;text-align:center;padding:9px 16px">Chtěli bychom upozornit naše zákazníky na změnu! <span style="text-decoration:underline;cursor:pointer">Číst více</span></div>
+<div style="background:rgb(49,49,49);color:rgb(206,206,206);font-size:13px">
+  <div style="max-width:1320px;margin:0 auto;box-sizing:border-box;padding:8px 20px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;align-items:center">
+    <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
+      <span style="display:flex;gap:6px;align-items:center"><span style="width:8px;height:8px;border-radius:50%;background:rgb(139,182,0)"></span><span>Po–Pá 8:00–16:30</span><span style="color:rgb(139,182,0);font-weight:500">Právě otevřeno</span></span>
+      <span>Osobní odběr: V Chotejně 15, Praha 10</span>
+    </div>
+    <div style="display:flex;gap:20px;align-items:center"><span style="color:#fff;font-weight:700">228 804 000</span><span style="color:#fff">info@lugero.cz</span><span>Kontakty</span></div>
+  </div>
+</div>
+
+<header style="background:#fff;position:sticky;top:0;z-index:50;border-bottom:1px solid rgb(228,232,236)">
+  <div style="max-width:1320px;margin:0 auto;box-sizing:border-box;padding:16px 20px;display:flex;align-items:center;gap:24px">
+    <img onClick="{{ goHome }}" src="img/logo-a.png" alt="LUGERO" style="height:34px;cursor:pointer;flex-shrink:0">
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <div style="flex:1 1 200px;min-width:0;max-width:560px;position:relative;z-index:40"><div style="display:flex;border:1px solid rgb(209,216,222);border-radius:4px;overflow:hidden;background:#fff">
+      <span style="display:grid;place-items:center;padding-left:14px;color:rgb(168,168,168)"><l-icon name="search" size="24" style="width:24px;height:24px;display:inline-flex;flex-shrink:0"></l-icon></span>
+      <input placeholder="Co hledáte?" value="{{ sq }}" onChange="{{ sqChange }}" onFocus="{{ sqFocus }}" onBlur="{{ sqBlur }}" style="flex:1;min-width:0;border:0;outline:0;padding:11px 12px;font-size:15px;color:rgb(12,12,12);font-family:Inter,sans-serif">
+      <button onClick="{{ sqSubmit }}" style="border:0;background:rgb(205,0,0);color:#fff;padding:0 26px;font-weight:700;font-size:14px;cursor:pointer" style-hover="background:rgb(180,0,0)">Hledat</button>
+    </div>
+    <sc-if value="{{ sOpen }}" hint-placeholder-val="{{ false }}">
+      <div onMouseDown="{{ keepFocus }}" style="position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border:1px solid rgb(228,232,236);border-radius:8px;box-shadow:0 12px 32px rgba(12,12,12,.14);overflow:hidden;font-family:Inter,sans-serif">
+        <sc-if value="{{ sEmpty }}" hint-placeholder-val="{{ false }}"><div style="padding:8px 16px 16px;font-size:14px;color:rgb(73,82,90)">Nic jsme nenašli. Zkuste jiný výraz.</div></sc-if>
+        <sc-for list="{{ sRes }}" as="r" hint-placeholder-count="4">
+          <div style="display:flex;gap:12px;align-items:center;padding:10px 16px;border-top:1px solid rgb(236,239,242)">
+            <img onClick="{{ r.open }}" src="{{ r.img }}" alt="" style="width:56px;height:56px;object-fit:contain;flex-shrink:0;cursor:pointer">
+            <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px">
+              <span onClick="{{ r.open }}" style="font-size:14px;line-height:20px;font-weight:700;color:rgb(73,82,90);cursor:pointer;text-wrap:pretty" style-hover="color:rgb(205,0,0)">{{ r.name }}</span>
+              <span style="display:flex;gap:4px;align-items:center;font-size:14px;line-height:20px;font-weight:500;color:{{ r.stockColor }}"><l-icon name="circle-check" size="16" style="width:16px;height:16px;display:inline-flex;flex-shrink:0"></l-icon>{{ r.stockLabel }}</span>
+            </div>
+            <div style="display:flex;border:1px solid rgb(209,216,222);border-radius:4px;overflow:hidden;background:#fff;height:36px;flex-shrink:0"><button onClick="{{ r.dec }}" aria-label="Méně" style="width:36px;border:0;background:#fff;color:rgb(73,82,90);cursor:pointer;display:grid;place-items:center" style-hover="color:rgb(205,0,0)"><l-icon name="minus" size="24" style="width:18px;height:18px;display:inline-flex;flex-shrink:0"></l-icon></button><span style="width:56px;display:grid;place-items:center;font-size:14px;color:rgb(73,82,90);border-left:1px solid rgb(228,232,236);border-right:1px solid rgb(228,232,236)">{{ r.qty }} ks</span><button onClick="{{ r.inc }}" aria-label="Více" style="width:36px;border:0;background:#fff;color:rgb(73,82,90);cursor:pointer;display:grid;place-items:center" style-hover="color:rgb(205,0,0)"><l-icon name="plus" size="24" style="width:18px;height:18px;display:inline-flex;flex-shrink:0"></l-icon></button></div>
+            <span style="width:104px;text-align:right;flex-shrink:0;font-size:16px;font-weight:700;color:rgb(73,82,90);white-space:nowrap">{{ r.priceMain }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+    </div>
+    </sc-if>
+    <div style="margin-left:auto;display:flex;gap:22px;align-items:center;flex-shrink:0">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12px;position:relative;cursor:pointer">
+        <l-icon name="scale" size="24" style="color:rgb(73,82,90);width:24px;height:24px;display:inline-flex;flex-shrink:0"></l-icon>
+        <span>Porovnat</span>
+        <span style="position:absolute;top:-6px;right:4px;background:rgb(205,0,0);color:#fff;font-size:10px;font-weight:700;border-radius:9px;padding:1px 5px">10</span>
+      </div>
+      <div onClick="{{ headAccount }}" style="display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12px;cursor:pointer" style-hover="color:rgb(12,12,12)">
+        <l-icon name="user-round" size="24" style="color:rgb(73,82,90);width:24px;height:24px;display:inline-flex;flex-shrink:0"></l-icon>
+        <span>{{ accountLabel }}</span>
+      </div>
+      <div onMouseEnter="{{ miniShow }}" onMouseLeave="{{ miniHide }}" style="position:relative">
+      <button onClick="{{ goCart }}" style="position:relative;border:1px solid rgb(228,232,236);background:rgb(242,245,247);border-radius:4px;padding:10px 14px;display:flex;gap:8px;align-items:center;cursor:pointer;font-weight:700;font-size:14px;color:rgb(12,12,12)" style-hover="border-color:rgb(168,168,168)">
+        <l-icon name="truck-loading" size="24" style="color:rgb(12,12,12);width:24px;height:24px;display:inline-flex;flex-shrink:0"></l-icon>
+        <span>{{ cartTotalShort }}</span>
+        <span style="position:absolute;top:-8px;right:-8px;background:rgb(205,0,0);color:#fff;font-size:10px;font-weight:700;border-radius:9px;min-width:16px;padding:2px 4px;box-sizing:border-box">{{ cartCount }}</span>
+      </button>
+      <sc-if value="{{ miniOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute;top:100%;right:0;padding-top:10px;z-index:60">
+          <div data-screen-label="Popup Košík" style="width:512px;background:#fff;border-radius:8px;box-shadow:0 18px 18px rgba(0,0,0,0.09),0 7.5px 7.5px rgba(0,0,0,0.068),0 4px 4px rgba(0,0,0,0.061),0 2.25px 2.25px rgba(0,0,0,0.056),0 1.2px 1.2px rgba(0,0,0,0.049),0 0.5px 0.5px rgba(0,0,0,0.038);display:flex;flex-direction:column;gap:16px;padding:24px;box-sizing:border-box;font-family:Inter,sans-serif;text-align:left;cursor:default">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+              <span style="font-weight:700;font-size:28px;line-height:32px;color:rgb(73,82,90)">Můj košík ({{ cartLineCount }})</span>
+              <button onClick="{{ miniClose }}" title="Zavřít" style="width:24px;height:24px;border:0;padding:0;background:transparent;display:grid;place-items:center;cursor:pointer;color:rgb(73,82,90)" style-hover="color:rgb(205,0,0)"><l-icon name="x" size="24" style="width:24px;height:24px;display:inline-flex"></l-icon></button>
+            </div>
+            <div style="height:1px;background:rgb(228,232,236)"></div>
+            <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ false }}">
+              <span style="font-size:16px;color:rgb(126,138,149);padding:16px 0">Košík je prázdný.</span>
+            </sc-if>
+            <div style="display:flex;flex-direction:column;gap:16px;max-height:340px;overflow-y:auto">
+              <sc-for list="{{ cartLines }}" as="l" hint-placeholder-count="3">
+                <div style="display:flex;flex-direction:column;gap:16px">
+                  <div style="display:flex;gap:12px;align-items:flex-start">
+                    <img onClick="{{ l.open }}" src="{{ l.img }}" alt="" style="width:80px;height:80px;object-fit:contain;flex-shrink:0;cursor:pointer">
+                    <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px">
+                      <span onClick="{{ l.open }}" style="font-weight:700;font-size:16px;line-height:20px;color:rgb(73,82,90);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;cursor:pointer" style-hover="color:rgb(205,0,0)">{{ l.name }}</span>
+                      <div style="display:flex;gap:16px;align-items:flex-end;justify-content:space-between">
+                        <div style="display:flex;flex-direction:column">
+                          <span style="font-weight:500;font-size:15px;line-height:24px;color:rgb(126,138,149)">{{ l.qtyLabel }}</span>
+                          <span style="display:flex;gap:4px;align-items:center;font-size:14px;line-height:20px;font-weight:500;color:{{ l.stockColor }}"><l-icon name="circle-check" size="16" style="width:16px;height:16px;display:inline-flex;flex-shrink:0"></l-icon>{{ l.stockLabel }}</span>
+                        </div>
+                        <span style="font-weight:700;font-size:20px;line-height:24px;color:rgb(73,82,90);white-space:nowrap">{{ l.total }}</span>
+                      </div>
+                    </div>
+                    <button onClick="{{ l.remove }}" title="Odebrat" style="width:24px;height:24px;border:0;padding:0;background:transparent;display:grid;place-items:center;cursor:pointer;color:rgb(205,0,0)" style-hover="color:rgb(160,0,0)"><l-icon name="circle-x" size="24" style="width:24px;height:24px;display:inline-flex"></l-icon></button>
+                  </div>
+                  <div style="height:1px;background:rgb(228,232,236)"></div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px">
+              <span style="font-weight:700;font-size:20px;line-height:24px;color:rgb(126,138,149)">Celkový součet</span>
+              <span style="font-weight:700;font-size:24px;line-height:28px;color:rgb(73,82,90)">{{ sumVat }}</span>
+            </div>
+            <button onClick="{{ goCart }}" style="height:44px;border:0;border-radius:4px;background:rgb(139,182,0);color:rgb(34,48,10);transition:background .15s;font-family:Inter,sans-serif;font-size:16px;font-weight:700;display:flex;gap:8px;align-items:center;justify-content:center;cursor:pointer" style-hover="background:rgb(162,198,82)">Přejít k objednávce<l-icon name="chevron-right" size="24" style="width:24px;height:24px;display:inline-flex"></l-icon></button>
+          </div>
+        </div>
+      </sc-if>
+      </div>
+    </div>
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ burgerToggle }}" aria-label="Menu" style="width:48px;height:48px;border:0;border-radius:4px;background:rgb(12,12,12);color:#fff;display:grid;place-items:center;cursor:pointer;flex-shrink:0"><l-icon name="menu" size="24" style="width:24px;height:24px;display:inline-flex"></l-icon></button>
+      </sc-if>
+  </div>
+  <sc-if value="{{ burgerOpen }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Hamburger menu" style="position:fixed;left:0;right:0;top:0;bottom:0;z-index:70;background:#fff;overflow-y:auto;box-shadow:0 16px 32px rgba(0,0,0,0.14);font-family:Inter,sans-serif">
+      <div style="padding:20px 20px 0 16px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+          <img onClick="{{ goHome }}" src="img/logo-a.png" alt="LUGERO" style="height:30px;cursor:pointer">
+          <div style="display:flex;gap:16px;align-items:center">
+            <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12px;cursor:pointer;color:rgb(73,82,90)"><l-icon name="scale" size="24" style="width:24px;height:24px;display:inline-flex"></l-icon><span>Porovnat</span><span style="position:absolute;top:-6px;right:4px;background:rgb(205,0,0);color:#fff;font-size:10px;font-weight:700;border-radius:9px;padding:1px 5px">10</span></div>
+            <div onClick="{{ headAccount }}" style="display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12px;cursor:pointer;color:rgb(73,82,90)"><l-icon name="user-round" size="24" style="width:24px;height:24px;display:inline-flex"></l-icon><span>{{ accountLabel }}</span></div>
+            <button onClick="{{ goCart }}" style="position:relative;border:1px solid rgb(228,232,236);background:rgb(242,245,247);border-radius:4px;padding:10px 12px;display:flex;gap:8px;align-items:center;cursor:pointer;font-weight:700;font-size:14px;color:rgb(12,12,12)"><l-icon name="truck-loading" size="24" style="width:24px;height:24px;display:inline-flex"></l-icon><span>{{ cartTotalShort }}</span><span style="position:absolute;top:-8px;right:-8px;background:rgb(205,0,0);color:#fff;font-size:10px;font-weight:700;border-radius:9px;min-width:16px;padding:2px 4px;box-sizing:border-box">{{ cartCount }}</span></button>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px">
+          <div style="flex:1;min-width:0;display:flex;align-items:center;gap:8px;border:1px solid rgb(209,216,222);border-radius:4px;padding:0 14px;height:48px;box-sizing:border-box;color:rgb(73,82,90)"><l-icon name="search" size="24" style="width:24px;height:24px;display:inline-flex;flex-shrink:0"></l-icon><input placeholder="Co hledáte?" style="flex:1;min-width:0;border:0;outline:0;font:15px Inter,sans-serif;color:rgb(12,12,12)"></div>
+          <button onClick="{{ burgerClose }}" aria-label="Zavřít" style="width:48px;height:48px;border:0;border-radius:4px;background:rgb(12,12,12);color:#fff;display:grid;place-items:center;cursor:pointer;flex-shrink:0"><l-icon name="x" size="24" style="width:24px;height:24px;display:inline-flex"></l-icon></button>
+        </div>
+        <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center;padding-bottom:16px">
+          <div style="display:flex;gap:8px;align-items:center;color:rgb(73,82,90)"><l-icon name="phone" size="24" style="width:24px;height:24px;display:inline-flex"></l-icon><div style="display:flex;flex-direction:column;line-height:1.2"><a style="color:rgb(205,0,0);font-weight:700;font-size:15px;text-decoration:none">228 804 000</a><span style="font-size:12px;color:rgb(126,138,149)">Po–Pá: 8:00–16:30</span></div></div>
+          <div style="display:flex;gap:8px;align-items:center;color:rgb(73,82,90)"><l-icon name="mail" size="24" style="width:24px;height:24px;display:inline-flex"></l-icon><a style="color:rgb(205,0,0);font-weight:500;font-size:15px;text-decoration:none">info@lugero.cz</a></div>
+        </div>
+      </div>
+      <div style="border-top:1px solid rgb(228,232,236)">
+        <button onClick="{{ mProdToggle }}" style="width:100%;border:0;background:transparent;padding:16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font:700 20px Inter,sans-serif;color:rgb(73,82,90)">Produkty<span style="display:inline-flex;color:rgb(205,0,0)"><l-icon name="{{ mProdIcon }}" size="24" style="width:24px;height:24px;display:inline-flex"></l-icon></span></button>
+        <sc-if value="{{ mProdOpen }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;padding-bottom:8px">
+            <sc-for list="{{ mCats }}" as="c" hint-placeholder-count="6">
+              <div style="display:flex;flex-direction:column">
+                <div style="display:flex;align-items:center;gap:16px;padding:6px 16px;min-height:56px">
+                  <img onClick="{{ c.go }}" src="{{ c.img }}" alt="" style="width:40px;height:40px;object-fit:contain;flex-shrink:0;mix-blend-mode:multiply;cursor:pointer">
+                  <span onClick="{{ c.go }}" style="flex:1;font-size:16px;color:rgb(73,82,90);cursor:pointer">{{ c.name }}</span>
+                  <button onClick="{{ c.toggle }}" aria-label="Rozbalit" style="width:44px;height:44px;border:0;background:transparent;display:grid;place-items:center;cursor:pointer;color:rgb(205,0,0)"><l-icon name="{{ c.icon }}" size="24" style="width:24px;height:24px;display:inline-flex"></l-icon></button>
+                </div>
+                <sc-if value="{{ c.open }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex;flex-direction:column;padding:0 16px 10px 72px;gap:2px">
+                    <sc-for list="{{ c.subs }}" as="sb" hint-placeholder-count="4"><a onClick="{{ c.go }}" style="font-size:15px;line-height:36px;color:rgb(126,138,149);cursor:pointer;text-decoration:none">{{ sb }}</a></sc-for>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+      <sc-for list="{{ mSecs }}" as="m" hint-placeholder-count="4">
+        <div style="border-top:1px solid rgb(228,232,236)">
+          <button onClick="{{ m.toggle }}" style="width:100%;border:0;background:transparent;padding:16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font:700 20px Inter,sans-serif;color:rgb(73,82,90);text-align:left">{{ m.label }}<span style="display:inline-flex;color:rgb(205,0,0)"><l-icon name="{{ m.icon }}" size="24" style="width:24px;height:24px;display:inline-flex"></l-icon></span></button>
+          <sc-if value="{{ m.open }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;padding:0 16px 12px">
+              <sc-for list="{{ m.items }}" as="it" hint-placeholder-count="3"><a style="font-size:16px;line-height:40px;color:rgb(73,82,90);cursor:pointer;text-decoration:none">{{ it }}</a></sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+      <div style="background:rgb(237,237,237);border-top:1px solid rgb(209,216,222)">
+        <a style="padding:14px 16px;display:flex;justify-content:space-between;align-items:center;font-size:18px;color:rgb(73,82,90);cursor:pointer;text-decoration:none;border-bottom:1px solid rgb(209,216,222)">O nás<span style="display:inline-flex;color:rgb(205,0,0)"><l-icon name="chevron-right" size="24" style="width:24px;height:24px;display:inline-flex"></l-icon></span></a>
+        <a style="padding:14px 16px;display:flex;justify-content:space-between;align-items:center;font-size:18px;color:rgb(73,82,90);cursor:pointer;text-decoration:none;border-bottom:1px solid rgb(209,216,222)">Kontakt<span style="display:inline-flex;color:rgb(205,0,0)"><l-icon name="chevron-right" size="24" style="width:24px;height:24px;display:inline-flex"></l-icon></span></a>
+      </div>
+      <div style="padding:20px 16px 28px;display:flex;flex-direction:column;gap:12px">
+        <span style="font-size:13px;letter-spacing:0.04em;color:rgb(73,82,90)">VYBERTE JAZYK</span>
+        <div style="display:flex;gap:24px"><sc-for list="{{ langs }}" as="lg" hint-placeholder-count="5"><a style="font-size:16px;font-weight:700;color:{{ lg.color }};cursor:pointer;text-decoration:none">{{ lg.l }}</a></sc-for></div>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+  <nav onMouseLeave="{{ navMegaOff }}" style="border-top:1px solid rgb(228,232,236);position:relative">
+    <div style="max-width:1320px;margin:0 auto;box-sizing:border-box;padding:0 20px;display:flex;gap:6px;align-items:center;overflow-x:auto">
+      <button onClick="{{ goAll }}" onMouseEnter="{{ navMegaOn }}" style="border:0;background:transparent;padding:16px 16px;font-size:15px;font-weight:700;color:rgb(73,82,90);cursor:pointer;white-space:nowrap;display:flex;gap:6px;align-items:center" style-hover="color:rgb(12,12,12);box-shadow:inset 0 -4px 0 rgb(205,0,0)"><l-icon name="forklift" size="24" style="width:24px;height:24px;display:inline-flex;flex-shrink:0;color:rgb(205,0,0)"></l-icon>Produkty<span style="display:inline-flex;color:rgb(205,0,0)"><l-icon name="chevron-down" size="24"></l-icon></span></button>
+      <button onMouseEnter="{{ navMegaOff }}" style="border:0;background:transparent;padding:16px 16px;font-size:15px;font-weight:700;color:rgb(73,82,90);cursor:pointer;white-space:nowrap;display:flex;gap:6px;align-items:center" style-hover="color:rgb(12,12,12);box-shadow:inset 0 -4px 0 rgb(205,0,0)"><l-icon name="calendar" size="24" style="width:24px;height:24px;display:inline-flex;flex-shrink:0;color:rgb(205,0,0)"></l-icon>Půjčovna<span style="display:inline-flex;color:rgb(205,0,0)"><l-icon name="chevron-down" size="24"></l-icon></span></button>
+      <button onMouseEnter="{{ navMegaOff }}" style="border:0;background:transparent;padding:16px 16px;font-size:15px;font-weight:700;color:rgb(73,82,90);cursor:pointer;white-space:nowrap;display:flex;gap:6px;align-items:center" style-hover="color:rgb(12,12,12);box-shadow:inset 0 -4px 0 rgb(205,0,0)"><l-icon name="wrench" size="24" style="width:24px;height:24px;display:inline-flex;flex-shrink:0;color:rgb(205,0,0)"></l-icon>Servis<span style="display:inline-flex;color:rgb(205,0,0)"><l-icon name="chevron-down" size="24"></l-icon></span></button>
+      <button onMouseEnter="{{ navMegaOff }}" onClick="{{ goAkce }}" style="border:0;background:transparent;padding:16px 16px;font-size:15px;font-weight:700;color:rgb(73,82,90);cursor:pointer;white-space:nowrap;display:flex;gap:6px;align-items:center" style-hover="color:rgb(12,12,12);box-shadow:inset 0 -4px 0 rgb(205,0,0)"><l-icon name="badge-percent" size="24" style="width:24px;height:24px;display:inline-flex;flex-shrink:0;color:rgb(205,0,0)"></l-icon>Akce<span style="display:inline-flex;color:rgb(205,0,0)"><l-icon name="chevron-down" size="24"></l-icon></span></button>
+      <button onMouseEnter="{{ navMegaOff }}" style="border:0;background:transparent;padding:16px 16px;font-size:15px;font-weight:700;color:rgb(73,82,90);cursor:pointer;white-space:nowrap;display:flex;gap:6px;align-items:center" style-hover="color:rgb(12,12,12);box-shadow:inset 0 -4px 0 rgb(205,0,0)"><l-icon name="hand" size="24" style="width:24px;height:24px;display:inline-flex;flex-shrink:0;color:rgb(205,0,0)"></l-icon>Vyzkoušejte zdarma</button>
+      <span style="flex:1"></span>
+      <span style="width:1px;height:24px;background:rgb(228,232,236);flex-shrink:0;margin-right:16px"></span>
+      <button onMouseEnter="{{ navMegaOff }}" style="border:0;background:transparent;padding:16px 16px;font-size:15px;font-weight:700;color:rgb(73,82,90);cursor:pointer;white-space:nowrap;display:flex;gap:6px;align-items:center" style-hover="color:rgb(12,12,12);box-shadow:inset 0 -4px 0 rgb(205,0,0)">O nás<span style="display:inline-flex;color:rgb(205,0,0)"><l-icon name="chevron-down" size="24"></l-icon></span></button>
+      <button onMouseEnter="{{ navMegaOff }}" style="border:0;background:transparent;padding:16px 16px;font-size:15px;font-weight:700;color:rgb(73,82,90);cursor:pointer;white-space:nowrap;display:flex;gap:6px;align-items:center" style-hover="color:rgb(12,12,12);box-shadow:inset 0 -4px 0 rgb(205,0,0)">Kontakt<span style="display:inline-flex;color:rgb(205,0,0)"><l-icon name="chevron-down" size="24"></l-icon></span></button>
+    </div>
+      <sc-if value="{{ navMega }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Megamenu Produkty" style="position:absolute;left:0;right:0;top:100%;z-index:30;background:#fff;border-top:1px solid rgb(228,232,236);box-shadow:0 16px 32px rgba(0,0,0,0.12)">
+        <div style="max-width:1320px;margin:0 auto;padding:12px 20px 20px;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))">
+          <sc-for list="{{ navCats }}" as="c" hint-placeholder-count="14">
+            <div style="display:flex;gap:10px;align-items:flex-start;padding:20px 16px;border-bottom:1px solid rgb(228,232,236);border-right:1px solid rgb(228,232,236);box-sizing:border-box">
+              <img src="{{ c.img }}" alt="" style="width:40px;height:40px;object-fit:contain;flex-shrink:0;mix-blend-mode:multiply">
+              <div style="display:flex;flex-direction:column;gap:3px;min-width:0">
+                <a onClick="{{ c.open }}" style="font-size:15px;font-weight:700;color:rgb(73,82,90);cursor:pointer;text-decoration:none;line-height:1.3" style-hover="color:rgb(205,0,0)">{{ c.name }}</a>
+                <sc-for list="{{ c.subs }}" as="sb" hint-placeholder-count="4">
+                  <a onClick="{{ c.open }}" style="font-size:14px;color:rgb(126,138,149);cursor:pointer;text-decoration:none;line-height:1.45" style-hover="color:rgb(205,0,0)">{{ sb }}</a>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+  </nav>
+  </sc-if>
+</header>
+
+<main style="flex:1;width:100%;max-width:1320px;margin:0 auto;padding:0 20px 64px;box-sizing:border-box">
+
+<sc-if value="{{ loginOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeLogin }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.25);z-index:200;display:flex;overflow-y:auto;padding:20px;box-sizing:border-box">
+    <div data-screen-label="Popup Přihlášení" onClick="{{ stop }}" style="margin:auto;box-sizing:border-box;width:100%;max-width:360px;flex-shrink:0;background:#fff;border-radius:8px;box-shadow:0 18px 40px rgba(0,0,0,0.2);padding:20px 24px 24px;display:flex;flex-direction:column;gap:16px;font-family:Inter,sans-serif;color:rgb(73,82,90)">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;border-bottom:1px solid rgb(237,237,237)"><span style="font-size:24px;font-weight:700">Přihlásit se</span><button onClick="{{ closeLogin }}" aria-label="Zavřít" style="border:0;background:transparent;color:rgb(73,82,90);cursor:pointer;display:grid;place-items:center;padding:4px;border-radius:4px" style-hover="background:rgb(242,245,247);color:rgb(205,0,0)"><l-icon name="x" size="24"></l-icon></button></div>
+      <label style="display:flex;flex-direction:column;gap:6px;font-size:14px"><span>Přihlašovací jméno<span style="color:rgb(205,0,0)">*</span></span><span style="display:flex;align-items:center;gap:8px;height:44px;border:1px solid rgb(209,216,222);border-radius:4px;padding:0 12px;color:rgb(126,138,149)" style-hover="border-color:rgb(126,138,149)"><l-icon name="mail" size="24"></l-icon><input type="email" placeholder="Váš email" style="flex:1;min-width:0;border:0;outline:0;font:inherit;font-size:15px;color:rgb(12,12,12);background:transparent"></span></label>
+      <label style="display:flex;flex-direction:column;gap:6px;font-size:14px"><span>Heslo<span style="color:rgb(205,0,0)">*</span></span><span style="display:flex;align-items:center;gap:8px;height:44px;border:1px solid rgb(209,216,222);border-radius:4px;padding:0 12px;color:rgb(126,138,149)" style-hover="border-color:rgb(126,138,149)"><l-icon name="lock" size="24"></l-icon><input type="password" placeholder="Heslo" style="flex:1;min-width:0;border:0;outline:0;font:inherit;font-size:15px;color:rgb(12,12,12);background:transparent"></span></label>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:14px"><label style="display:flex;align-items:center;gap:8px;cursor:pointer"><input type="checkbox" style="width:18px;height:18px;accent-color:rgb(205,0,0);margin:0">Zapamatovat si mě</label><a href="#" style="color:rgb(205,0,0);text-decoration:none" style-hover="text-decoration:underline">Nevíte heslo?</a></div>
+      <button onClick="{{ doLogin }}" style="height:44px;border:0;border-radius:4px;background:rgb(205,0,0);color:#fff;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer" style-hover="background:rgb(170,0,0)">Přihlásit se<l-icon name="log-in" size="24"></l-icon></button>
+      <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:rgb(126,138,149)"><span style="flex:1;height:1px;background:rgb(228,232,236)"></span>nebo<span style="flex:1;height:1px;background:rgb(228,232,236)"></span></div>
+      <span style="font-size:24px;font-weight:700">Registrovat se</span>
+      <button onClick="{{ goRegister }}" style="height:44px;border:1px solid rgb(209,216,222);border-radius:4px;background:rgb(228,232,236);color:rgb(73,82,90);font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer" style-hover="background:rgb(209,216,222)">Registrovat se<span style="color:rgb(240,150,20);display:inline-flex"><l-icon name="user-round-plus" size="24"></l-icon></span></button>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+        <button aria-label="Facebook" style="height:44px;border:1px solid rgb(209,216,222);border-radius:4px;background:#fff;color:rgb(24,119,242);display:grid;place-items:center;cursor:pointer" style-hover="border-color:rgb(126,138,149)"><l-icon name="facebook" size="24"></l-icon></button>
+        <button aria-label="Google" style="height:44px;border:1px solid rgb(209,216,222);border-radius:4px;background:#fff;color:rgb(66,133,244);font-size:20px;font-weight:700;cursor:pointer" style-hover="border-color:rgb(126,138,149)">G</button>
+        <button aria-label="Seznam" style="height:44px;border:1px solid rgb(209,216,222);border-radius:4px;background:#fff;color:rgb(204,0,0);font-size:20px;font-weight:800;font-style:italic;cursor:pointer" style-hover="border-color:rgb(126,138,149)">S</button>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <section data-screen-label="Homepage" style="display:grid;grid-template-columns:minmax(220px,280px) minmax(0,1fr);gap:20px;margin-top:20px;align-items:start">
+    <div onMouseLeave="{{ megaHide }}" style="position:sticky;top:171px;z-index:30">
+    <aside style="position:relative;z-index:2;background:#fff;border:1px solid rgb(228,232,236);border-radius:5px">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid rgb(228,232,236);font-size:15px;font-weight:700;color:rgb(73,82,90)"><span>Produkty</span></div>
+      <sc-for list="{{ sideCats }}" as="c" hint-placeholder-count="10">
+        <div onClick="{{ c.open }}" onMouseEnter="{{ c.megaOn }}" style="display:flex;align-items:center;gap:12px;padding:8px 14px;border-bottom:1px solid rgb(237,237,237);cursor:pointer;min-height:36px;position:relative;background:{{ c.rowBg }};margin-right:{{ c.rowMr }};padding-right:{{ c.rowPr }};transition:background .12s" style-hover="background:#fff">
+          <img src="{{ c.img }}" alt="" style="width:30px;height:30px;object-fit:contain;flex-shrink:0;mix-blend-mode:multiply">
+          <span style="flex:1;font-size:13px;font-weight:700;color:rgb(12,12,12);line-height:1.3">{{ c.name }}</span>
+          <l-icon name="chevron-right" size="24" style="color:{{ c.chev }}"></l-icon>
+        </div>
+      </sc-for>
+    </aside>
+    <sc-if value="{{ megaOpen }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Megamenu" style="position:absolute;z-index:1;left:calc(100% - 1px);top:{{ megaTopPx }};width:min(760px,calc(100vw - 340px));background:#fff;border:1px solid rgb(228,232,236);border-radius:0 5px 5px 5px;box-shadow:0 12px 32px rgba(0,0,0,0.14);padding:12px;box-sizing:border-box;display:flex;flex-direction:column;gap:10px">
+        
+        <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px">
+          <sc-for list="{{ mega.subs }}" as="m" hint-placeholder-count="8">
+            <div onClick="{{ mega.open }}" style="position:relative;border:1px solid rgb(228,232,236);border-radius:5px;padding:10px 8px;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;transition:border-color .15s,box-shadow .15s" style-hover="border-color:rgb(205,0,0);box-shadow:0 4px 14px rgba(0,0,0,0.08)">
+              <sc-if value="{{ m.tip }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:6px;right:8px;font-size:11px;font-weight:800;color:rgb(205,0,0)">TIP!</span></sc-if>
+              <img src="{{ m.img }}" alt="" style="width:100%;height:60px;object-fit:contain">
+              <span style="font-size:12px;font-weight:700;color:rgb(12,12,12);text-align:center;line-height:1.3">{{ m.name }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+    </div>
+    <div style="min-width:0;display:flex;flex-direction:column;gap:40px">
+      <div data-screen-label="Hero slider" style="position:relative;aspect-ratio:950/356;min-height:320px;border-radius:5px;overflow:hidden;background:rgb(242,245,247);border:1px solid rgb(228,232,236)">
+        <div style="position:absolute;top:0;right:0;bottom:0;width:50%;background:rgb(74,78,84);clip-path:polygon(22% 0,100% 0,100% 100%,0 100%)">
+          <div style="position:absolute;top:0;left:22%;width:0;height:0;border-top:90px solid rgb(205,0,0);border-right:120px solid transparent"></div>
+          <div data-comment-anchor="slider-graphic" style="position:absolute;left:14%;bottom:16px;color:rgba(255,255,255,0.4);font:500 12px/1.4 Inter,sans-serif;letter-spacing:0.04em;text-transform:uppercase">Grafika banneru</div>
+        </div>
+        <div onClick="{{ slide.open }}" style="position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:10px;padding:28px 52% 28px 40px;box-sizing:border-box;cursor:pointer;font-family:Inter,sans-serif">
+          <div style="font-size:16px;font-weight:600;color:rgb(205,0,0)">{{ slide.tag }}</div>
+          <div style="font-size:clamp(22px,2.4vw,32px);line-height:1.15;font-weight:600;color:rgb(34,38,42);letter-spacing:-0.01em;text-wrap:balance">{{ slide.title }} <span style="color:rgb(205,0,0)">{{ slide.accent }}</span></div>
+          <div style="font-size:14px;line-height:1.45;color:rgb(96,102,110);text-wrap:pretty">{{ slide.sub }}</div>
+          <button style="margin-top:6px;height:44px;padding:0 22px;border:0;border-radius:4px;background:rgb(205,0,0);color:#fff;font:500 16px Inter,sans-serif;cursor:pointer" style-hover="background:rgb(170,0,0)">Zobrazit produkt</button>
+        </div>
+        <div style="position:absolute;right:12%;top:50%;transform:translateY(-50%) rotate(45deg);z-index:1;width:90px;height:90px;border-radius:14px;background:#fff;box-shadow:0 8px 24px rgba(0,0,0,0.2);display:grid;place-items:center">
+          <div style="transform:rotate(-45deg);font:700 17px Inter,sans-serif;color:rgb(205,0,0);white-space:nowrap">{{ slide.price }}</div>
+        </div>
+        <button onClick="{{ slidePrev }}" aria-label="Předchozí" style="position:absolute;left:0;top:50%;transform:translateY(-50%);z-index:2;width:24px;height:56px;padding:0;border:0;background:transparent;color:rgb(205,0,0);display:grid;place-items:center;cursor:pointer" style-hover="color:rgb(150,0,0)"><l-icon name="chevron-left" size="24"></l-icon></button>
+        <button onClick="{{ slideNext }}" aria-label="Další" style="position:absolute;right:0;top:50%;transform:translateY(-50%);z-index:2;width:24px;height:56px;padding:0;border:0;background:transparent;color:#fff;display:grid;place-items:center;cursor:pointer" style-hover="color:rgb(205,0,0)"><l-icon name="chevron-right" size="24"></l-icon></button>
+        <div style="position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:2;display:flex;gap:6px;background:rgba(0,0,0,0.25);padding:5px 7px;border-radius:10px">
+          <sc-for list="{{ slideDots }}" as="d" hint-placeholder-count="3"><button onClick="{{ d.pick }}" aria-label="Slide" style="width:10px;height:10px;padding:0;border:0;border-radius:3px;background:{{ d.bg }};cursor:pointer"></button></sc-for>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+          <h2 style="margin:0;font-size:28px;font-weight:700;color:rgb(73,82,90)">Nejprodávanější</h2>
+          <div style="display:flex;gap:4px;align-items:center"><button onClick="{{ goAll }}" style="height:44px;border:0;border-radius:8px;background:rgb(205,0,0);color:#fff;padding:10px 16px 10px 20px;display:flex;gap:10px;align-items:center;font-family:Inter,sans-serif;font-size:14px;line-height:24px;font-weight:700;white-space:nowrap;cursor:pointer;transition:background .15s" style-hover="background:rgb(155,0,0)">Všechny produkty<l-icon name="chevron-right" size="24" style="width:24px;height:24px;display:inline-flex;flex-shrink:0"></l-icon></button></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:4px">
+          <sc-for list="{{ bestsellers }}" as="p" hint-placeholder-count="4">
+            <article style="background:#fff;border-radius:5px;display:flex;flex-direction:column;padding:12px;gap:10px;box-shadow:0 0 0 1px rgb(237,237,237);transition:box-shadow .15s" style-hover="box-shadow:0 4px 18px rgba(0,0,0,0.13)">
+              <div onClick="{{ p.open }}" style="position:relative;aspect-ratio:1/1;cursor:pointer">
+                <img src="{{ p.img }}" alt="" style="width:100%;height:100%;object-fit:contain">
+                <sc-if value="{{ p.discount }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:0;left:0;width:32px;height:32px;border-radius:50%;background:rgb(36,127,206);color:#fff;font-size:10px;font-weight:700;display:grid;place-items:center">{{ p.discount }}</span></sc-if>
+                <span title="Porovnat" style="position:absolute;top:0;right:0;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid rgb(228,232,236);box-sizing:border-box;color:rgb(73,82,90);display:grid;place-items:center" style-hover="color:rgb(205,0,0);border-color:rgb(205,0,0)"><l-icon name="scale" size="24"></l-icon></span>
+              </div>
+              <h3 onClick="{{ p.open }}" style="margin:0;font-size:13px;font-weight:700;color:rgb(73,82,90);line-height:1.35;cursor:pointer;text-wrap:pretty" style-hover="color:rgb(205,0,0)">{{ p.name }}</h3>
+              <div style="display:flex;flex-wrap:wrap;gap:4px"><sc-for list="{{ p.chips }}" as="ch" hint-placeholder-count="2"><span style="background:rgb(242,245,247);border:1px solid rgb(228,232,236);color:rgb(73,82,90);font-size:11px;font-weight:500;padding:2px 8px;border-radius:12px;white-space:nowrap">{{ ch }}</span></sc-for></div>
+              <ul style="margin:0;padding-left:16px;font-size:11px;line-height:1.5;color:rgb(126,138,149)"><sc-for list="{{ p.bullets }}" as="b" hint-placeholder-count="4"><li>{{ b }}</li></sc-for></ul>
+              <div style="margin-top:auto;display:flex;flex-direction:column;gap:4px">
+                <span style="display:flex;gap:4px;align-items:center;font-size:14px;line-height:20px;font-weight:500;color:{{ p.stockColor }}"><l-icon name="circle-check" size="16" style="width:16px;height:16px;display:inline-flex;flex-shrink:0"></l-icon>{{ p.stockLabel }}</span>
+                <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:8px">
+                  <div style="display:flex;flex-direction:column"><span style="font-size:18px;font-weight:700;color:rgb(12,12,12)">{{ p.priceMain }}</span><span style="font-size:12px;color:rgb(126,138,149)">{{ p.priceSub }}</span></div>
+                  <button onClick="{{ p.add }}" title="Do košíku" style="width:40px;height:40px;border:0;border-radius:4px;background:rgb(139,182,0);color:rgb(34,48,10);transition:background .15s;display:grid;place-items:center;cursor:pointer" style-hover="background:rgb(162,198,82)"><l-icon name="truck-loading" size="24"></l-icon></button>
+                </div>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+          <h2 style="margin:0;font-size:28px;font-weight:700;color:rgb(73,82,90)">Novinky</h2>
+          <div style="display:flex;gap:4px;align-items:center"><button onClick="{{ goAll }}" style="height:44px;border:0;border-radius:8px;background:rgb(205,0,0);color:#fff;padding:10px 16px 10px 20px;display:flex;gap:10px;align-items:center;font-family:Inter,sans-serif;font-size:14px;line-height:24px;font-weight:700;white-space:nowrap;cursor:pointer;transition:background .15s" style-hover="background:rgb(155,0,0)">Všechny produkty<l-icon name="chevron-right" size="24" style="width:24px;height:24px;display:inline-flex;flex-shrink:0"></l-icon></button></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:4px">
+          <sc-for list="{{ newest }}" as="p" hint-placeholder-count="4">
+            <article style="background:#fff;border-radius:5px;display:flex;flex-direction:column;padding:12px;gap:10px;box-shadow:0 0 0 1px rgb(237,237,237);transition:box-shadow .15s" style-hover="box-shadow:0 4px 18px rgba(0,0,0,0.13)">
+              <div onClick="{{ p.open }}" style="position:relative;aspect-ratio:1/1;cursor:pointer">
+                <img src="{{ p.img }}" alt="" style="width:100%;height:100%;object-fit:contain">
+                <sc-if value="{{ p.discount }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:0;left:0;width:32px;height:32px;border-radius:50%;background:rgb(36,127,206);color:#fff;font-size:10px;font-weight:700;display:grid;place-items:center">{{ p.discount }}</span></sc-if>
+                <span title="Porovnat" style="position:absolute;top:0;right:0;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid rgb(228,232,236);box-sizing:border-box;color:rgb(73,82,90);display:grid;place-items:center" style-hover="color:rgb(205,0,0);border-color:rgb(205,0,0)"><l-icon name="scale" size="24"></l-icon></span>
+              </div>
+              <h3 onClick="{{ p.open }}" style="margin:0;font-size:13px;font-weight:700;color:rgb(73,82,90);line-height:1.35;cursor:pointer;text-wrap:pretty" style-hover="color:rgb(205,0,0)">{{ p.name }}</h3>
+              <div style="display:flex;flex-wrap:wrap;gap:4px"><sc-for list="{{ p.chips }}" as="ch" hint-placeholder-count="2"><span style="background:rgb(242,245,247);border:1px solid rgb(228,232,236);color:rgb(73,82,90);font-size:11px;font-weight:500;padding:2px 8px;border-radius:12px;white-space:nowrap">{{ ch }}</span></sc-for></div>
+              <ul style="margin:0;padding-left:16px;font-size:11px;line-height:1.5;color:rgb(126,138,149)"><sc-for list="{{ p.bullets }}" as="b" hint-placeholder-count="4"><li>{{ b }}</li></sc-for></ul>
+              <div style="margin-top:auto;display:flex;flex-direction:column;gap:4px">
+                <span style="display:flex;gap:4px;align-items:center;font-size:14px;line-height:20px;font-weight:500;color:{{ p.stockColor }}"><l-icon name="circle-check" size="16" style="width:16px;height:16px;display:inline-flex;flex-shrink:0"></l-icon>{{ p.stockLabel }}</span>
+                <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:8px">
+                  <div style="display:flex;flex-direction:column"><span style="font-size:18px;font-weight:700;color:rgb(12,12,12)">{{ p.priceMain }}</span><span style="font-size:12px;color:rgb(126,138,149)">{{ p.priceSub }}</span></div>
+                  <button onClick="{{ p.add }}" title="Do košíku" style="width:40px;height:40px;border:0;border-radius:4px;background:rgb(139,182,0);color:rgb(34,48,10);transition:background .15s;display:grid;place-items:center;cursor:pointer" style-hover="background:rgb(162,198,82)"><l-icon name="truck-loading" size="24"></l-icon></button>
+                </div>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+</sc-if>
+
+<sc-if value="{{ isCategory }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Výpis produktů" style="padding-top:20px;display:flex;flex-direction:column;gap:20px">
+    <nav aria-label="Drobečková navigace" style="font-size:13px;font-weight:500;line-height:16px;display:flex;gap:4px;align-items:center;flex-wrap:wrap;min-height:16px"><span onClick="{{ goHome }}" title="Domů" style="cursor:pointer;display:flex;color:rgb(73,82,90)" style-hover="color:rgb(205,0,0)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg></span><span style="display:flex;color:rgb(126,138,149)"><l-icon name="chevron-right" size="16" style="width:16px;height:16px;display:inline-flex"></l-icon></span><span onClick="{{ goAll }}" style="cursor:pointer;color:rgb(205,0,0)" style-hover="text-decoration:underline">Produkty</span><sc-if value="{{ hasCatCrumb }}" hint-placeholder-val="{{ false }}"><span style="display:flex;color:rgb(126,138,149)"><l-icon name="chevron-right" size="16" style="width:16px;height:16px;display:inline-flex"></l-icon></span><span style="color:rgb(205,0,0)">{{ catTitle }}</span></sc-if></nav>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <h1 style="margin:0;font-size:28px;font-weight:700;color:rgb(73,82,90)">{{ catTitle }}</h1>
+      <p style="margin:0;font-size:14px;line-height:1.6;max-width:1000px;text-wrap:pretty">{{ catDesc }}</p>
+    </div>
+    <sc-if value="{{ showSubcats }}" hint-placeholder-val="{{ true }}">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px">
+        <sc-for list="{{ sideCats }}" as="c" hint-placeholder-count="9">
+          <div onClick="{{ c.open }}" style="background:#fff;border:1px solid rgb(228,232,236);border-radius:5px;display:flex;align-items:center;gap:14px;padding:10px 16px;cursor:pointer;min-height:52px" style-hover="border-color:rgb(168,168,168)">
+            <img src="{{ c.img }}" alt="" style="width:36px;height:36px;object-fit:contain">
+            <span style="flex:1;font-size:13px;font-weight:700;color:rgb(12,12,12)">{{ c.name }}</span>
+            <l-icon name="chevron-right" size="24"></l-icon>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+    <div style="background:#fff;border:1px solid rgb(228,232,236);border-radius:5px;padding:12px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+      <span style="font-size:13px;font-weight:700;color:rgb(12,12,12);margin-right:6px">Řadit:</span>
+      <sc-for list="{{ sorts }}" as="s" hint-placeholder-count="4">
+        <button onClick="{{ s.pick }}" style="border:0;border-bottom:2px solid {{ s.bar }};background:transparent;padding:6px 4px;font-size:13px;font-weight:700;color:{{ s.fg }};cursor:pointer">{{ s.label }}</button>
+      </sc-for>
+      <span style="flex:1"></span>
+      <label style="display:flex;gap:8px;align-items:center;font-size:13px;font-weight:500;cursor:pointer"><input type="checkbox" checked="{{ stockOnly }}" onChange="{{ toggleStock }}" style="accent-color:rgb(205,0,0);width:16px;height:16px">Pouze skladem</label>
+      <span style="font-size:13px;color:rgb(126,138,149)">{{ resultLabel }}</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:4px">
+      <sc-for list="{{ catProducts }}" as="p" hint-placeholder-count="8">
+        <article onMouseEnter="{{ p.enter }}" onMouseLeave="{{ p.leave }}" style="background:#fff;border-radius:5px;display:flex;flex-direction:column;padding:14px;gap:10px;box-shadow:0 0 0 1px rgb(237,237,237)" style-hover="box-shadow:0 4px 18px rgba(0,0,0,0.13)">
+          <div onClick="{{ p.open }}" style="position:relative;aspect-ratio:1/1;cursor:pointer">
+            <img src="{{ p.img }}" alt="" style="width:100%;height:100%;object-fit:contain">
+            <sc-if value="{{ p.discount }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:0;left:0;width:36px;height:36px;border-radius:50%;background:rgb(36,127,206);color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center">{{ p.discount }}</span></sc-if>
+            <span title="Porovnat" style="position:absolute;top:0;right:0;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid rgb(228,232,236);box-sizing:border-box;display:grid;place-items:center;cursor:pointer"><l-icon name="scale" size="24" style="color:rgb(73,82,90);width:24px;height:24px;display:inline-flex;flex-shrink:0"></l-icon></span>
+          <sc-if value="{{ p.hovered }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:0;bottom:0;display:flex;gap:6px;align-items:center"><span style="font-size:11px;font-weight:500;color:rgb(73,82,90);background:#fff;border:1px solid rgb(228,232,236);border-radius:999px;padding:3px 10px">{{ p.model }}</span></div></sc-if>
+          </div>
+          <h3 onClick="{{ p.open }}" style="margin:0;font-size:14px;font-weight:700;color:rgb(73,82,90);line-height:1.35;cursor:pointer;text-wrap:pretty">{{ p.name }}</h3>
+          <div style="display:flex;flex-wrap:wrap;gap:4px"><sc-for list="{{ p.chips }}" as="ch" hint-placeholder-count="2"><span style="background:rgb(242,245,247);font-size:11px;font-weight:500;padding:4px 8px;border-radius:3px">{{ ch }}</span></sc-for></div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.55;color:rgb(126,138,149)"><sc-for list="{{ p.bullets }}" as="b" hint-placeholder-count="4"><li>{{ b }}</li></sc-for></ul>
+          <div style="margin-top:auto;display:flex;flex-direction:column;gap:6px">
+            <span style="display:flex;gap:4px;align-items:center;font-size:14px;line-height:20px;font-weight:500;color:{{ p.stockColor }}"><l-icon name="circle-check" size="16" style="width:16px;height:16px;display:inline-flex;flex-shrink:0"></l-icon>{{ p.stockLabel }}</span>
+            <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:8px">
+              <div style="display:flex;flex-direction:column"><span style="font-size:20px;font-weight:700;color:rgb(12,12,12)">{{ p.priceMain }}</span><span style="font-size:12px;color:rgb(126,138,149)">{{ p.priceSub }}</span></div>
+              <button onClick="{{ p.add }}" title="Do košíku" style="width:40px;height:40px;border:0;border-radius:4px;background:rgb(139,182,0);color:rgb(34,48,10);transition:background .15s;display:grid;place-items:center;cursor:pointer" style-hover="background:rgb(162,198,82)"><l-icon name="truck-loading" size="24" style="width:24px;height:24px;display:inline-flex;flex-shrink:0"></l-icon></button>
+            </div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+    <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+      <div style="background:#fff;border-radius:5px;padding:40px;text-align:center">Filtru neodpovídá žádný produkt.</div>
+    </sc-if>
+    <div style="display:flex;justify-content:center;gap:6px;align-items:center;padding-top:12px">
+      <span style="width:38px;height:38px;border-radius:4px;background:rgb(49,49,49);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:700">1</span>
+      <span style="width:38px;height:38px;border-radius:4px;background:rgb(228,232,236);display:grid;place-items:center;font-size:13px;font-weight:700">2</span>
+      <span style="width:38px;height:38px;border-radius:4px;background:rgb(228,232,236);display:grid;place-items:center;font-size:13px;font-weight:700">3</span>
+      <span style="width:38px;height:38px;display:grid;place-items:center;font-size:13px">…</span>
+      <span style="width:38px;height:38px;border-radius:4px;background:rgb(228,232,236);display:grid;place-items:center;font-size:13px;font-weight:700">20</span>
+    </div>
+  </section>
+</sc-if>
+
+<sc-if value="{{ isProduct }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Detail produktu" style="padding-top:20px;display:flex;flex-direction:column;gap:20px">
+    <nav aria-label="Drobečková navigace" style="font-size:13px;font-weight:500;line-height:16px;display:flex;gap:4px;align-items:center;flex-wrap:wrap;min-height:16px"><span onClick="{{ goHome }}" title="Domů" style="cursor:pointer;display:flex;color:rgb(73,82,90)" style-hover="color:rgb(205,0,0)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg></span><span style="display:flex;color:rgb(126,138,149)"><l-icon name="chevron-right" size="16" style="width:16px;height:16px;display:inline-flex"></l-icon></span><span onClick="{{ goAll }}" style="cursor:pointer;color:rgb(205,0,0)" style-hover="text-decoration:underline">Produkty</span><span style="display:flex;color:rgb(126,138,149)"><l-icon name="chevron-right" size="16" style="width:16px;height:16px;display:inline-flex"></l-icon></span><span onClick="{{ prod.openCat }}" style="cursor:pointer;color:rgb(205,0,0)" style-hover="text-decoration:underline">{{ prod.catName }}</span></nav>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <h1 style="margin:0;font-size:28px;font-weight:700;color:rgb(73,82,90);text-wrap:balance">{{ prod.name }}</h1>
+      <div style="display:flex;gap:6px;align-items:center;font-size:13px;color:rgb(73,82,90)"><span>Hodnocení produktu: <span style="color:rgb(126,138,149)">95%</span></span><span style="color:rgb(251,191,36);letter-spacing:1px">★★★★★</span><span style="color:rgb(205,0,0)">158 x</span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <sc-if value="{{ descClamped }}" hint-placeholder-val="{{ true }}"><p style="margin:0;font-size:13px;line-height:1.6;color:rgb(73,82,90);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden">{{ prod.desc }} {{ prod.longDesc }}</p></sc-if>
+      <sc-if value="{{ descFull }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:13px;line-height:1.6;color:rgb(73,82,90);text-wrap:pretty">{{ prod.desc }} {{ prod.longDesc }}</p></sc-if>
+      <a onClick="{{ descToggle }}" style="display:flex;gap:6px;align-items:center;font-size:12px;font-weight:700;color:rgb(205,0,0);cursor:pointer;width:fit-content">{{ descToggleLabel }}<span style="width:16px;height:16px;border:1.5px solid rgb(205,0,0);border-radius:50%;box-sizing:border-box;display:inline-grid;place-items:center;font-size:13px;line-height:1;font-weight:500">+</span></a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:32px 64px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:10px;min-width:0">
+        <div style="border-radius:5px;aspect-ratio:1/1;position:relative;display:grid;place-items:center;padding:24px;box-sizing:border-box">
+          <img src="{{ activeImg }}" alt="" style="max-width:100%;max-height:100%;object-fit:contain;mix-blend-mode:multiply">
+          <sc-if value="{{ prod.discount }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:16px;left:8px;width:44px;height:44px;border-radius:50%;background:rgb(36,127,206);color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center">{{ prod.discount }}</span></sc-if>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <button onClick="{{ imgPrev }}" aria-label="Předchozí" style="width:24px;height:56px;border:0;background:transparent;color:rgb(73,82,90);cursor:pointer;display:grid;place-items:center;flex-shrink:0;padding:0" style-hover="color:rgb(205,0,0)"><l-icon name="chevron-left" size="24" style="width:24px;height:24px;display:inline-flex;flex-shrink:0"></l-icon></button>
+          <div style="flex:1;min-width:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px">
+            <div style="background:#fff;border-radius:4px;aspect-ratio:1/1;border:1px solid rgb(228,232,236);display:grid;place-items:center;color:rgb(205,0,0);cursor:pointer;box-sizing:border-box"><l-icon name="youtube" size="24" style="width:28px;height:28px;display:inline-flex;flex-shrink:0"></l-icon></div>
+            <sc-for list="{{ thumbs }}" as="t" hint-placeholder-count="5">
+              <div onClick="{{ t.pick }}" style="background:#fff;border-radius:4px;aspect-ratio:1/1;border:1px solid {{ t.border }};cursor:pointer;display:grid;place-items:center;padding:4px;box-sizing:border-box"><img src="{{ t.src }}" alt="" style="max-width:100%;max-height:100%;object-fit:contain"></div>
+            </sc-for>
+          </div>
+          <button onClick="{{ imgNext }}" aria-label="Další" style="width:24px;height:56px;border:0;background:transparent;color:rgb(73,82,90);cursor:pointer;display:grid;place-items:center;flex-shrink:0;padding:0" style-hover="color:rgb(205,0,0)"><l-icon name="chevron-right" size="24" style="width:24px;height:24px;display:inline-flex;flex-shrink:0"></l-icon></button>
+        </div>
+        <div data-screen-label="Video" style="position:relative;aspect-ratio:16/9;border-radius:5px;overflow:hidden;background:rgb(49,49,49);display:flex;flex-direction:column;justify-content:space-between;padding:16px;box-sizing:border-box;color:#fff">
+          <div style="display:flex;gap:10px;align-items:center"><img src="img/logo-a.png" alt="" style="height:22px;filter:brightness(0) invert(1)"><div style="display:flex;flex-direction:column"><span style="font-size:17px;font-weight:700">Standardní paletové vozíky LUGERO</span><span style="font-size:12px">LUGERO (CZ)</span></div></div>
+          <button aria-label="Přehrát" style="align-self:center;width:68px;height:48px;border:0;border-radius:12px;background:rgb(255,0,0);color:#fff;display:grid;place-items:center;cursor:pointer;font-size:22px">▶</button>
+          <span style="align-self:flex-end;background:rgba(0,0,0,0.6);border-radius:20px;padding:8px 16px;font-size:14px;font-weight:600;display:flex;gap:6px;align-items:center">Sledovat na <l-icon name="youtube" size="24" style="width:20px;height:20px;display:inline-flex;flex-shrink:0"></l-icon> YouTube</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:22px;min-width:0">
+        <div style="display:flex;flex-direction:column;gap:10px"><h3 style="margin:0;font-size:18px;font-weight:600;color:rgb(73,82,90)">Řiditelná kola</h3><div style="display:flex;gap:18px;flex-wrap:wrap"><sc-for list="{{ wheelsA }}" as="w" hint-placeholder-count="3"><label onClick="{{ w.pick }}" style="display:flex;gap:6px;align-items:center;cursor:pointer;font-size:14px;color:rgb(73,82,90)"><span style="width:18px;height:18px;border-radius:50%;box-sizing:border-box;border:{{ w.ring }};background:#fff;flex-shrink:0"></span>{{ w.l }}</label></sc-for></div></div>
+        <div style="display:flex;flex-direction:column;gap:10px"><h3 style="margin:0;font-size:18px;font-weight:600;color:rgb(73,82,90)">Vydlicová kola</h3><div style="display:flex;gap:18px;flex-wrap:wrap"><sc-for list="{{ wheelsB }}" as="w" hint-placeholder-count="3"><label onClick="{{ w.pick }}" style="display:flex;gap:6px;align-items:center;cursor:pointer;font-size:14px;color:rgb(73,82,90)"><span style="width:18px;height:18px;border-radius:50%;box-sizing:border-box;border:{{ w.ring }};background:#fff;flex-shrink:0"></span>{{ w.l }}</label></sc-for></div></div>
+        <div style="background:#fff;border-radius:5px;padding:20px 24px;display:flex;flex-direction:column;gap:6px;border:1px solid rgb(228,232,236);position:relative">
+          <div style="position:absolute;top:20px;right:24px;border:1px solid rgb(228,232,236);border-radius:4px;padding:6px 10px;display:flex;flex-direction:column;align-items:flex-end;gap:2px"><span style="display:flex;gap:4px;align-items:center;font-size:12px;font-weight:700;color:rgb(12,12,12)"><span style="width:14px;height:14px;background:linear-gradient(rgb(205,0,0) 50%,rgb(12,12,12) 50%)"></span>ESSOX</span><span style="font-size:14px;color:rgb(205,0,0)">{{ essoxPrice }}</span></div>
+          <sc-if value="{{ prod.discount }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px"><span style="text-decoration:line-through;color:rgb(205,0,0)">{{ prod.oldPrice }}</span> <span style="color:rgb(36,127,206)">{{ prod.discount }}</span></span></sc-if>
+          <div style="display:flex;gap:6px;align-items:baseline;flex-wrap:wrap"><span style="font-size:28px;font-weight:700;color:rgb(73,82,90)">{{ prod.priceMain }}</span><span style="font-size:13px;color:rgb(126,138,149)">{{ prod.priceMainNote }}</span></div>
+          <span style="font-size:13px;color:rgb(73,82,90)">{{ prod.priceSub }}</span>
+          <span style="display:flex;gap:4px;align-items:center;font-size:14px;line-height:20px;font-weight:500;color:{{ prod.stockColor }}"><l-icon name="circle-check" size="16" style="width:16px;height:16px;display:inline-flex;flex-shrink:0"></l-icon>{{ prod.stockLabel }}</span>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:6px">
+            <div style="display:flex;border:1px solid rgb(209,216,222);border-radius:4px;overflow:hidden;background:#fff;height:44px">
+              <button onClick="{{ decQty }}" aria-label="Méně" style="width:44px;border:0;background:#fff;color:rgb(73,82,90);cursor:pointer;display:grid;place-items:center" style-hover="color:rgb(205,0,0)"><l-icon name="minus" size="24" style="width:18px;height:18px;display:inline-flex;flex-shrink:0"></l-icon></button>
+              <span style="width:80px;display:grid;place-items:center;font-size:15px;color:rgb(73,82,90);border-left:1px solid rgb(228,232,236);border-right:1px solid rgb(228,232,236)">{{ qtyLabel }}</span>
+              <button onClick="{{ incQty }}" aria-label="Více" style="width:44px;border:0;background:#fff;color:rgb(73,82,90);cursor:pointer;display:grid;place-items:center" style-hover="color:rgb(205,0,0)"><l-icon name="plus" size="24" style="width:18px;height:18px;display:inline-flex;flex-shrink:0"></l-icon></button>
+            </div>
+            <button onClick="{{ addDetail }}" style="height:44px;border:0;border-radius:4px;background:rgb(139,182,0);color:rgb(34,48,10);transition:background .15s;padding:0 22px;font-size:14px;font-weight:700;cursor:pointer;display:flex;gap:8px;align-items:center" style-hover="background:rgb(162,198,82)"><l-icon name="truck-loading" size="24" style="width:24px;height:24px;display:inline-flex;flex-shrink:0"></l-icon>Koupit</button>
+            <span style="flex:1"></span>
+            <button style="height:44px;border:1px solid rgb(209,216,222);border-radius:4px;background:rgb(237,237,237);color:rgb(73,82,90);padding:0 18px;font-size:13px;font-weight:700;cursor:pointer;display:flex;gap:8px;align-items:center" style-hover="background:rgb(228,232,236)"><l-icon name="scale" size="24" style="width:20px;height:20px;display:inline-flex;flex-shrink:0"></l-icon>Porovnat</button>
+          </div>
+          <sc-if value="{{ justAdded }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;background:rgb(233,247,238);border-radius:4px;padding:12px 14px;font-size:14px;margin-top:6px"><span style="color:rgb(91,121,0);font-weight:700">Produkt byl přidán do košíku.</span><button onClick="{{ goCart }}" style="display:inline-flex;align-items:center;gap:6px;border:0;background:none;font-weight:700;color:rgb(205,0,0);cursor:pointer;font-size:14px">Přejít do košíku <l-icon name="chevron-right" size="24" style="width:20px;height:20px;display:inline-flex;flex-shrink:0"></l-icon></button></div>
+          </sc-if>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:13px;color:rgb(73,82,90)">
+          <h2 style="margin:0;font-size:18px;font-weight:600;color:rgb(73,82,90)">Informace o dostupnosti a dopravě</h2>
+          <span>Pro bližší informaci o dostupnosti nás prosím kontaktujte.</span>
+          <div style="display:flex;justify-content:space-between;gap:12px;align-items:center"><span style="display:flex;gap:8px;align-items:center"><span style="color:rgb(205,0,0);display:inline-flex"><l-icon name="map-pin" size="24" style="width:18px;height:18px;display:inline-flex;flex-shrink:0"></l-icon></span>Osobně na prodejně: <span style="color:rgb(91,121,0);margin-left:12px">Praha</span></span><b style="color:rgb(12,12,12)">50 Kč</b></div>
+          <div style="display:flex;justify-content:space-between;gap:12px;align-items:center"><span style="display:flex;gap:8px;align-items:center"><span style="color:rgb(205,0,0);display:inline-flex"><l-icon name="truck-delivery" size="24" style="width:18px;height:18px;display:inline-flex;flex-shrink:0"></l-icon></span>Přepravní společností: <span style="color:rgb(91,121,0)">2–3 pracovní dny</span></span><b style="color:rgb(12,12,12)">760 Kč</b></div>
+        </div>
+        <div style="display:flex;flex-direction:column;font-size:13px;color:rgb(73,82,90)">
+          <h2 style="margin:0 0 8px;font-size:18px;font-weight:600;color:rgb(73,82,90)">Parametry</h2>
+          <sc-for list="{{ specsShown }}" as="s" hint-placeholder-count="3">
+            <div style="display:grid;grid-template-columns:1fr 1fr;padding:9px 0;border-bottom:1px solid rgb(228,232,236)"><b style="font-weight:600">{{ s.k }}</b><span>{{ s.v }}</span></div>
+          </sc-for>
+          <a onClick="{{ paramsToggle }}" style="display:flex;gap:6px;align-items:center;font-size:12px;font-weight:700;color:rgb(205,0,0);cursor:pointer;width:fit-content;margin-top:10px">{{ paramsToggleLabel }}<span style="width:16px;height:16px;border:1.5px solid rgb(205,0,0);border-radius:50%;box-sizing:border-box;display:inline-grid;place-items:center;font-size:13px;line-height:1;font-weight:500">+</span></a>
+        </div>
+        <div style="background:#fff;border-radius:5px;padding:12px 12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:4px 16px;font-size:12px;color:rgb(126,138,149)">
+          <span>Kód: <span style="color:rgb(205,0,0);margin-left:24px">{{ prod.code }}</span></span>
+          <span>EAN: <span style="color:rgb(73,82,90);margin-left:24px">987156816881322</span></span>
+          <span>Výrobce: <span style="color:rgb(205,0,0)">Výrobce 01</span></span>
+          <span>Záruka: <span style="color:rgb(73,82,90);margin-left:10px">2 roky</span></span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 16px">
+          <a style="display:flex;gap:6px;align-items:center;font-size:13px;font-weight:500;color:rgb(205,0,0);cursor:pointer;text-decoration:none" style-hover="text-decoration:underline"><l-icon name="printer" size="24" style="width:18px;height:18px;display:inline-flex;flex-shrink:0"></l-icon>Tisk</a><a style="display:flex;gap:6px;align-items:center;font-size:13px;font-weight:500;color:rgb(205,0,0);cursor:pointer;text-decoration:none" style-hover="text-decoration:underline"><l-icon name="circle-help" size="24" style="width:18px;height:18px;display:inline-flex;flex-shrink:0"></l-icon>Potřebuji poradit</a><a style="display:flex;gap:6px;align-items:center;font-size:13px;font-weight:500;color:rgb(205,0,0);cursor:pointer;text-decoration:none" style-hover="text-decoration:underline"><l-icon name="bell" size="24" style="width:18px;height:18px;display:inline-flex;flex-shrink:0"></l-icon>Hlídat cenu</a><a style="display:flex;gap:6px;align-items:center;font-size:13px;font-weight:500;color:rgb(205,0,0);cursor:pointer;text-decoration:none" style-hover="text-decoration:underline"><l-icon name="scale" size="24" style="width:18px;height:18px;display:inline-flex;flex-shrink:0"></l-icon>Porovnat</a><a style="display:flex;gap:6px;align-items:center;font-size:13px;font-weight:500;color:rgb(205,0,0);cursor:pointer;text-decoration:none" style-hover="text-decoration:underline"><l-icon name="mail" size="24" style="width:18px;height:18px;display:inline-flex;flex-shrink:0"></l-icon>Doporučit známému</a><a style="display:flex;gap:6px;align-items:center;font-size:13px;font-weight:500;color:rgb(205,0,0);cursor:pointer;text-decoration:none" style-hover="text-decoration:underline"><l-icon name="heart" size="24" style="width:18px;height:18px;display:inline-flex;flex-shrink:0"></l-icon>Přidat k oblíbeným</a>
+        </div>
+      </div>
+    </div>
+
+    <div data-screen-label="Hodnocení" style="background:#fff;border-radius:5px;padding:20px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;align-items:center;font-size:13px;color:rgb(73,82,90);margin-top:12px">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center"><span>Průměrné<br>hodnocení</span><span style="font-size:28px;font-weight:700">95 %</span><span style="color:rgb(251,191,36);letter-spacing:1px">★★★★★</span><span>Hodnoceno 8x</span></div>
+      <div style="display:flex;flex-direction:column;gap:4px;justify-self:center"><div style="display:grid;grid-template-columns:90px minmax(60px,130px) 30px;gap:12px;align-items:center"><span style="letter-spacing:1px;font-size:13px"><span style="color:rgb(251,191,36)">★★★★★</span><span style="color:rgb(228,232,236)"></span></span><span style="height:6px;border-radius:3px;background:rgb(251,191,36);width:100%;min-width:24px"></span><span>6x</span></div><div style="display:grid;grid-template-columns:90px minmax(60px,130px) 30px;gap:12px;align-items:center"><span style="letter-spacing:1px;font-size:13px"><span style="color:rgb(251,191,36)">★★★★</span><span style="color:rgb(228,232,236)">★</span></span><span style="height:6px;border-radius:3px;background:rgb(251,191,36);width:40%;min-width:24px"></span><span>2x</span></div><div style="display:grid;grid-template-columns:90px minmax(60px,130px) 30px;gap:12px;align-items:center"><span style="letter-spacing:1px;font-size:13px"><span style="color:rgb(251,191,36)">★★★</span><span style="color:rgb(228,232,236)">★★</span></span><span style="height:6px;border-radius:3px;background:rgb(251,191,36);width:20%;min-width:24px"></span><span>1x</span></div><div style="display:grid;grid-template-columns:90px minmax(60px,130px) 30px;gap:12px;align-items:center"><span style="letter-spacing:1px;font-size:13px"><span style="color:rgb(251,191,36)">★★</span><span style="color:rgb(228,232,236)">★★★</span></span><span style="height:6px;border-radius:3px;background:rgb(251,191,36);width:20%;min-width:24px"></span><span>1x</span></div><div style="display:grid;grid-template-columns:90px minmax(60px,130px) 30px;gap:12px;align-items:center"><span style="letter-spacing:1px;font-size:13px"><span style="color:rgb(251,191,36)">★</span><span style="color:rgb(228,232,236)">★★★★</span></span><span style="height:6px;border-radius:3px;background:rgb(251,191,36);width:0%;min-width:0"></span><span>0x</span></div></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+        <button style="height:40px;border:0;border-radius:4px;background:rgb(205,0,0);color:#fff;padding:0 18px;font:700 13px Inter,sans-serif;cursor:pointer;display:flex;gap:8px;align-items:center" style-hover="background:rgb(160,0,0)">Přidat hodnocení <l-icon name="plus" size="24" style="width:18px;height:18px;display:inline-flex;flex-shrink:0"></l-icon></button>
+        <a style="color:rgb(205,0,0);cursor:pointer;font-size:13px" style-hover="text-decoration:underline">Zobrazit recenze (8)</a>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:20px">
+      <sc-for list="{{ dtabs }}" as="t" hint-placeholder-count="2">
+        <button onClick="{{ t.pick }}" style="border:1px solid rgb(209,216,222);background:{{ t.bg }};color:{{ t.fg }};height:40px;padding:0 16px;border-radius:4px;font:700 12px Inter,sans-serif;cursor:pointer;display:flex;gap:8px;align-items:center"><l-icon name="{{ t.icon }}" size="24" style="width:20px;height:20px;display:inline-flex"></l-icon>{{ t.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:18px;font-size:13px;line-height:1.75;color:rgb(73,82,90)">
+      <sc-if value="{{ tabPopis }}" hint-placeholder-val="{{ true }}">
+        <h2 style="margin:0;font-size:24px;font-weight:700;line-height:1.3;color:rgb(73,82,90)">{{ prod.name }}</h2>
+        <p style="margin:0;text-wrap:pretty">{{ prod.longDesc }}</p>
+        <div><span>Hlavní charakteristika:</span><ul style="margin:0;padding-left:22px"><sc-for list="{{ prod.bullets }}" as="b" hint-placeholder-count="4"><li>{{ b }}</li></sc-for></ul></div>
+        <div><b style="font-weight:600;display:block">Dílenské provedení</b>roboticky vyráběná konstrukce | odolné tělo vozíku | zapouzdřená kuličková ložiska | táhla z tuhé oceli</div>
+        <div><b style="font-weight:600;display:block">Ovladatelnost</b>ergonomicky tvarovaná oj | std osazení nylonovými koly | citlivé a plynulé spouštění | velký rádius pro skvělé manévrování | snadné pumpování při zdvihu</div>
+        <div><b style="font-weight:600;display:block">Dlouhá životnost</b>dostatečný počet mazacích bodů | silné práškové lakování | pojistný ventil proti přetížení | robustní hydraulická jednotka</div>
+        <div style="display:flex;flex-direction:column;gap:18px;margin-top:12px"><span>Popis vybraných součástí:</span><span>Řiditelná kola v provedení Nylon<br>- tvrdá a odolná proti oděru i chemikáliím</span><span>Vidlicová kolečka v provedení tandem<br>- zajišťují hladký a stabilní chod</span><span>Ergonomicky tvarovaná rukojeť<br>- se třemi ovládacími polohami</span><span>Kvalitní hydraulická jednotka<br>- zajistí snadný zdvih</span></div>
+      </sc-if>
+      <sc-if value="{{ tabParams }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:640px">
+          <sc-for list="{{ prod.specs }}" as="s" hint-placeholder-count="5">
+            <div style="display:grid;grid-template-columns:1fr 1fr;padding:9px 0;border-bottom:1px solid rgb(228,232,236)"><b style="font-weight:600">{{ s.k }}</b><span>{{ s.v }}</span></div>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:18px;margin-top:40px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+        <h2 style="margin:0;font-size:28px;font-weight:700;color:rgb(73,82,90)">Podobné produkty</h2>
+        <div style="display:flex;gap:4px;align-items:center"><button onClick="{{ goAll }}" style="height:44px;border:0;border-radius:8px;background:rgb(205,0,0);color:#fff;padding:10px 16px 10px 20px;display:flex;gap:10px;align-items:center;font-family:Inter,sans-serif;font-size:14px;line-height:24px;font-weight:700;white-space:nowrap;cursor:pointer;transition:background .15s" style-hover="background:rgb(155,0,0)">Všechny produkty<l-icon name="chevron-right" size="24" style="width:24px;height:24px;display:inline-flex;flex-shrink:0"></l-icon></button></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:4px">
+        <sc-for list="{{ similar }}" as="p" hint-placeholder-count="5">
+            <article style="background:#fff;border-radius:5px;display:flex;flex-direction:column;padding:12px;gap:10px;box-shadow:0 0 0 1px rgb(237,237,237);transition:box-shadow .15s" style-hover="box-shadow:0 4px 18px rgba(0,0,0,0.13)">
+              <div onClick="{{ p.open }}" style="position:relative;aspect-ratio:1/1;cursor:pointer">
+                <img src="{{ p.img }}" alt="" style="width:100%;height:100%;object-fit:contain">
+                <sc-if value="{{ p.discount }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:0;left:0;width:32px;height:32px;border-radius:50%;background:rgb(36,127,206);color:#fff;font-size:10px;font-weight:700;display:grid;place-items:center">{{ p.discount }}</span></sc-if>
+                <span title="Porovnat" style="position:absolute;top:0;right:0;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid rgb(228,232,236);box-sizing:border-box;color:rgb(73,82,90);display:grid;place-items:center" style-hover="color:rgb(205,0,0);border-color:rgb(205,0,0)"><l-icon name="scale" size="24"></l-icon></span>
+              </div>
+              <h3 onClick="{{ p.open }}" style="margin:0;font-size:13px;font-weight:700;color:rgb(73,82,90);line-height:1.35;cursor:pointer;text-wrap:pretty" style-hover="color:rgb(205,0,0)">{{ p.name }}</h3>
+              <div style="display:flex;flex-wrap:wrap;gap:4px"><sc-for list="{{ p.chips }}" as="ch" hint-placeholder-count="2"><span style="background:rgb(242,245,247);border:1px solid rgb(228,232,236);color:rgb(73,82,90);font-size:11px;font-weight:500;padding:2px 8px;border-radius:12px;white-space:nowrap">{{ ch }}</span></sc-for></div>
+              <ul style="margin:0;padding-left:16px;font-size:11px;line-height:1.5;color:rgb(126,138,149)"><sc-for list="{{ p.bullets }}" as="b" hint-placeholder-count="4"><li>{{ b }}</li></sc-for></ul>
+              <div style="margin-top:auto;display:flex;flex-direction:column;gap:4px">
+                <span style="display:flex;gap:4px;align-items:center;font-size:14px;line-height:20px;font-weight:500;color:{{ p.stockColor }}"><l-icon name="circle-check" size="16" style="width:16px;height:16px;display:inline-flex;flex-shrink:0"></l-icon>{{ p.stockLabel }}</span>
+                <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:8px">
+                  <div style="display:flex;flex-direction:column"><span style="font-size:18px;font-weight:700;color:rgb(12,12,12)">{{ p.priceMain }}</span><span style="font-size:12px;color:rgb(126,138,149)">{{ p.priceSub }}</span></div>
+                  <button onClick="{{ p.add }}" title="Do košíku" style="width:40px;height:40px;border:0;border-radius:4px;background:rgb(139,182,0);color:rgb(34,48,10);transition:background .15s;display:grid;place-items:center;cursor:pointer" style-hover="background:rgb(162,198,82)"><l-icon name="truck-loading" size="24"></l-icon></button>
+                </div>
+              </div>
+            </article>
+          </sc-for>
+      </div>
+    </div>
+  </section>
+</sc-if>
+
+<sc-if value="{{ isCheckoutFlow }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Košík" style="padding-top:28px;display:flex;flex-direction:column;gap:28px">
+    <h1 style="margin:0;font-size:40px;font-weight:800;color:rgb(73,82,90);letter-spacing:-0.01em">Váš nákupní košík</h1>
+    <div style="position:relative;display:grid;grid-template-columns:repeat(3,1fr)">
+      <div style="position:absolute;left:5%;right:5%;top:62px;height:4px;background:rgb(228,232,236)"></div>
+      <div style="position:absolute;left:5%;top:62px;height:4px;background:rgb(12,12,12);width:{{ stepBar }}"></div>
+      <sc-for list="{{ steps }}" as="st" hint-placeholder-count="3">
+        <div onClick="{{ st.go }}" style="position:relative;display:flex;flex-direction:column;align-items:{{ st.align }};gap:12px;cursor:pointer">
+          <span style="font-size:18px;font-weight:700;color:rgb(73,82,90)">{{ st.label }}</span>
+          <span style="width:40px;height:40px;border-radius:50%;background:{{ st.bg }};color:{{ st.fg }};display:grid;place-items:center;font-size:18px;font-weight:700;margin:0 30px">{{ st.n }}</span>
+        </div>
+      </sc-for>
+    </div>
+
+    <sc-if value="{{ isCart }}" hint-placeholder-val="{{ false }}">
+      <h2 style="margin:0;font-size:28px;font-weight:700;color:rgb(73,82,90)">Obsah košíku</h2>
+      <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#fff;border-radius:5px;padding:48px;display:flex;flex-direction:column;gap:16px;align-items:center"><span style="font-size:16px">Košík je prázdný.</span><button onClick="{{ goAll }}" style="border:0;border-radius:4px;background:rgb(205,0,0);color:#fff;padding:13px 22px;font-weight:700;cursor:pointer">Pokračovat v nákupu</button></div>
+      </sc-if>
+      <sc-if value="{{ cartHas }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) 110px 170px 110px 110px 32px;gap:14px;padding:0 20px 0 130px;font-size:13px;color:rgb(126,138,149)"><span>Název</span><span>Dostupnost</span><span>Množství</span><span>Cena s DPH (m.j.)</span><span>Cena celkem s DPH</span><span></span></div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:-18px">
+          <sc-for list="{{ cartLines }}" as="l" hint-placeholder-count="3">
+            <div style="background:#fff;border:1px solid rgb(228,232,236);border-radius:5px;display:grid;grid-template-columns:90px minmax(0,1fr) 110px 170px 110px 110px 32px;gap:14px;align-items:center;padding:12px 20px">
+              <img onClick="{{ l.open }}" src="{{ l.img }}" alt="" style="width:90px;height:60px;object-fit:contain;cursor:pointer">
+              <div style="display:flex;flex-direction:column;gap:4px;min-width:0"><span onClick="{{ l.open }}" style="font-size:15px;font-weight:700;color:rgb(73,82,90);cursor:pointer">{{ l.name }}</span><span style="font-size:12px">Kód: {{ l.code }}</span></div>
+              <span style="display:flex;gap:4px;align-items:center;font-size:14px;line-height:20px;font-weight:500;color:{{ l.stockColor }}"><l-icon name="circle-check" size="16" style="width:16px;height:16px;display:inline-flex;flex-shrink:0"></l-icon>{{ l.stockLabel }}</span>
+              <div style="display:flex;border:1px solid rgb(209,216,222);border-radius:4px;overflow:hidden;width:fit-content">
+                <button onClick="{{ l.dec }}" style="width:36px;height:36px;border:0;background:#fff;font-size:16px;color:rgb(36,127,206);cursor:pointer">−</button>
+                <span style="width:58px;display:grid;place-items:center;font-size:14px;border-left:1px solid rgb(228,232,236);border-right:1px solid rgb(228,232,236)">{{ l.qtyLabel }}</span>
+                <button onClick="{{ l.inc }}" style="width:36px;height:36px;border:0;background:#fff;font-size:16px;color:rgb(36,127,206);cursor:pointer">+</button>
+              </div>
+              <span style="font-size:14px">{{ l.unit }}</span>
+              <span style="font-size:15px;font-weight:700;color:rgb(12,12,12)">{{ l.total }}</span>
+              <button onClick="{{ l.remove }}" title="Odebrat" style="border:0;background:none;cursor:pointer;padding:0;display:grid;place-items:center"><l-icon name="trash-2" size="24" style="color:rgb(73,82,90);width:24px;height:24px;display:inline-flex;flex-shrink:0"></l-icon></button>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px;align-items:start">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <h2 style="margin:0 0 4px;font-size:20px;font-weight:700;color:rgb(73,82,90)">Doprava</h2>
+            <sc-for list="{{ shipOpts }}" as="o" hint-placeholder-count="3">
+              <label onClick="{{ o.pick }}" style="background:#fff;border-radius:5px;display:flex;gap:12px;align-items:center;padding:14px 16px;border:{{ o.border }};cursor:pointer"><input type="radio" checked="{{ o.checked }}" readOnly="{{ true }}" style="accent-color:rgb(205,0,0);width:18px;height:18px"><span style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-weight:700;font-size:14px;color:rgb(12,12,12)">{{ o.label }}</span><span style="font-size:12px;color:rgb(126,138,149)">{{ o.note }}</span></span><span style="font-weight:700;font-size:14px;color:rgb(12,12,12)">{{ o.price }}</span></label>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <h2 style="margin:0 0 4px;font-size:20px;font-weight:700;color:rgb(73,82,90)">Platba</h2>
+            <sc-for list="{{ payOpts }}" as="o" hint-placeholder-count="3">
+              <label onClick="{{ o.pick }}" style="background:#fff;border-radius:5px;display:flex;gap:12px;align-items:center;padding:14px 16px;border:{{ o.border }};cursor:pointer"><input type="radio" checked="{{ o.checked }}" readOnly="{{ true }}" style="accent-color:rgb(205,0,0);width:18px;height:18px"><span style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-weight:700;font-size:14px;color:rgb(12,12,12)">{{ o.label }}</span><span style="font-size:12px;color:rgb(126,138,149)">{{ o.note }}</span></span><span style="font-weight:700;font-size:14px;color:rgb(12,12,12)">{{ o.price }}</span></label>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="background:#fff;border-radius:5px;border:1px solid rgb(228,232,236);padding:20px 24px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap">
+          <button onClick="{{ goAll }}" style="display:inline-flex;align-items:center;gap:6px;border:1px solid rgb(209,216,222);background:rgb(237,237,237);color:rgb(73,82,90);padding:13px 20px;border-radius:4px;font-size:14px;font-weight:700;cursor:pointer"><span style="display:inline-flex;vertical-align:middle"><l-icon name="chevron-left" size="24"></l-icon></span> Zpět do obchodu</button>
+          <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap">
+            <div style="display:flex;flex-direction:column;align-items:flex-end"><span style="font-size:14px">Celkem s DPH: <span style="font-size:24px;font-weight:800;color:rgb(12,12,12)">{{ grandTotal }}</span></span><span style="font-size:13px;color:rgb(126,138,149)">bez DPH: {{ grandNoVat }}</span></div>
+            <button onClick="{{ goStep2 }}" style="display:inline-flex;align-items:center;gap:6px;border:0;border-radius:4px;background:rgb(139,182,0);color:rgb(34,48,10);transition:background .15s;padding:15px 26px;font-size:15px;font-weight:700;cursor:pointer" style-hover="background:rgb(162,198,82)">Pokračovat <span style="display:inline-flex;vertical-align:middle"><l-icon name="chevron-right" size="24"></l-icon></span></button>
+          </div>
+        </div>
+      </sc-if>
+    </sc-if>
+
+    <sc-if value="{{ isStep2 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid;grid-template-columns:minmax(0,1.8fr) minmax(300px,1fr);gap:28px;align-items:start">
+        <div style="display:flex;flex-direction:column;gap:20px;min-width:0">
+          <h2 style="margin:0;font-size:28px;font-weight:800;color:rgb(73,82,90);text-transform:uppercase">Kontaktní údaje</h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
+            <div style="background:rgb(245,245,245);border:1px solid rgb(206,206,206);border-radius:5px;padding:24px;display:flex;flex-direction:column;gap:14px">
+              <span style="font-size:18px;font-weight:800;color:rgb(73,82,90);text-transform:uppercase">Jsem nový zákazník</span>
+              <button style="align-self:flex-start;border:1px solid rgb(206,206,206);background:#fff;color:rgb(73,82,90);padding:12px 18px;border-radius:4px;font-size:14px;font-weight:700;cursor:pointer">Vytvořit nový účet</button>
+            </div>
+            <div style="background:rgb(245,245,245);border:1px solid rgb(206,206,206);border-radius:5px;padding:24px;display:flex;flex-direction:column;gap:14px">
+              <span style="font-size:18px;font-weight:800;color:rgb(73,82,90);text-transform:uppercase">Mám zde svůj účet</span>
+              <button onClick="{{ goAccount }}" style="display:inline-flex;align-items:center;gap:6px;align-self:flex-start;border:0;background:rgb(205,0,0);color:#fff;padding:13px 20px;border-radius:4px;font-size:14px;font-weight:700;cursor:pointer">Přihlásit se <span style="display:inline-flex;vertical-align:middle"><l-icon name="chevron-right" size="24"></l-icon></span></button>
+            </div>
+          </div>
+          <h2 style="margin:8px 0 0;font-size:28px;font-weight:800;color:rgb(73,82,90);text-transform:uppercase">Fakturační údaje</h2>
+          <label style="background:rgb(245,245,245);border:1px solid rgb(206,206,206);border-radius:5px;padding:22px 24px;display:flex;gap:10px;align-items:center;font-size:15px;cursor:pointer"><input type="checkbox" checked="{{ company }}" onChange="{{ toggleCompany }}" style="accent-color:rgb(205,0,0);width:18px;height:18px">Nákup na firmu</label>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px 24px">
+            <sc-if value="{{ company }}" hint-placeholder-val="{{ false }}">
+              <label style="display:grid;grid-template-columns:90px 1fr;gap:12px;align-items:center;font-size:14px;color:rgb(126,138,149);text-align:right">Firma<input style="border:1px solid rgb(209,216,222);border-radius:4px;padding:12px;font-size:15px;background:#fff"></label>
+              <label style="display:grid;grid-template-columns:90px 1fr;gap:12px;align-items:center;font-size:14px;color:rgb(126,138,149);text-align:right">IČO / DIČ<input style="border:1px solid rgb(209,216,222);border-radius:4px;padding:12px;font-size:15px;background:#fff"></label>
+            </sc-if>
+            <label style="display:grid;grid-template-columns:90px 1fr;gap:12px;align-items:center;font-size:14px;color:rgb(126,138,149);text-align:right">Jméno<input style="border:1px solid rgb(209,216,222);border-radius:4px;padding:12px;font-size:15px;background:#fff"></label>
+            <label style="display:grid;grid-template-columns:90px 1fr;gap:12px;align-items:center;font-size:14px;color:rgb(126,138,149);text-align:right">Příjmení<input style="border:1px solid rgb(209,216,222);border-radius:4px;padding:12px;font-size:15px;background:#fff"></label>
+            <label style="display:grid;grid-template-columns:90px 1fr;gap:12px;align-items:center;font-size:14px;color:rgb(126,138,149);text-align:right">Email<input type="email" style="border:1px solid rgb(209,216,222);border-radius:4px;padding:12px;font-size:15px;background:#fff"></label>
+            <label style="display:grid;grid-template-columns:90px 1fr;gap:12px;align-items:center;font-size:14px;color:rgb(126,138,149);text-align:right">Telefon<input placeholder="+420 777 555 666" style="border:1px solid rgb(209,216,222);border-radius:4px;padding:12px;font-size:15px;background:#fff"></label>
+            <label style="display:grid;grid-template-columns:90px 1fr;gap:12px;align-items:center;font-size:14px;color:rgb(126,138,149);text-align:right">Ulice, č.p.<input style="border:1px solid rgb(209,216,222);border-radius:4px;padding:12px;font-size:15px;background:#fff"></label>
+            <label style="display:grid;grid-template-columns:90px 1fr;gap:12px;align-items:center;font-size:14px;color:rgb(126,138,149);text-align:right">PSČ<input style="border:1px solid rgb(209,216,222);border-radius:4px;padding:12px;font-size:15px;background:#fff"></label>
+            <label style="display:grid;grid-template-columns:90px 1fr;gap:12px;align-items:center;font-size:14px;color:rgb(126,138,149);text-align:right">Město<input style="border:1px solid rgb(209,216,222);border-radius:4px;padding:12px;font-size:15px;background:#fff"></label>
+            <label style="display:grid;grid-template-columns:90px 1fr;gap:12px;align-items:center;font-size:14px;color:rgb(126,138,149);text-align:right">Země<select style="border:1px solid rgb(209,216,222);border-radius:4px;padding:12px;font-size:15px;background:rgb(228,232,236)"><option>Česká republika</option><option>Slovensko</option></select></label>
+          </div>
+          <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+            <button onClick="{{ goCart }}" style="display:inline-flex;align-items:center;gap:6px;border:1px solid rgb(209,216,222);background:rgb(237,237,237);color:rgb(73,82,90);padding:13px 20px;border-radius:4px;font-size:14px;font-weight:700;cursor:pointer"><span style="display:inline-flex;vertical-align:middle"><l-icon name="chevron-left" size="24"></l-icon></span> Zpět</button>
+            <button onClick="{{ goStep3 }}" style="display:inline-flex;align-items:center;gap:6px;border:0;border-radius:4px;background:rgb(139,182,0);color:rgb(34,48,10);transition:background .15s;padding:15px 26px;font-size:15px;font-weight:700;cursor:pointer" style-hover="background:rgb(162,198,82)">Pokračovat <span style="display:inline-flex;vertical-align:middle"><l-icon name="chevron-right" size="24"></l-icon></span></button>
+          </div>
+        </div>
+        <aside style="background:#fff;border-radius:5px;box-shadow:0 4px 18px rgba(0,0,0,0.13);padding:24px;display:flex;flex-direction:column;gap:14px;position:sticky;top:150px">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><span style="font-size:24px;font-weight:800;color:rgb(73,82,90);text-transform:uppercase">Obsah košíku</span><span style="border:1px solid rgb(209,216,222);border-radius:14px;padding:4px 12px;font-size:13px">{{ countLabel }}</span></div>
+          <sc-for list="{{ cartLines }}" as="l" hint-placeholder-count="3">
+            <div style="display:grid;grid-template-columns:60px minmax(0,1fr) auto;gap:12px;align-items:center;border-top:1px solid rgb(228,232,236);padding-top:12px"><img src="{{ l.img }}" alt="" style="width:60px;height:44px;object-fit:contain"><span style="font-size:14px;font-weight:700;color:rgb(73,82,90)">{{ l.qty }}× {{ l.name }}</span><span style="font-size:14px;font-weight:700;color:rgb(12,12,12);white-space:nowrap">{{ l.total }}</span></div>
+          </sc-for>
+          <div style="border-top:1px solid rgb(228,232,236);padding-top:14px;display:flex;flex-direction:column;gap:6px;font-size:14px">
+            <div style="display:flex;justify-content:space-between"><span><b>Doprava:</b> {{ shipLabel }}</span><b>{{ shipPrice }}</b></div>
+            <div style="display:flex;justify-content:space-between"><span><b>Platba:</b> {{ payLabel }}</span><b>{{ payPrice }}</b></div>
+          </div>
+          <div style="border-top:1px solid rgb(228,232,236);padding-top:14px;display:flex;flex-direction:column;gap:4px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;color:rgb(73,82,90)"><span style="font-size:17px;font-weight:700">Konečná cena s DPH:</span><span style="font-size:26px;font-weight:800;color:rgb(12,12,12)">{{ grandTotal }}</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:14px;color:rgb(126,138,149)"><span>Konečná cena bez DPH:</span><span>{{ grandNoVat }}</span></div>
+          </div>
+        </aside>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isStep3 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid;grid-template-columns:minmax(0,1.8fr) minmax(300px,1fr);gap:28px;align-items:start">
+        <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+          <h2 style="margin:0;font-size:28px;font-weight:800;color:rgb(73,82,90);text-transform:uppercase">Kontrola údajů</h2>
+          <div style="background:#fff;border-radius:5px;border:1px solid rgb(228,232,236);padding:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;font-size:14px;line-height:1.6">
+            <div><b style="color:rgb(12,12,12)">Fakturační údaje</b><br>Matěj Jaroš<br>V Chotejně 15<br>102 00 Praha 10</div>
+            <div><b style="color:rgb(12,12,12)">Kontakt</b><br>matej@example.cz<br>+420 777 555 666</div>
+            <div><b style="color:rgb(12,12,12)">Doprava a platba</b><br>{{ shipLabel }}<br>{{ payLabel }}</div>
+          </div>
+          <label style="display:flex;gap:10px;align-items:center;font-size:14px"><input type="checkbox" checked="{{ true }}" readOnly="{{ true }}" style="accent-color:rgb(205,0,0);width:18px;height:18px">Souhlasím s obchodními podmínkami</label>
+          <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+            <button onClick="{{ goStep2 }}" style="display:inline-flex;align-items:center;gap:6px;border:1px solid rgb(209,216,222);background:rgb(237,237,237);color:rgb(73,82,90);padding:13px 20px;border-radius:4px;font-size:14px;font-weight:700;cursor:pointer"><span style="display:inline-flex;vertical-align:middle"><l-icon name="chevron-left" size="24"></l-icon></span> Zpět</button>
+            <button onClick="{{ placeOrder }}" style="display:inline-flex;align-items:center;gap:6px;border:0;border-radius:4px;background:rgb(139,182,0);color:rgb(34,48,10);transition:background .15s;padding:15px 26px;font-size:15px;font-weight:700;cursor:pointer" style-hover="background:rgb(162,198,82)">Odeslat objednávku <span style="display:inline-flex;vertical-align:middle"><l-icon name="chevron-right" size="24"></l-icon></span></button>
+          </div>
+        </div>
+        <aside style="background:#fff;border-radius:5px;box-shadow:0 4px 18px rgba(0,0,0,0.13);padding:24px;display:flex;flex-direction:column;gap:10px">
+          <span style="font-size:20px;font-weight:800;color:rgb(73,82,90);text-transform:uppercase">Souhrn</span>
+          <div style="display:flex;justify-content:space-between;font-size:14px"><span>Zboží ({{ countLabel }})</span><b>{{ sumVat }}</b></div>
+          <div style="display:flex;justify-content:space-between;font-size:14px"><span>Doprava a platba</span><b>{{ feesLabel }}</b></div>
+          <div style="border-top:1px solid rgb(228,232,236);padding-top:12px;display:flex;justify-content:space-between;align-items:baseline"><span style="font-weight:700">Celkem s DPH</span><span style="font-size:24px;font-weight:800;color:rgb(12,12,12)">{{ grandTotal }}</span></div>
+        </aside>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isDone }}" hint-placeholder-val="{{ false }}">
+      <div style="background:#fff;border-radius:5px;padding:56px 40px;max-width:680px;width:100%;margin:0 auto;box-sizing:border-box;display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center">
+        <span style="width:64px;height:64px;border-radius:50%;background:rgb(233,247,238);display:grid;place-items:center"><l-icon name="circle-check" size="24" style="color:rgb(2,153,60);width:24px;height:24px;display:inline-flex;flex-shrink:0"></l-icon></span>
+        <h2 style="margin:0;font-size:28px;font-weight:800;color:rgb(73,82,90)">Děkujeme za objednávku</h2>
+        <span style="font-size:14px">Číslo objednávky <b style="color:rgb(12,12,12)">2026104881</b></span>
+        <p style="margin:0;font-size:14px;line-height:1.6;max-width:480px">Potvrzení jsme vám poslali e-mailem. O expedici vás budeme informovat. Dotazy k objednávce: objednavky@lugero.cz</p>
+        <button onClick="{{ finish }}" style="margin-top:8px;border:0;border-radius:4px;background:rgb(205,0,0);color:#fff;padding:14px 24px;font-weight:700;font-size:14px;cursor:pointer">Zpět na úvod</button>
+      </div>
+    </sc-if>
+  </section>
+</sc-if>
+
+<sc-if value="{{ isAccount }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Přihlášení" style="padding-top:40px;display:flex;justify-content:center">
+    <div style="width:100%;max-width:480px;background:#fff;border-radius:5px;box-shadow:0 4px 18px rgba(0,0,0,0.13);overflow:hidden">
+      <div style="display:grid;grid-template-columns:1fr 1fr">
+        <button onClick="{{ tabLogin }}" style="border:0;border-bottom:3px solid {{ loginBar }};background:#fff;padding:18px;font-size:15px;font-weight:700;color:rgb(73,82,90);cursor:pointer">Přihlášení</button>
+        <button onClick="{{ tabRegister }}" style="border:0;border-bottom:3px solid {{ registerBar }};background:#fff;padding:18px;font-size:15px;font-weight:700;color:rgb(73,82,90);cursor:pointer">Registrace</button>
+      </div>
+      <div style="padding:28px;display:flex;flex-direction:column;gap:14px">
+        <sc-if value="{{ isRegister }}" hint-placeholder-val="{{ false }}">
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;color:rgb(126,138,149)">Jméno a příjmení<input style="border:1px solid rgb(209,216,222);border-radius:4px;padding:12px;font-size:15px"></label>
+        </sc-if>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;color:rgb(126,138,149)">E-mail<input type="email" style="border:1px solid rgb(209,216,222);border-radius:4px;padding:12px;font-size:15px"></label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;color:rgb(126,138,149)">Heslo<input type="password" style="border:1px solid rgb(209,216,222);border-radius:4px;padding:12px;font-size:15px"></label>
+        <sc-if value="{{ isLogin }}" hint-placeholder-val="{{ true }}">
+          <span style="font-size:13px;color:rgb(205,0,0);cursor:pointer;align-self:flex-end">Zapomenuté heslo?</span>
+        </sc-if>
+        <button onClick="{{ doAuth }}" style="border:0;border-radius:4px;background:rgb(205,0,0);color:#fff;padding:15px;font-size:15px;font-weight:700;cursor:pointer" style-hover="background:rgb(180,0,0)">{{ authCta }}</button>
+        <div style="display:flex;align-items:center;gap:10px;font-size:12px;color:rgb(126,138,149)"><span style="flex:1;height:1px;background:rgb(228,232,236)"></span>nebo<span style="flex:1;height:1px;background:rgb(228,232,236)"></span></div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+          <button style="border:1px solid rgb(209,216,222);background:#fff;border-radius:4px;padding:11px;font-size:13px;font-weight:700;color:rgb(205,0,0);cursor:pointer">Seznam</button>
+          <button style="border:1px solid rgb(209,216,222);background:#fff;border-radius:4px;padding:11px;font-size:13px;font-weight:700;color:rgb(73,82,90);cursor:pointer">Google</button>
+          <button style="border:1px solid rgb(209,216,222);background:#fff;border-radius:4px;padding:11px;font-size:13px;font-weight:700;color:rgb(36,127,206);cursor:pointer">Facebook</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</sc-if>
+
+</main>
+
+<section style="width:100%;max-width:1320px;margin:0 auto;padding:0 20px 48px;box-sizing:border-box">
+  <h2 style="margin:0;padding-bottom:20px;font-size:28px;font-weight:700;color:rgb(73,82,90);text-align:center;border-bottom:1px solid rgb(228,232,236)">Proč nakupovat u nás?</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;padding-top:28px">
+    <div style="display:flex;gap:14px;align-items:center;font-size:16px;line-height:1.3;color:rgb(73,82,90)"><l-icon name="clock" size="24" style="color:rgb(205,0,0);width:40px;height:40px;display:inline-flex;flex-shrink:0"></l-icon><span>Zboží skladem <b style="font-weight:700">doručíme do 48 hodin</b></span></div>
+    <div style="display:flex;gap:14px;align-items:center;font-size:16px;line-height:1.3;color:rgb(73,82,90)"><l-icon name="map-pinned" size="24" style="color:rgb(205,0,0);width:40px;height:40px;display:inline-flex;flex-shrink:0"></l-icon><span>Možnost <b style="font-weight:700">sledování</b><br>trasy <b style="font-weight:700">zásilky</b></span></div>
+    <div style="display:flex;gap:14px;align-items:center;font-size:16px;line-height:1.3;color:rgb(73,82,90)"><l-icon name="truck-delivery" size="24" style="color:rgb(205,0,0);width:40px;height:40px;display:inline-flex;flex-shrink:0"></l-icon><span><b style="font-weight:700">Doprava</b> sběrnou službou<br>s <b style="font-weight:700">hydraulickým čelem</b></span></div>
+    <div style="display:flex;gap:14px;align-items:center;font-size:16px;line-height:1.3;color:rgb(73,82,90)"><l-icon name="hand-coins" size="24" style="color:rgb(205,0,0);width:40px;height:40px;display:inline-flex;flex-shrink:0"></l-icon><span>Ceny za doručení<br><b style="font-weight:700">již od 249 Kč</b></span></div>
+  </div>
+</section>
+
+<section style="background:rgb(228,232,236);overflow:hidden">
+  <div style="max-width:1320px;margin:0 auto;box-sizing:border-box;padding:48px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px;align-items:center">
+    <div style="display:flex;flex-direction:column;gap:14px;max-width:560px">
+      <h2 style="margin:0;font-size:28px;font-weight:700;color:rgb(73,82,90)">Odebírejte náš newsletter</h2>
+      <p style="margin:0;font-size:14px">Už nikdy nebudete řešit, jak něco zvednout. Všechny novinky vám naservírujeme do e-mailu.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><input placeholder="Váš email" style="flex:1;min-width:200px;border:1px solid rgb(209,216,222);border-radius:4px;padding:12px 14px;font-size:14px;background:#fff"><button style="border:0;border-radius:4px;background:rgb(205,0,0);color:#fff;padding:0 22px;font-size:13px;font-weight:700;cursor:pointer;min-height:44px">ZASÍLAT ✓</button></div>
+      <label style="display:flex;gap:8px;align-items:center;font-size:12px;color:rgb(91,102,112)"><input type="checkbox" style="accent-color:rgb(205,0,0)">Souhlasím se zpracováním osobních údajů. Odběr můžete kdykoliv zrušit.</label>
+    </div>
+    <img src="img/6962ff318a9e4526.jpg" alt="" style="width:100%;max-width:520px;justify-self:end;mix-blend-mode:multiply">
+  </div>
+</section>
+
+<footer style="background:#fff;font-size:13px;color:rgb(73,82,90);border-top:1px solid rgb(228,232,236);margin-top:0">
+  <div style="max-width:1320px;margin:0 auto;box-sizing:border-box;padding:48px 20px 24px;display:flex;flex-direction:column;gap:28px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:32px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:14px;max-width:620px">
+        <img src="img/logo-a.png" alt="LUGERO" style="height:34px;align-self:flex-start">
+        <div style="line-height:1.55"><b style="color:rgb(12,12,12);display:block">Manipulační a zdvihací technika od roku 2007.</b>Prodej, servis, půjčovna. V nabídce najdete paletové a vysokozdvižné vozíky, rudly, kladkostroje, zvedací stoly i náhradní díly — vše skladem a s dopravou po celé ČR. Vlastní servisní tým zajišťuje opravy, pravidelné revize i školení řidičů VZV. Do roku 2023 jsme prodávali pod značkou DELTALIFT.</div>
+        <div style="display:flex;gap:8px;color:rgb(126,138,149)"><a aria-label="Facebook" style="color:inherit;display:inline-flex;cursor:pointer" style-hover="color:rgb(205,0,0)"><l-icon name="facebook" size="24"></l-icon></a><a aria-label="YouTube" style="color:inherit;display:inline-flex;cursor:pointer" style-hover="color:rgb(205,0,0)"><l-icon name="youtube" size="24"></l-icon></a></div>
+      </div>
+      <div style="background:rgb(242,245,247);border:1px solid rgb(228,232,236);border-radius:5px;padding:20px 20px 16px;display:grid;grid-template-columns:1fr 1fr;gap:18px 16px">
+        <div style="display:flex;flex-direction:column;gap:4px"><span style="color:rgb(126,138,149)">Zavolejte nám</span><span style="font-size:22px;font-weight:600;color:rgb(12,12,12)">228 804 000</span><a style="color:rgb(205,0,0);text-decoration:none;cursor:pointer" style-hover="text-decoration:underline">info@lugero.cz</a></div>
+        <div style="display:flex;flex-direction:column;gap:4px"><span style="color:rgb(126,138,149)">Otevřeno</span><div style="display:flex;gap:6px;align-items:flex-start"><l-icon name="clock" size="24" style="color:rgb(126,138,149);flex-shrink:0"></l-icon><span style="line-height:1.5">Po–Čt: 7:30–16:00<br>Pá: 7:30–15:00</span></div></div>
+        <div style="grid-column:1/-1;border-top:1px solid rgb(228,232,236);padding-top:14px;display:flex;justify-content:space-between;align-items:center;gap:12px"><span style="display:flex;gap:6px;align-items:center"><l-icon name="map-pin" size="24" style="color:rgb(126,138,149)"></l-icon>V Chotejně 15, 102 00 Praha 10</span><a style="display:flex;gap:4px;align-items:center;color:rgb(205,0,0);font-weight:600;text-decoration:none;cursor:pointer" style-hover="color:rgb(150,0,0)">Mapa<l-icon name="external-link" size="24" style="color:rgb(126,138,149)"></l-icon></a></div>
+      </div>
+    </div>
+    <div style="height:1px;background:rgb(228,232,236)"></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px">
+      <div style="display:flex;flex-direction:column;gap:10px"><span style="font-size:18px;font-weight:600;color:rgb(12,12,12);margin-bottom:6px">Nákup a doprava</span><a style="color:rgb(73,82,90);text-decoration:none;cursor:pointer" style-hover="color:rgb(205,0,0)">Doprava a platba</a><a style="color:rgb(73,82,90);text-decoration:none;cursor:pointer" style-hover="color:rgb(205,0,0)">Nákup na splátky</a><a style="color:rgb(73,82,90);text-decoration:none;cursor:pointer" style-hover="color:rgb(205,0,0)">Reklamace a vrácení</a><a style="color:rgb(73,82,90);text-decoration:none;cursor:pointer" style-hover="color:rgb(205,0,0)">Časté otázky</a></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><span style="font-size:18px;font-weight:600;color:rgb(12,12,12);margin-bottom:6px">Servis a služby</span><a style="color:rgb(73,82,90);text-decoration:none;cursor:pointer" style-hover="color:rgb(205,0,0)">Servis techniky</a><a style="color:rgb(73,82,90);text-decoration:none;cursor:pointer" style-hover="color:rgb(205,0,0)">Nahlásit servis online</a><a style="color:rgb(73,82,90);text-decoration:none;cursor:pointer" style-hover="color:rgb(205,0,0)">Ceník servisu</a><a style="color:rgb(73,82,90);text-decoration:none;cursor:pointer" style-hover="color:rgb(205,0,0)">Půjčovna techniky</a><a style="color:rgb(73,82,90);text-decoration:none;cursor:pointer" style-hover="color:rgb(205,0,0)">Vyzkoušení zdarma</a><a style="color:rgb(73,82,90);text-decoration:none;cursor:pointer" style-hover="color:rgb(205,0,0)">Školení řidičů VZV</a></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><span style="font-size:18px;font-weight:600;color:rgb(12,12,12);margin-bottom:6px">O nás</span><a style="color:rgb(73,82,90);text-decoration:none;cursor:pointer" style-hover="color:rgb(205,0,0)">Proč LUGERO</a><a style="color:rgb(73,82,90);text-decoration:none;cursor:pointer" style-hover="color:rgb(205,0,0)">Benefity k nákupu</a><a style="color:rgb(73,82,90);text-decoration:none;cursor:pointer" style-hover="color:rgb(205,0,0)">Reference</a><a style="color:rgb(73,82,90);text-decoration:none;cursor:pointer" style-hover="color:rgb(205,0,0)">Kariéra</a><a style="color:rgb(73,82,90);text-decoration:none;cursor:pointer" style-hover="color:rgb(205,0,0)">Pro dealery</a><a style="color:rgb(73,82,90);text-decoration:none;cursor:pointer" style-hover="color:rgb(205,0,0)">Kontakty</a></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><span style="font-size:18px;font-weight:600;color:rgb(12,12,12);margin-bottom:6px">Můj účet</span><a style="color:rgb(73,82,90);text-decoration:none;cursor:pointer" style-hover="color:rgb(205,0,0)"><a onClick="{{ goAccount }}" style="color:rgb(73,82,90);text-decoration:none;cursor:pointer" style-hover="color:rgb(205,0,0)">Přihlášení</a></a><a style="color:rgb(73,82,90);text-decoration:none;cursor:pointer" style-hover="color:rgb(205,0,0)">Moje objednávky</a><a style="color:rgb(73,82,90);text-decoration:none;cursor:pointer" style-hover="color:rgb(205,0,0)">Porovnání produktů</a><a style="color:rgb(73,82,90);text-decoration:none;cursor:pointer" style-hover="color:rgb(205,0,0)">Poptávka</a></div>
+    </div>
+    <div style="height:1px;background:rgb(228,232,236)"></div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px 40px;align-items:center"><span style="min-width:110px">Lugero v Evropě:</span><span style="display:flex;gap:8px;align-items:center"><span style="width:16px;height:11px;border-radius:2px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 0 0 1px rgba(0,0,0,0.08)"><span style="flex:1;background:#fff"></span><span style="flex:1;background:#0b4ea2"></span><span style="flex:1;background:#ee1c25"></span></span>Slovensko</span><span style="display:flex;gap:8px;align-items:center"><span style="width:16px;height:11px;border-radius:2px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 0 0 1px rgba(0,0,0,0.08)"><span style="flex:1;background:#fff"></span><span style="flex:1;background:#dc143c"></span></span>Polsko</span><span style="display:flex;gap:8px;align-items:center"><span style="width:16px;height:11px;border-radius:2px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 0 0 1px rgba(0,0,0,0.08)"><span style="flex:1;background:#000"></span><span style="flex:1;background:#dd0000"></span><span style="flex:1;background:#ffce00"></span></span>Německo</span><span style="display:flex;gap:8px;align-items:center"><span style="width:16px;height:11px;border-radius:2px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 0 0 1px rgba(0,0,0,0.08)"><span style="flex:1;background:#ce2939"></span><span style="flex:1;background:#fff"></span><span style="flex:1;background:#477050"></span></span>Maďarsko</span><span style="display:flex;gap:8px;align-items:center"><span style="width:16px;height:11px;border-radius:2px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 0 0 1px rgba(0,0,0,0.08)"><span style="flex:1;background:#ed2939"></span><span style="flex:1;background:#fff"></span><span style="flex:1;background:#ed2939"></span></span>Rakousko</span></div>
+    <div style="height:1px;background:rgb(228,232,236)"></div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center"><span style="min-width:110px">Nejhledanější:</span>
+      <sc-for list="{{ footChips }}" as="c" hint-placeholder-count="6">
+        <button onClick="{{ c.open }}" style="display:inline-flex;align-items:center;gap:4px;border:0;background:rgb(228,232,236);color:rgb(73,82,90);border-radius:18px;padding:7px 10px 7px 16px;font:400 13px Inter,sans-serif;cursor:pointer;transition:background .15s" style-hover="background:rgb(209,216,222)">{{ c.name }}<l-icon name="chevron-right" size="24" style="color:rgb(205,0,0)"></l-icon></button>
+      </sc-for>
+    </div>
+    <div style="height:1px;background:rgb(228,232,236)"></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,max-content));gap:24px 72px">
+      <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:18px;font-weight:600;color:rgb(73,82,90)">Způsoby dopravy</span><span style="font-size:11px;color:rgb(126,138,149)">Skladem do 48 h · sledování zásilky · od 249 Kč</span><div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:10px"><x-import component-from-global-scope="DeliveryPaymentSelectorViewToptrans" from="./logos/Components.bundle.js" size="40" hint-size="65px,40px" style="width:65px;height:40px;flex-shrink:0"></x-import><x-import component-from-global-scope="DeliveryPaymentSelectorViewSchenker" from="./logos/Components.bundle.js" size="40" hint-size="65px,40px" style="width:65px;height:40px;flex-shrink:0"></x-import><span title="Osobní odběr" style="width:65px;height:40px;box-sizing:border-box;border-radius:6px;background:#fff;box-shadow:inset 0 0 0 1px rgb(217,217,217);display:grid;place-items:center;color:rgb(51,51,51)"><l-icon name="map-pinned" size="24" style="width:24px;height:24px;display:inline-flex"></l-icon></span></div></div>
+      <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:18px;font-weight:600;color:rgb(73,82,90)">Způsoby plateb</span><span style="font-size:11px;color:rgb(126,138,149)">Online · Splátky · faktura pro firmy</span><div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:10px"><x-import component-from-global-scope="DeliveryPaymentSelectorViewVisa" from="./logos/Components.bundle.js" size="40" hint-size="65px,40px" style="width:65px;height:40px;flex-shrink:0"></x-import><x-import component-from-global-scope="DeliveryPaymentSelectorViewMastercard" from="./logos/Components.bundle.js" size="40" hint-size="65px,40px" style="width:65px;height:40px;flex-shrink:0"></x-import><x-import component-from-global-scope="DeliveryPaymentSelectorViewGoPay" from="./logos/Components.bundle.js" size="40" hint-size="65px,40px" style="width:65px;height:40px;flex-shrink:0"></x-import><x-import component-from-global-scope="EssoxViewLogo" from="./logos/Components.bundle.js" size="40" hint-size="65px,40px" style="width:65px;height:40px;flex-shrink:0"></x-import></div></div>
+    </div>
+    <div style="height:1px;background:rgb(228,232,236)"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;color:rgb(126,138,149);font-size:12px">
+      <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap"><span>©2026 lugero.cz</span><span style="display:flex;gap:6px;align-items:center"><x-import component-from-global-scope="BSSHOPIconRed" from="./logos/Components.bundle.js" hint-size="24px,24px" style="width:24px;height:24px;flex-shrink:0"></x-import>BSSHOP: e-shop napojený na Pohodu</span></div>
+      <button onClick="{{ toTop }}" style="display:inline-flex;align-items:center;gap:6px;border:0;border-radius:4px;background:rgb(205,0,0);color:#fff;padding:8px 12px 8px 16px;font:700 13px Inter,sans-serif;cursor:pointer;transition:background .15s" style-hover="background:rgb(170,0,0)">Na začátek stránky<l-icon name="chevron-up" size="24"></l-icon></button>
+    </div>
+  </div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;vatFirst&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Ceny&quot;},&quot;startPage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;home&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;category&quot;,&quot;product&quot;,&quot;cart&quot;,&quot;step2&quot;,&quot;step3&quot;,&quot;account&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Prototyp&quot;}}">
+const MEGA_SUBS = { palety: [['Standardní do 2,5t'],['Silné s nosností 3–5t'],['Elektrické',1],['Nůžkové'],['S váhou nebo tiskárnou'],['Dlouhé'],['Krátké'],['S nízkým profilem'],['Speciální']] };
+const MEGA_GENERIC = [['Nejprodávanější'],['Novinky',1],['Elektrické'],['Příslušenství'],['Náhradní díly'],['Použité']];
+const CATS = [
+  { id: 'palety', name: 'Paletové vozíky', img: 'img/78857700b5e26bc1.png', desc: 'Paleťáky různých délek a nosností – standardní, elektrické, nůžkové, s váhou, nízké i s brzdou. Skladem v Praze, expedice do 48 hodin.' },
+  { id: 'vzv', name: 'Vysokozdvižné vozíky', img: 'img/6962ff318a9e4526.jpg', desc: 'Ručně vedené, s elektrickým zdvihem i plně elektrické. Čelní vozíky na naftu, LPG i akumulátor.' },
+  { id: 'baoli', name: 'Manipulační technika Baoli', img: 'img/a94405ec1517b788.jpg', desc: 'Elektrické paletové vozíky a stohovače značky Baoli.' },
+  { id: 'rudly', name: 'Rudly', img: 'img/91559e0b9ef33c6a.jpg', desc: 'Dvoukolové přepravní vozíky od standardních po schodišťové. Česká výroba.' },
+  { id: 'stoly', name: 'Zvedací stoly a plošiny', img: 'img/9f67310b8f156973.png', desc: 'Hydraulické zvedací stoly pro ergonomickou práci s břemeny.' },
+  { id: 'kladkostroje', name: 'Kladkostroje', img: 'img/e685ace7c377da16.jpg', desc: 'Mechanické řetězové i elektrické lanové kladkostroje a pojezdové kočky.' },
+  { id: 'kancel', name: 'Kancelářské vozíky a dvoukoláky', img: 'img/71ea0cd115b96481.jpg', desc: 'Lehké vozíky pro kanceláře, sklady i provozovny.' },
+  { id: 'jeraby', name: 'Dílenské jeřáby a hevery', img: 'img/df12a385638cae4b.png', desc: 'Dílenské jeřáby, hevery a zvedáky.' },
+  { id: 'vahy', name: 'Průmyslové vážicí systémy', img: 'img/29a4f97823596c1f.png', desc: 'Vážicí nosníky a průmyslové váhy.' },
+  { id: 'pomucky', name: 'Pracovní pomůcky a doplňky', img: 'img/815d1fea1875623a.jpg', desc: 'Ochranné pomůcky a doplňky.' },
+  { id: 'dily', name: 'Náhradní díly', img: 'img/7f03415d8a9ebe7c.png', desc: 'Kola, hydraulika a díly k našim strojům.' },
+  { id: 'akce', name: 'Akce +1 ZDARMA', img: 'img/9b2046abfce54296.png', desc: 'Ke každému vybranému produktu druhý zdarma.' },
+];
+const P = [
+  { id: 1, cat: 'palety', model: 'DB2v', name: 'Paletový vozík DB2v • ZÁKLADNÍ ZESÍLENÝ', code: '41533509', price: 145578, old: 187891, cap: 2500, img: 'img/9be106323a5eb057.jpg', imgs: ['img/9be106323a5eb057.jpg', 'img/78857700b5e26bc1.png'], stock: 1, pop: 1,
+    chips: ['Nosnost 2,5 t', 'Vidlice 1 150 mm'], bullets: ['standardní základní vozík na europalety', 'pevná ocelová lakovaná konstrukce', 'nosnost 2 500 kg', 'kvalitní hydraulická jednotka', 'všechna kola nylonová'],
+    specs: [['Nosnost', '2 500 kg'], ['Délka vidlic', '1 150 mm'], ['Max. výška zdvihu', '200 mm'], ['Kola', 'nylon, tandem']] },
+  { id: 2, cat: 'palety', model: 'CBD-15', name: 'Paletový vozík CBD-15-F4p • ELEKTRICKÝ', code: '41533510', price: 120213, old: 156120, cap: 1500, img: 'img/0855762897f7281d.png', imgs: ['img/0855762897f7281d.png', 'img/01bebe9101620dc5.jpg', 'img/e93af15c35c65273.jpg', 'img/c841d590ee5ef04f.jpg'], stock: 1, pop: 2,
+    chips: ['Nosnost 1,5 t', 'Vidlice 1 150 mm'], bullets: ['elektrický pojezd i zdvih', 'Li-ion baterie 20 Ah', 'lehká a obratná konstrukce', 'zdvih až do 200 mm'],
+    specs: [['Nosnost', '1 500 kg'], ['Délka vidlic', '1 150 mm'], ['Baterie', 'Li-ion 48 V / 20 Ah'], ['Hmotnost', '120 kg']] },
+  { id: 3, cat: 'palety', model: 'CBD-15', name: 'Paletový vozík CBD-15-F4p • S BALANČ. KOLY', code: '41533511', price: 200200, cap: 1500, img: 'img/e93af15c35c65273.jpg', imgs: ['img/e93af15c35c65273.jpg', 'img/0855762897f7281d.png'], stock: 1, pop: 3,
+    chips: ['Vidlice 1 150 mm', 'Balanční kola'], bullets: ['balanční kola pro vyšší stabilitu', 'zdvih až do 200 mm', 'všechna kola nylonová', 'bezkonkurenční cena'],
+    specs: [['Nosnost', '1 500 kg'], ['Délka vidlic', '1 150 mm'], ['Kola', 'nylon + balanční']] },
+  { id: 4, cat: 'palety', model: 'CBD-15', name: 'Elektrický paletový vozík CBD-15-F4p + Náhradní baterie', code: '41533512', price: 57894, cap: 1500, img: 'img/ce29b2bb0447f288.jpg', imgs: ['img/ce29b2bb0447f288.jpg', 'img/0855762897f7281d.png'], stock: 1, pop: 4,
+    chips: ['Nosnost 1,5 t', '2× baterie'], bullets: ['náhradní baterie v balení', 'nepřetržitý provoz na směny', 'interní nabíječka 230 V'],
+    specs: [['Nosnost', '1 500 kg'], ['Baterie', '2× Li-ion 20 Ah']] },
+  { id: 5, cat: 'palety', model: 'CBD20s', name: 'Paletový vozík CBD20s • ELEKTRICKÝ', code: '41533513', price: 45513, old: 59110, cap: 2000, img: 'img/2b6676c32b3f1cc4.png', imgs: ['img/2b6676c32b3f1cc4.png'], stock: 1, pop: 5,
+    chips: ['Nosnost 2 t', 'Vidlice 1 150 mm'], bullets: ['elektrický pojezd', 'robustní konstrukce', 'polyuretanová kola'],
+    specs: [['Nosnost', '2 000 kg'], ['Délka vidlic', '1 150 mm']] },
+  { id: 6, cat: 'baoli', model: 'EP15', name: 'Paletový vozík Baoli EP15-03 • ELEKTRICKÝ', code: '41533514', price: 18450, cap: 1500, img: 'img/a94405ec1517b788.jpg', imgs: ['img/a94405ec1517b788.jpg'], stock: 1, pop: 6,
+    chips: ['Nosnost 1,5 t', 'Li-ion'], bullets: ['prémiová kvalita Baoli', 'Li-ion baterie', 'kompaktní rozměry'],
+    specs: [['Nosnost', '1 500 kg'], ['Baterie', 'Li-ion']] },
+  { id: 7, cat: 'palety', model: 'CBD-15', name: 'Set 2× paletový vozík CBD-15-F4p', code: '41533515', price: 229900, cap: 1500, img: 'img/0bc568d964e88e76.jpg', imgs: ['img/0bc568d964e88e76.jpg'], stock: 0, pop: 7,
+    chips: ['2 kusy', 'Nosnost 1,5 t'], bullets: ['výhodný balíček dvou vozíků', 'elektrický pojezd i zdvih'],
+    specs: [['Počet kusů', '2'], ['Nosnost', '1 500 kg']] },
+  { id: 8, cat: 'vzv', model: 'FB25', name: 'Vysokozdvižný vozík FB25 • AKUMULÁTOROVÝ', code: '41533516', price: 489000, cap: 2500, img: 'img/6962ff318a9e4526.jpg', imgs: ['img/6962ff318a9e4526.jpg'], stock: 0, pop: 8,
+    chips: ['Nosnost 2,5 t', 'Triplex 4 650 mm'], bullets: ['triplex stožár 4 650 mm', 'boční posuv vidlic', 'LED osvětlení'],
+    specs: [['Nosnost', '2 500 kg'], ['Výška zdvihu', '4 650 mm']] },
+  { id: 9, cat: 'vzv', model: 'ES15', name: 'Elektrický stohovač ES15-30', code: '41533517', price: 59900, cap: 1500, img: 'img/2c27a9310d8f2c47.jpg', imgs: ['img/2c27a9310d8f2c47.jpg'], stock: 1, pop: 9,
+    chips: ['Nosnost 1,5 t', 'Zdvih 3 000 mm'], bullets: ['elektrický zdvih i pojezd', 'GEL baterie 2× 24 V / 80 Ah', 'interní nabíječka 230 V'],
+    specs: [['Nosnost', '1 500 kg'], ['Výška zdvihu', '3 000 mm']] },
+  { id: 10, cat: 'rudly', model: 'R250', name: 'Rudla R250 s nafukovacími koly', code: '41533518', price: 1490, cap: 250, img: 'img/91559e0b9ef33c6a.jpg', imgs: ['img/91559e0b9ef33c6a.jpg'], stock: 1, pop: 10,
+    chips: ['Nosnost 250 kg'], bullets: ['bezdušové pneu', 'ocelový rám', 'výroba v CZ'], specs: [['Nosnost', '250 kg'], ['Kola', '260 mm']] },
+  { id: 11, cat: 'stoly', model: 'ZS300', name: 'Zvedací stůl ZS 300', code: '41533519', price: 7490, cap: 300, img: 'img/9f67310b8f156973.png', imgs: ['img/9f67310b8f156973.png'], stock: 1, pop: 11,
+    chips: ['Nosnost 300 kg', 'Zdvih 900 mm'], bullets: ['nožní hydraulický zdvih', 'brzděná kola'], specs: [['Nosnost', '300 kg'], ['Max. výška', '900 mm']] },
+  { id: 12, cat: 'kladkostroje', model: 'PA', name: 'Elektrický lanový kladkostroj PA 500', code: '41533520', price: 3290, cap: 500, img: 'img/e685ace7c377da16.jpg', imgs: ['img/e685ace7c377da16.jpg'], stock: 1, pop: 12,
+    chips: ['Nosnost 500 kg', '230 V'], bullets: ['lanový zdvih', 'ovladač s nouzovým stopem'], specs: [['Nosnost', '500 kg'], ['Napájení', '230 V']] },
+];
+const fmt = n => Math.round(n).toLocaleString('cs-CZ').replace(/\u00a0/g, ' ') + ' Kč';
+const VAT = 1.21;
+const SHIP = [
+  { id: 'osobni', label: 'Osobní odběr', note: 'V Chotejně 15, Praha 10', price: 0 },
+  { id: 'dopravce', label: 'Přepravní společnost', note: 'Sběrná služba s hydraulickým čelem, 2–3 pracovní dny', price: 760 },
+  { id: 'ppl', label: 'PPL', note: 'Menší zásilky do 30 kg', price: 249 },
+];
+const PAY = [
+  { id: 'qr', label: 'QR kódem / převod', note: 'Okamžitá platba', price: 0 },
+  { id: 'karta', label: 'Kartou online', note: 'Visa, Mastercard, Apple Pay, Google Pay', price: 0 },
+  { id: 'dobirka', label: 'Dobírka', note: 'Platba při převzetí', price: 49 },
+];
+const STEP_ORDER = ['cart', 'step2', 'step3'];
+
+class Component extends DCLogic {
+  state = { page: this.props.startPage ?? 'home', pid: 1, cat: 'all', cart: [{ id: 1, qty: 1 }, { id: 2, qty: 1 }, { id: 5, qty: 1 }], qty: 1, img: 0, justAdded: false,
+    sort: 'pop', stockOnly: false, ship: 'osobni', pay: 'qr', auth: 'login', loggedIn: false, tab: 'popis', company: false, mini: false, login: false, slide: 0, mega: null, mobile: typeof window !== 'undefined' && window.innerWidth < 1200, burger: false, mSec: 'produkty', mCat: null };
+  componentDidMount() { this._rs = () => { const m = window.innerWidth < 1200; if (m !== this.state.mobile) this.setState({ mobile: m, burger: m && this.state.burger }); }; window.addEventListener('resize', this._rs); if (super.componentDidMount) super.componentDidMount(); }
+  componentWillUnmount() { window.removeEventListener('resize', this._rs); }
+  showMini() { clearTimeout(this._mt); this.setState({ mini: true }); }
+  hideMini() { clearTimeout(this._mt); this._mt = setTimeout(() => this.setState({ mini: false }), 180); }
+  go(patch) { this.setState(patch); window.scrollTo(0, 0); }
+  add(id, n = 1) {
+    this.setState(s => { const ex = s.cart.find(c => c.id === id);
+      return { cart: ex ? s.cart.map(c => c.id === id ? { ...c, qty: c.qty + n } : c) : [...s.cart, { id, qty: n }] }; });
+  }
+  setQty(id, d) { this.setState(s => ({ cart: s.cart.map(c => c.id === id ? { ...c, qty: Math.max(1, c.qty + d) } : c) })); }
+  suggest() {
+    const s = this.state, q = (s.sq || '').trim().toLowerCase();
+    const norm = t => t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    const res = (q ? P.filter(p => norm(p.name + ' ' + p.model + ' ' + p.code).includes(norm(q))) : [...P].sort((a, b) => a.pop - b.pop)).slice(0, 5);
+    return { sq: s.sq || '', sOpen: !!s.sFocus, sHead: q ? 'Produkty' : 'Nejhledanější produkty', sEmpty: !!q && !res.length,
+      sqChange: e => this.setState({ sq: e.target.value, sFocus: true }), sqFocus: () => this.setState({ sFocus: true }), sqBlur: () => this.setState({ sFocus: false }),
+      keepFocus: e => e.preventDefault(), sqSubmit: () => this.go({ page: 'category', cat: 'all', sFocus: false }),
+      sRes: res.map(p => { const c = this.card(p), inCart = s.cart.find(x => x.id === p.id);
+        return { ...c, qty: inCart ? inCart.qty : 0, open: () => { this.setState({ sFocus: false }); c.open(); },
+          inc: () => this.add(p.id), dec: () => this.setState(st => ({ cart: st.cart.flatMap(x => x.id !== p.id ? [x] : x.qty > 1 ? [{ ...x, qty: x.qty - 1 }] : []) })) }; }) };
+  }
+  slider() {
+    const SL = [
+      { tag: 'Novinka', title: 'Elektrický paletový vozík', accent: 'CBD-15-F4p', sub: 'Mimořádná zaváděcí akce! Odolný a obratný paletový vozík.', p: P[1] },
+      { tag: 'Akce', title: 'Paletový vozík', accent: 'DB2v', sub: 'Spolehlivý základ pro každý sklad. Skladem, doprava do 48 h.', p: P[0] },
+      { tag: 'Tip', title: 'Vyzkoušejte', accent: 'zdarma', sub: 'Techniku vám přivezeme a předvedeme přímo ve vašem provozu.', p: P[2] || P[1] }];
+    const i = this.state.slide % SL.length, c = SL[i], n = SL.length;
+    return { slide: { ...c, banner: 'img/slider-1.png', alt: c.title + ' ' + c.accent, img: c.p.imgs ? c.p.imgs[0] : c.p.img, bg: 'img/5b70ea3c30f185fb.png', price: this.card(c.p).priceMain, open: this.card(c.p).open },
+      slidePrev: () => this.setState({ slide: (i + n - 1) % n }), slideNext: () => this.setState({ slide: (i + 1) % n }),
+      slideDots: SL.map((_, k) => ({ bg: k === i ? 'rgb(205,0,0)' : '#fff', pick: () => this.setState({ slide: k }) })) };
+  }
+  card(p) {
+    const vatFirst = this.props.vatFirst ?? false;
+    const cat = CATS.find(c => c.id === p.cat);
+    return { ...p, catName: cat.name,
+      discount: p.old ? '-' + Math.round((1 - p.price / p.old) * 100) + ' %' : '',
+      oldPrice: p.old ? fmt(p.old) : '',
+      priceMain: vatFirst ? fmt(p.price * VAT) : fmt(p.price),
+      priceMainNote: vatFirst ? 's DPH' : 'bez DPH',
+      priceSub: vatFirst ? fmt(p.price) + ' bez DPH' : fmt(p.price * VAT) + ' s DPH',
+      stockLabel: p.stock ? 'Skladem' : 'Na objednávku', stockColor: p.stock ? 'rgb(91,121,0)' : 'rgb(36,127,206)',
+      open: () => this.go({ page: 'product', pid: p.id, qty: 1, img: 0, justAdded: false, tab: 'popis' }),
+      openCat: () => this.go({ page: 'category', cat: p.cat }),
+      add: () => this.add(p.id),
+      hovered: this.state.hov === p.id,
+      enter: () => this.setState({ hov: p.id }), leave: () => this.setState(s => s.hov === p.id ? { hov: null } : null),
+    };
+  }
+  renderVals() {
+    const s = this.state;
+    const openCat = id => () => this.go({ page: 'category', cat: id });
+    const cats = CATS.map(c => ({ ...c, open: openCat(c.id), megaOn: e => { const r = e && e.currentTarget; const t = r ? Math.max(0, r.offsetTop - r.parentElement.firstElementChild.offsetHeight) : 0; this.setState({ mega: c.id, megaTop: t }); }, rowBg: s.mega === c.id ? '#fff' : s.mega ? 'rgb(246,247,248)' : 'transparent', rowMr: s.mega === c.id ? '-2px' : '0', rowPr: s.mega === c.id ? '16px' : '14px', chev: s.mega === c.id ? 'rgb(205,0,0)' : 'currentColor' }));
+    const mc = CATS.find(c => c.id === s.mega);
+    const mImgs = mc ? P.filter(p => p.cat === mc.id).map(p => p.imgs ? p.imgs[0] : p.img) : [];
+    const mega = mc ? { name: mc.name, open: () => { this.setState({ mega: null }); openCat(mc.id)(); },
+      subs: (MEGA_SUBS[mc.id] || MEGA_GENERIC).map(([name, tip], k) => ({ name, tip: !!tip, img: mImgs.length ? mImgs[k % mImgs.length] : mc.img })) } : null;
+    let list = P.filter(p => s.cat === 'all' || p.cat === s.cat);
+    if (s.stockOnly) list = list.filter(p => p.stock);
+    list = [...list].sort((a, b) => s.sort === 'asc' ? a.price - b.price : s.sort === 'desc' ? b.price - a.price : s.sort === 'new' ? b.id - a.id : a.pop - b.pop);
+    const catObj = CATS.find(c => c.id === s.cat);
+    const sorts = [['pop', 'Nejprodávanější'], ['asc', 'Nejlevnější'], ['desc', 'Nejdražší'], ['new', 'Nejnovější']];
+    const pr = P.find(p => p.id === s.pid);
+    const lines = s.cart.map(c => { const p = this.card(P.find(x => x.id === c.id)); return { ...p, qty: c.qty, qtyLabel: c.qty + ' ks', unit: fmt(p.price * VAT), total: fmt(p.price * VAT * c.qty),
+      inc: () => this.setQty(p.id, 1), dec: () => this.setQty(p.id, -1),
+      remove: () => this.setState(st => ({ cart: st.cart.filter(x => x.id !== p.id) })) }; });
+    const sum = s.cart.reduce((a, c) => a + P.find(p => p.id === c.id).price * c.qty, 0);
+    const count = s.cart.reduce((a, c) => a + c.qty, 0);
+    const shipO = SHIP.find(x => x.id === s.ship), payO = PAY.find(x => x.id === s.pay);
+    const fees = shipO.price + payO.price;
+    const opt = (arr, key) => arr.map(o => ({ ...o, price: o.price ? fmt(o.price) : 'Zdarma', checked: s[key] === o.id,
+      border: s[key] === o.id ? '2px solid rgb(205,0,0)' : '1px solid rgb(228,232,236)', pick: () => this.setState({ [key]: o.id }) }));
+    const stepIdx = s.page === 'done' ? 3 : STEP_ORDER.indexOf(s.page);
+    const steps = [['Obsah košíku', 'flex-start'], ['Kontaktní údaje', 'center'], ['Kontrola údajů', 'flex-end']].map(([label, align], i) => ({
+      label, align, n: i + 1, bg: i <= stepIdx ? 'rgb(12,12,12)' : 'rgb(237,237,237)', fg: i <= stepIdx ? '#fff' : 'rgb(12,12,12)',
+      go: () => { if (i < stepIdx && s.page !== 'done') this.go({ page: STEP_ORDER[i] }); } }));
+    const tabs = [['popis', 'Popis'], ['params', 'Parametry'], ['dotazy', 'Dotazy'], ['prislus', 'Příslušenství'], ['diskuze', 'Diskuze']];
+    const plural = n => n === 1 ? 'produkt' : n > 1 && n < 5 ? 'produkty' : 'produktů';
+    return {
+      isHome: s.page === 'home', isCategory: s.page === 'category', isProduct: s.page === 'product', isAccount: s.page === 'account',
+      isCheckoutFlow: ['cart', 'step2', 'step3', 'done'].includes(s.page),
+      isCart: s.page === 'cart', isStep2: s.page === 'step2', isStep3: s.page === 'step3', isDone: s.page === 'done',
+      goHome: () => this.go({ page: 'home' }), goAll: () => this.go({ page: 'category', cat: 'all' }), goAkce: openCat('akce'),
+      goCart: () => this.go({ page: 'cart', mini: false }), goStep2: () => this.go({ page: 'step2' }), goStep3: () => this.go({ page: 'step3' }),
+      goAccount: () => this.go({ page: 'account' }), toTop: () => window.scrollTo({ top: 0, behavior: 'smooth' }),
+      openHero: () => this.card(P[1]).open(),
+      loginOpen: s.login, closeLogin: () => this.setState({ login: false }), stop: e => e.stopPropagation(),
+      headAccount: () => s.loggedIn ? this.go({ page: 'account' }) : this.setState({ login: true }),
+      doLogin: () => this.setState({ login: false, loggedIn: true }), goRegister: () => { this.setState({ login: false }); this.go({ page: 'account', auth: 'register' }); },
+      ...this.suggest(), ...this.slider(), megaOpen: !!mega, isMobile: !!s.mobile, isDesktop: !s.mobile, burgerOpen: !!(s.mobile && s.burger), burgerToggle: () => this.setState({ burger: !s.burger }), burgerClose: () => this.setState({ burger: false }),
+      mProdOpen: s.mSec === 'produkty', mProdIcon: s.mSec === 'produkty' ? 'minus' : 'plus', mProdToggle: () => this.setState({ mSec: s.mSec === 'produkty' ? null : 'produkty' }),
+      mCats: CATS.map(c => ({ name: c.name, img: c.img, open: s.mCat === c.id, icon: s.mCat === c.id ? 'chevron-up' : 'chevron-down', toggle: () => this.setState({ mCat: s.mCat === c.id ? null : c.id }), go: () => { this.setState({ burger: false }); openCat(c.id)(); }, subs: (MEGA_SUBS[c.id] || MEGA_GENERIC).map(x => x[0]) })),
+      mSecs: [['pujcovna','Půjčovna',['Paletové vozíky','Vysokozdvižné vozíky','Ceník půjčovného']],['servis','Servis',['Servis techniky','Nahlásit servis online','Ceník servisu']],['akce','Akce',['Akce +1 ZDARMA','Výprodej','Výhodné balíčky']],['zdarma','Vyzkoušejte zdarma',['Jak to funguje','Objednat předvedení']]].map(([id, label, items]) => ({ label, items, open: s.mSec === id, icon: s.mSec === id ? 'minus' : 'plus', toggle: () => this.setState({ mSec: s.mSec === id ? null : id }) })),
+      langs: ['CZ','SK','DE','HU','AT'].map((l, i) => ({ l, color: i === 0 ? 'rgb(12,12,12)' : 'rgb(126,138,149)' })), navMega: !!s.navMega, navMegaOn: () => this.setState({ navMega: true }), navMegaOff: () => s.navMega && this.setState({ navMega: false }),
+      navCats: CATS.map(c => ({ name: c.name, img: c.img, open: () => { this.setState({ navMega: false }); openCat(c.id)(); }, subs: (MEGA_SUBS[c.id] || MEGA_GENERIC).map(x => x[0]) })), megaTopPx: (s.megaTop || 0) + 'px', mega: mega || { subs: [] }, megaHide: () => this.setState({ mega: null }),
+      accountLabel: s.loggedIn ? 'Matěj Jaroš' : 'Přihlásit',
+      sideCats: cats, tileCats: cats.slice(0, 4), footChips: cats.slice(0, 6),
+      bestsellers: [...P].sort((a, b) => a.pop - b.pop).slice(0, 4).map(p => this.card(p)),
+      newest: [...P].sort((a, b) => b.id - a.id).slice(0, 4).map(p => this.card(p)),
+      catTitle: catObj ? catObj.name : 'Produkty', hasCatCrumb: !!catObj, showSubcats: !catObj,
+      catDesc: catObj ? catObj.desc : 'Kompletní sortiment manipulační a zdvihací techniky LUGERO na jednom místě — od ručních rudlů a dvoukoláků přes paletové a vysokozdvižné vozíky až po zvedací stoly, kladkostroje a průmyslové váhy. Naprostou většinu zboží držíme skladem a expedujeme do 48 hodin.',
+      catProducts: list.map(p => this.card(p)), noResults: list.length === 0,
+      resultLabel: list.length + ' ' + plural(list.length),
+      stockOnly: s.stockOnly, toggleStock: () => this.setState({ stockOnly: !s.stockOnly }),
+      sorts: sorts.map(([id, label]) => ({ label, pick: () => this.setState({ sort: id }),
+        fg: s.sort === id ? 'rgb(12,12,12)' : 'rgb(126,138,149)', bar: s.sort === id ? 'rgb(205,0,0)' : 'transparent' })),
+      prod: { ...this.card(pr), specs: pr.specs.map(([k, v]) => ({ k, v })),
+        desc: pr.name + ' — spolehlivý pomocník pro sklady, výrobu i dílny. Díky kvalitní konstrukci a výbavě nabízí skvělý poměr ceny a výkonu.',
+        longDesc: pr.name + ' patří k nejoblíbenějším modelům v naší nabídce. Robustní konstrukce a kvalitní komponenty zajišťují dlouhou životnost při každodenním provozu. Ke všem strojům nabízíme vlastní servis, revize a náhradní díly skladem.' },
+      activeImg: pr.imgs[Math.min(s.img, pr.imgs.length - 1)],
+      thumbs: pr.imgs.map((src, i) => ({ src, border: i === s.img ? 'rgb(205,0,0)' : 'rgb(228,232,236)', pick: () => this.setState({ img: i }) })),
+      similar: P.filter(p => p.cat === pr.cat && p.id !== pr.id).concat(P.filter(p => p.cat !== pr.cat)).slice(0, 5).map(p => this.card(p)),
+      tabs: tabs.map(([id, label]) => ({ label, pick: () => this.setState({ tab: id }), bg: s.tab === id ? 'rgb(49,49,49)' : 'rgb(237,237,237)', fg: s.tab === id ? '#fff' : 'rgb(73,82,90)' })),
+      tabPopis: s.tab === 'popis', tabParams: s.tab === 'params', tabOther: !['popis', 'params'].includes(s.tab),
+      qtyLabel: s.qty + ' ks',
+      wheelsA: ['Nylon 200 mm', 'Polyuretan 200 mm', 'Guma 200 mm'].map((l, i) => ({ l, ring: (s.wA || 0) === i ? '5px solid rgb(205,0,0)' : '1px solid rgb(209,216,222)', pick: () => this.setState({ wA: i }) })),
+      wheelsB: ['Nylon 80×70 mm', 'Polyuretan 80×70 mm', 'Guma 80×70 mm'].map((l, i) => ({ l, ring: (s.wB || 0) === i ? '5px solid rgb(205,0,0)' : '1px solid rgb(209,216,222)', pick: () => this.setState({ wB: i }) })),
+      descClamped: !s.descOpen, descFull: !!s.descOpen, descToggle: () => this.setState({ descOpen: !s.descOpen }), descToggleLabel: s.descOpen ? 'Skrýt popis' : 'Zobrazit celý popis',
+      specsShown: (s.allParams ? pr.specs : pr.specs.slice(0, 3)).map(([k, v]) => ({ k, v })), paramsToggle: () => this.setState({ allParams: !s.allParams }), paramsToggleLabel: s.allParams ? 'Méně parametrů' : 'Všechny parametry',
+      essoxPrice: fmt(pr.price * VAT),
+      imgPrev: () => this.setState({ img: (s.img - 1 + pr.imgs.length) % pr.imgs.length }), imgNext: () => this.setState({ img: (s.img + 1) % pr.imgs.length }),
+      dtabs: [['popis', 'Popis', 'file-text'], ['params', 'Parametry', 'sliders-horizontal']].map(([id, label, icon]) => ({ label, icon, pick: () => this.setState({ tab: id }), bg: s.tab === id ? 'rgb(49,49,49)' : 'rgb(237,237,237)', fg: s.tab === id ? '#fff' : 'rgb(73,82,90)' })), incQty: () => this.setState({ qty: s.qty + 1 }), decQty: () => this.setState({ qty: Math.max(1, s.qty - 1) }),
+      addDetail: () => { this.add(pr.id, s.qty); this.setState({ justAdded: true }); }, justAdded: s.justAdded,
+      cartCount: count, cartLineCount: lines.length, miniOpen: s.mini && s.page !== 'cart', miniShow: () => this.showMini(), miniHide: () => this.hideMini(), miniClose: () => this.setState({ mini: false }), cartTotalShort: fmt(sum * VAT), cartEmpty: lines.length === 0, cartHas: lines.length > 0, cartLines: lines,
+      countLabel: count + ' ' + plural(count),
+      sumVat: fmt(sum * VAT), shipOpts: opt(SHIP, 'ship'), payOpts: opt(PAY, 'pay'),
+      shipLabel: shipO.label, payLabel: payO.label, shipPrice: fmt(shipO.price), payPrice: fmt(payO.price),
+      feesLabel: fees ? fmt(fees) : '0 Kč', grandTotal: fmt(sum * VAT + fees), grandNoVat: fmt(sum + fees / VAT),
+      steps, stepBar: ['0%', '45%', '90%', '90%'][Math.max(0, stepIdx)],
+      company: s.company, toggleCompany: () => this.setState({ company: !s.company }),
+      placeOrder: () => this.go({ page: 'done' }),
+      finish: () => this.go({ page: 'home', cart: [] }),
+      isLogin: s.auth === 'login', isRegister: s.auth === 'register',
+      tabLogin: () => this.setState({ auth: 'login' }), tabRegister: () => this.setState({ auth: 'register' }),
+      loginBar: s.auth === 'login' ? 'rgb(205,0,0)' : 'rgb(237,237,237)', registerBar: s.auth === 'register' ? 'rgb(205,0,0)' : 'rgb(237,237,237)',
+      authCta: s.auth === 'login' ? 'Přihlásit se' : 'Vytvořit účet',
+      doAuth: () => this.go({ loggedIn: true, page: 'home' }),
+    };
+  }
+}
+</script>
+</body>
+</html>
